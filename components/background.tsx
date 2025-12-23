@@ -27,7 +27,7 @@ export default function WarpBackground() {
   return (
     <div
       ref={ref}
-      className="fixed inset-0 -z-10 overflow-hidden blur-lg"
+      className="fixed inset-0 -z-10 overflow-hidden blur-[5px] brightness-40"
       aria-hidden
     >
       {size.width > 0 && (
@@ -48,14 +48,14 @@ export default function WarpBackground() {
           ]}
           proportion={0.5}
           softness={1}
-          distortion={0.2}
-          swirl={0.6}
-          swirlIterations={50}
+          distortion={0.5}
+          swirl={0.5}
+          swirlIterations={10}
           shape="checks"
           shapeScale={1}
-          speed={1}
+          speed={0.4}
           scale={4}
-          rotation={130}
+          rotation={120}
         />
       )}
     </div>

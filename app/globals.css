@@ -3,6 +3,7 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --bg: transparent;
 }
 
 @theme inline {
@@ -16,6 +17,7 @@
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
+    --bg: transparent;
   }
 }
 
@@ -24,3 +26,11 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.button {
+  font-family: 'Montserrat', sans-serif;
+
+  --glass-bg: color-mix(in oklab, var(--bg) 80%, transparent);
+  --glass-border: color-mix(in oklab, var(--glass-bg) 70%, white);
+}
+

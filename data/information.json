@@ -1,0 +1,64 @@
+{
+    "name": "Brayan Ivan",
+    "role": "Full-Stack Developer",
+    "email": "brayan.ivan@example.com",
+    "description": "Passionate about crafting efficient and scalable web applications with a focus on user experience.",
+    "about-me": "I am a dedicated full-stack developer with experience in building dynamic web applications. I enjoy solving complex problems and continuously learning new technologies to enhance my skill set.",
+    "skils": [
+        "JavaScript",
+        "TypeScript",
+        "React",
+        "Node.js",
+        "Express",
+        "PostgreSQL",
+        "HTML5",
+        "CSS3",
+        "Git",
+        "Docker",
+        "Linux"
+    ],
+    "projects": [
+        {
+            "name": "Project One",
+            "description": "A web application that does amazing things."
+        },
+        {
+            "name": "Project Two",
+            "description": "Another project that showcases my skills."
+        },
+        {
+            "name": "Project Three",
+            "description": "An innovative solution to a common problem."
+        },
+        {
+            "name": "Project Four",
+            "description": "A cutting-edge app built with modern technologies."
+        }
+    ],
+    "experience": [
+        {
+            "company": "Company 1",
+            "role": "Role",
+            "duration": "Jan 2020 - Present",
+            "responsibilities": [
+                "Developed and maintained web applications using React and Node.js.",
+                "Collaborated with cross-functional teams to define project requirements.",
+                "Implemented RESTful APIs and integrated third-party services."
+            ]
+        },
+        {
+            "company": "Company 2",
+            "role": "Role",
+            "duration": "Jun 2018 - Dec 2019",
+            "responsibilities": [
+                "Assisted in the development of client websites and applications.",
+                "Participated in code reviews and contributed to team knowledge sharing.",
+                "Maintained documentation for various projects."
+            ]
+        }
+    ],
+    "socials": {
+        "github": "https://github.com/keiwv",
+        "linkedin": "https://www.linkedin.com/in/brayanperez56/"
+    }
+}
