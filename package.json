@@ -9,8 +9,9 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@developer-hub/liquid-glass": "^1.2.3",
     "@paper-design/shaders-react": "^0.0.68",
-    "next": "16.0.8",
+    "next": "^16.1.1",
     "react": "19.2.1",
     "react-dom": "19.2.1"
   },

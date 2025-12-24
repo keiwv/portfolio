@@ -12,14 +12,14 @@ export default function WarpBackground() {
 
     const observer = new ResizeObserver(([entry]) => {
       const { width, height } = entry.contentRect;
-      
+      console.log("Resize observed:", width, height);
       setSize({
         width: Math.floor(width),
         height: Math.floor(height),
       });
 
     });
-
+    console.log("Resize observed:", size.width, size.height);
     observer.observe(ref.current);
     return () => observer.disconnect();
   }, []);
@@ -27,7 +27,7 @@ export default function WarpBackground() {
   return (
     <div
       ref={ref}
-      className="fixed inset-0 -z-10 overflow-hidden blur-[5px] brightness-40"
+      className="fixed inset-0 -z-10 overflow-hidden blur-[10px] brightness-70"
       aria-hidden
     >
       {size.width > 0 && (
@@ -53,7 +53,7 @@ export default function WarpBackground() {
           swirlIterations={10}
           shape="checks"
           shapeScale={1}
-          speed={0.4}
+          speed={0.2}
           scale={4}
           rotation={120}
         />

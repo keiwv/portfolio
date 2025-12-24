@@ -34,3 +34,12 @@ body {
   --glass-border: color-mix(in oklab, var(--glass-bg) 70%, white);
 }
 
+::-webkit-scrollbar {
+  width: 0px;
+  height: 0px;
+}
+
+* {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
