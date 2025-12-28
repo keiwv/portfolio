@@ -2,6 +2,8 @@
 
 import useMousePosition from "@/components/hook/useMousePosition";
 import user from "@/data/data-eng.json";
+import SplitText from "@/components/SplitText";
+import TextType from "@/components/TextType";
 
 export default function Home() {
     const mousePosition = useMousePosition();
@@ -11,36 +13,47 @@ export default function Home() {
             id="home"
             className="min-h-screen text-white relative px-6 sm:px-10"
         >
-
             <div className="absolute inset-0 flex items-center">
                 <div className="max-w-10xl sm:pl-6 md:pl-12 lg:pl-18">
-                    <h1
+                    <SplitText
+                        text={user.name}
                         className="text-[3.2rem] leading-[0.95] font-extrabold uppercase
                          sm:text-[6rem]
                          md:text-[8rem]
-                         lg:text-[12rem]"
-                    >
-                        {user.name}
-                    </h1>
+                         lg:text-[10rem]"
+                        delay={100}
+                        duration={0.6}
+                        ease="power3.out"
+                        splitType="chars"
+                        from={{ opacity: 0, y: 40 }}
+                        to={{ opacity: 1, y: 0 }}
+                        threshold={0.1}
+                        textAlign="left"
+                    />
 
-                    <h1
+                    <SplitText
+                        text={user.last_name}
                         className="text-[3.2rem] leading-[0.95] font-extrabold uppercase
                          sm:text-[6rem]
                          md:text-[8rem]
-                         lg:text-[12rem]"
-                    >
-                        {user.last_name}
-                    </h1>
+                         lg:text-[10rem]"
+                        delay={200}
+                        duration={0.8}
+                        ease="power3.out"
+                        splitType="chars"
+                        from={{ opacity: 0, y: 40 }}
+                        to={{ opacity: 1, y: 0 }}
+                        threshold={0.1}
+                        textAlign="left"
+                    />
 
-                    <div className="mt-4 sm:mt-6 max-w">
-                        <p className="text-sm sm:text-4xl tracking-widest uppercase font-light">
-                            {user.role}
-                        </p>
+                    <div className="mt-4 sm:mt-6 max-w sm:pl-1 md:pl-1 lg:pl-2">
+                        <TextType 
+                        text={user.role} 
+                        className="text-sm sm:text-3xl tracking-widest uppercase font-light"
+                        pauseDuration={3000} />
                     </div>
                 </div>
-            </div>
-            <div className="absolute bottom-6 left-6 sm:bottom-10 sm:left-10 text-[10px] sm:text-xs tracking-widest">
-                Made w ❤️ by Brayan Ivan
             </div>
         </section>
     );
