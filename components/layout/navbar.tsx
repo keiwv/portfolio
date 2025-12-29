@@ -1,33 +1,36 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import Button from "../ui/button";
 import { navData } from "@/lib/data";
+import GooeyNav from "../ui/GooeyNav";
+
+const GlassSurface = dynamic(() => import("../ui/GlassSurface"), {
+    ssr: false,
+});
 
 export default function Navbar() {
-  const handleScroll = (id: string) => {
-    const el = document.getElementById(id);
-    if (!el) return;
-
-    el.scrollIntoView({
-      behavior: "smooth",
-      block: "start",
-    });
-  };
-
-  return (
-    <nav className="fixed top-0 left-0 right-0 z-50 p-6">
-      <div className="flex justify-center items-center">
-        <div className="flex gap-4 px-4 py-2 rounded-lg backdrop-blur-md border border-white/5">
-          {navData.map((item) => (
-            <Button
-              key={item.id}
-              onClick={() => handleScroll(item.id)}
-            >
-              {item.name}
-            </Button>
-          ))}
-        </div>
-      </div>
-    </nav>
-  );
+    return (
+        <nav className="fixed top-6 left-1/2 transform -translate-x-1/2 z-50">
+            <div className="relative">
+                <GlassSurface
+                    width={800}
+                    height={70}
+                    redOffset={25}
+                    greenOffset={15}
+                    blueOffset={5}
+                    distortionScale={15}
+                    className="flex justify-center items-center"
+                >
+                </GlassSurface>
+                <div className="absolute inset-0 flex justify-center items-center pointer-events-auto z-100">
+                    <GooeyNav
+                        items={navData}
+                        particleCount={15}
+                        colors={[10, 150, 22,33, 55, 255,222, 100, 200, 250]}
+                    />
+                </div>
+            </div>
+        </nav>
+    );
 }

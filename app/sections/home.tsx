@@ -2,8 +2,8 @@
 
 import useMousePosition from "@/components/hook/useMousePosition";
 import user from "@/data/data-eng.json";
-import SplitText from "@/components/SplitText";
-import TextType from "@/components/TextType";
+import SplitText from "@/components/ui/SplitText";
+import TextType from "@/components/ui/TextType";
 
 export default function Home() {
     const mousePosition = useMousePosition();
@@ -15,37 +15,41 @@ export default function Home() {
         >
             <div className="absolute inset-0 flex items-center">
                 <div className="max-w-10xl sm:pl-6 md:pl-12 lg:pl-18">
-                    <SplitText
-                        text={user.name}
-                        className="text-[3.2rem] leading-[0.95] font-extrabold uppercase
-                         sm:text-[6rem]
-                         md:text-[8rem]
-                         lg:text-[10rem]"
-                        delay={100}
-                        duration={0.6}
-                        ease="power3.out"
-                        splitType="chars"
-                        from={{ opacity: 0, y: 40 }}
-                        to={{ opacity: 1, y: 0 }}
-                        threshold={0.1}
-                        textAlign="left"
-                    />
+                    <div className="block">
+                        <SplitText
+                            text={user.name}
+                            className="text-[3.2rem] leading-[0.95] font-extrabold uppercase block
+                             sm:text-[6rem]
+                             md:text-[8rem]
+                             lg:text-[10rem]"
+                            delay={100}
+                            duration={0.6}
+                            ease="power3.out"
+                            splitType="chars"
+                            from={{ opacity: 0, y: 40 }}
+                            to={{ opacity: 1, y: 0 }}
+                            threshold={0.1}
+                            textAlign="left"
+                        />
+                    </div>
 
-                    <SplitText
-                        text={user.last_name}
-                        className="text-[3.2rem] leading-[0.95] font-extrabold uppercase
-                         sm:text-[6rem]
-                         md:text-[8rem]
-                         lg:text-[10rem]"
-                        delay={200}
-                        duration={0.8}
-                        ease="power3.out"
-                        splitType="chars"
-                        from={{ opacity: 0, y: 40 }}
-                        to={{ opacity: 1, y: 0 }}
-                        threshold={0.1}
-                        textAlign="left"
-                    />
+                    <div className="block">
+                        <SplitText
+                            text={user.last_name}
+                            className="text-[3.2rem] leading-[0.95] font-extrabold uppercase block
+                             sm:text-[6rem]
+                             md:text-[8rem]
+                             lg:text-[10rem]"
+                            delay={200}
+                            duration={0.8}
+                            ease="power3.out"
+                            splitType="chars"
+                            from={{ opacity: 0, y: 40 }}
+                            to={{ opacity: 1, y: 0 }}
+                            threshold={0.1}
+                            textAlign="left"
+                        />
+                    </div>
 
                     <div className="mt-4 sm:mt-6 max-w sm:pl-1 md:pl-1 lg:pl-2">
                         <TextType 

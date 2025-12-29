@@ -1,8 +1,8 @@
 export const navData = [
-  { name: "Home", id: "home" },
-  { name: "About", id: "about" },
-  { name: "Projects", id: "projects" },
-  { name: "Contact", id: "contact" },
+  { label: "Home", href: "home" },
+  { label: "About", href: "about" },
+  { label: "Projects", href: "projects" },
+  { label: "Contact", href: "contact" },
 ];
 
 export const BLUR_AMOUNT = 0.1;
