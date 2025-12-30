@@ -9,10 +9,11 @@ export default function Page() {
       <Background />
 
       <main className="relative z-10">
-        <Home />
-        <About />
-        <Projects />
-        <Contact />
+          <Home />
+          <About />
+          <Projects />
+          <Contact />
+        
       </main>
     </div>
   );
