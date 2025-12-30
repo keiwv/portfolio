@@ -3,8 +3,13 @@
     "last_name": "Perez Ventura",
     "role": "Software Engineer & Emerging Technologies Student",
     "email": "brayan.ivan@example.com",
+    "location": "Ensenada, Baja California, México",
     "description": "Passionate about crafting efficient and scalable web applications with a focus on user experience.",
-    "about-me": "I am a dedicated full-stack developer with experience in building dynamic web applications. I enjoy solving complex problems and continuously learning new technologies to enhance my skill set.",
+    "about-me": [
+        "Hi, I'm a Software Engineering student passionate about solving complex problems, usually using TypeScript, Python, and a few snacks. I focus on backend development, aiming to make solutions work right from the first try (no guarantees though).",
+        "NestJS and FastAPI are part of my daily toolkit, and I'm currently exploring frontend development to strengthen my full-stack profile.",
+        "Outside of coding, I spend time at the gym, looking for new libraries, or playing Overwatch (Genji main) with friends. I enjoy creating, learning, experimenting with new technologies, and constantly solving problems."
+    ],
     "skils": [
         "JavaScript",
         "TypeScript",

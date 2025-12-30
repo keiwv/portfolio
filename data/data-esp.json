@@ -3,8 +3,9 @@
     "last_name": "Perez Ventura",
     "role": "Ingeniero en Software y Tecnologías Emergentes",
     "email": "brayan.ivan@example.com",
+    "location": "Ensenada, Baja California, México",
     "description": "Apasionado por crear aplicaciones web eficientes y escalables con un enfoque en la experiencia del usuario.",
-    "about-me": "Soy un desarrollador full-stack dedicado con experiencia en la construcción de aplicaciones web dinámicas. Disfruto resolver problemas complejos y aprender continuamente nuevas tecnologías para mejorar mis habilidades.",
+    "about-me": "Hola, soy estudiante de Ingeniería en Software apasionado por resolver problemas complejos, normalmente utilizando TypeScript, Python y algunos snacks. Me especializo en el desarrollo backend, buscando que las soluciones funcionen correctamente desde el primer intento (aunque no hay garantías). \n NestJS y FastAPI forman parte de mis herramientas del día a día, y actualmente estoy explorando el desarrollo frontend para fortalecer mi perfil full-stack. Fuera del código, paso tiempo en el gimnasio, investigando nuevas librerías o jugando Overwatch (main Genji) con mis amigos. Me gusta crear, aprender, experimentar con nuevas tecnologías y resolver problemas constantemente.",
     "skils": [
         "JavaScript",
         "TypeScript",
