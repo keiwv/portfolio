@@ -25,9 +25,15 @@
     ],
     "projects": [
         {
-            "index":1,
+            "index": 0,
             "name": "Sippy",
             "description": "Cross-platform mobile platform developed with a Node.js backend and a React Native frontend. The project stands out for its implementation of a scalable architecture capable of handling dynamic feed algorithms, distributed processing on Azure, and complex management of both relational and NoSQL databases.",
+            "contibutions": [
+                "Designed database schemas and RESTful APIs using NestJS.",
+                "Optimized NoSQL queries to enhance data retrieval performance.",
+                "Using GraphQL to streamline data fetching between frontend and backend.",
+                "Deployed and managed cloud services on Microsoft Azure."
+            ],
             "skills": [
                 "JavaScript",
                 "React Native",
@@ -36,7 +42,26 @@
             ]
         },
         {
-            "index":2,
+            "index": 1,
+            "name": "Nasa Explorer",
+            "description": "A spatial biology knowledge engine that uses AI to summarize NASA scientific publications. It enables researchers to explore decades of information using natural language processing and semantic search.",
+            "awards": "1st Place Local Hackathon NASA",
+            "contibutions": [
+                "Deploying RAG-based AI services using NestJS.",
+                "Integrated RAG techniques to enhance information retrieval from large datasets.",
+                "Deployed services on Google Cloud Platform"
+            ],
+            "skills": [
+                "Retrieval-Augmented Generation",
+                "NestJS",
+                "Google Cloud Services"
+            ],
+            "imgs": [
+                "/projects/nasa.png"
+            ]
+        },
+        {
+            "index": 2,
             "name": "CTQAlert",
             "description": "Web platform for product quality assurance featuring a real-time notification system and an administration panel for user and product management, implemented with a multiservice architecture.",
             "skills": ["TypeScript", "Express", "PostgreSQL"]

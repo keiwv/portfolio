@@ -18,24 +18,20 @@ export default function MobileSidebar({ isOpen, onClose, navItems }: MobileSideb
         }`}>
             
             
-            {/* Sidebar */}
             <div className={`fixed top-0 right-0 h-full w-80 max-w-[85vw] transition-transform duration-300 ${
                 isOpen ? 'translate-x-0' : 'translate-x-full'
             }`}>
                 <GlassSurface
                     width="100%"
                     height="100%"
-                    redOffset={20}
-                    greenOffset={12}
-                    blueOffset={8}
-                    distortionScale={10}
+                    redOffset={15}
+                    greenOffset={10}
+                    blueOffset={5}
                     className="h-full"
-                    displace={1}
-                    brightness={5}
-                    borderWidth={1}
+                    displace={2}
 >
                     <div className="absolute inset-0 flex flex-col pt-20 pointer-events-auto">
-                        {/* Close button */}
+
                         <div className="absolute top-4 right-4 z-10">
                             <button
                                 onClick={onClose}
@@ -45,7 +41,6 @@ export default function MobileSidebar({ isOpen, onClose, navItems }: MobileSideb
                             </button>
                         </div>
 
-                        {/* Navigation Items */}
                         <div className="flex flex-col">
                             {navItems.map((item, index) => (
                                 <MobileNavItem 
