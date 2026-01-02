@@ -61,7 +61,7 @@ export default function WarpBackground({ backgroundType = "grain" }: WarpBackgro
                 shape="checks"
                 shapeScale={1}
                 speed={0.2}
-                scale={4}
+                scale={2}
                 rotation={120}
               />
             )}
@@ -76,6 +76,7 @@ export default function WarpBackground({ backgroundType = "grain" }: WarpBackgro
                 noise={0.25}
                 shape="corners"
                 speed={1}
+                scale={1.5}
               />
             )}
           </>

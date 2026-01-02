@@ -2,7 +2,7 @@
 
 import dynamic from "next/dynamic";
 import Button from "../ui/button";
-import { navData } from "@/lib/data";
+import { engNavData, spaNavData } from "@/lib/data";
 import GooeyNav from "../ui/GooeyNav";
 
 const GlassSurface = dynamic(() => import("../ui/GlassSurface"), {
@@ -25,7 +25,7 @@ export default function Navbar() {
                 </GlassSurface>
                 <div className="absolute inset-0 flex justify-center items-center pointer-events-auto z-100">
                     <GooeyNav
-                        items={navData}
+                        items={engNavData}
                         particleCount={15}
                         colors={[10, 150, 22,33, 55, 255,222, 100, 200, 250]}
                     />

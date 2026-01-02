@@ -1,12 +1,10 @@
 "use client";
 
-import useMousePosition from "@/components/hook/useMousePosition";
 import user from "@/data/data-eng.json";
 import SplitText from "@/components/ui/SplitText";
 import TextType from "@/components/ui/TextType";
 
 export default function Home() {
-    const mousePosition = useMousePosition();
 
     return (
         <section
