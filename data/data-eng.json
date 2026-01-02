@@ -25,20 +25,21 @@
     ],
     "projects": [
         {
-            "name": "Project One",
-            "description": "A web application that does amazing things."
+            "index":1,
+            "name": "Sippy",
+            "description": "Cross-platform mobile platform developed with a Node.js backend and a React Native frontend. The project stands out for its implementation of a scalable architecture capable of handling dynamic feed algorithms, distributed processing on Azure, and complex management of both relational and NoSQL databases.",
+            "skills": [
+                "JavaScript",
+                "React Native",
+                "NestJS",
+                "Azure"
+            ]
         },
         {
-            "name": "Project Two",
-            "description": "Another project that showcases my skills."
-        },
-        {
-            "name": "Project Three",
-            "description": "An innovative solution to a common problem."
-        },
-        {
-            "name": "Project Four",
-            "description": "A cutting-edge app built with modern technologies."
+            "index":2,
+            "name": "CTQAlert",
+            "description": "Web platform for product quality assurance featuring a real-time notification system and an administration panel for user and product management, implemented with a multiservice architecture.",
+            "skills": ["TypeScript", "Express", "PostgreSQL"]
         }
     ],
     "experience": [
