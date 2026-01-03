@@ -1,11 +1,15 @@
 {
     "name": "Brayan Ivan",
     "last_name": "Perez Ventura",
-    "role": "Ingeniero en Software y Tecnologías Emergentes",
+    "role": "Ingeniero de Software y Estudiante de Tecnologías Emergentes",
     "email": "brayan.ivan@example.com",
     "location": "Ensenada, Baja California, México",
-    "description": "Apasionado por crear aplicaciones web eficientes y escalables con un enfoque en la experiencia del usuario.",
-    "about-me": "Hola, soy estudiante de Ingeniería en Software apasionado por resolver problemas complejos, normalmente utilizando TypeScript, Python y algunos snacks. Me especializo en el desarrollo backend, buscando que las soluciones funcionen correctamente desde el primer intento (aunque no hay garantías). \n NestJS y FastAPI forman parte de mis herramientas del día a día, y actualmente estoy explorando el desarrollo frontend para fortalecer mi perfil full-stack. Fuera del código, paso tiempo en el gimnasio, investigando nuevas librerías o jugando Overwatch (main Genji) con mis amigos. Me gusta crear, aprender, experimentar con nuevas tecnologías y resolver problemas constantemente.",
+    "description": "Apasionado por crear aplicaciones web eficientes y escalables con enfoque en la experiencia del usuario.",
+    "about-me": [
+        "Hola, soy un estudiante de Ingeniería de Software apasionado por resolver problemas complejos, generalmente usando TypeScript, Python y algunos snacks. Me enfoco en el desarrollo backend, buscando que las soluciones funcionen desde el primer intento (aunque sin garantías).",
+        "NestJS y FastAPI forman parte de mi kit diario de herramientas, y actualmente estoy explorando el desarrollo frontend para fortalecer mi perfil full-stack.",
+        "Fuera de la programación, paso tiempo en el gimnasio, buscando nuevas librerías o jugando Overwatch (Genji main) con amigos. Disfruto crear, aprender, experimentar con nuevas tecnologías y resolver problemas constantemente."
+    ],
     "skils": [
         "JavaScript",
         "TypeScript",
@@ -21,41 +25,67 @@
     ],
     "projects": [
         {
-            "name": "Project One",
-            "description": "A web application that does amazing things."
+            "index": 0,
+            "name": "Sippy",
+            "description": "Plataforma móvil multiplataforma desarrollada con backend en Node.js y frontend en React Native. El proyecto destaca por su implementación de una arquitectura escalable capaz de manejar algoritmos de feed dinámicos, procesamiento distribuido en Azure y gestión compleja de bases de datos relacionales y NoSQL.",
+            "contibutions": [
+                "Diseñé esquemas de bases de datos y APIs RESTful usando NestJS.",
+                "Optimicé consultas NoSQL para mejorar el rendimiento de recuperación de datos.",
+                "Uso de GraphQL para agilizar la obtención de datos entre frontend y backend.",
+                "Desplegué y gestioné servicios en la nube en Microsoft Azure."
+            ],
+            "skills": [
+                "JavaScript",
+                "React Native",
+                "NestJS",
+                "Azure"
+            ]
         },
         {
-            "name": "Project Two",
-            "description": "Another project that showcases my skills."
+            "index": 1,
+            "name": "Nasa Explorer",
+            "description": "Motor de conocimiento de biología espacial que utiliza IA para resumir publicaciones científicas de la NASA. Permite a los investigadores explorar décadas de información usando procesamiento de lenguaje natural y búsqueda semántica.",
+            "awards": "1er Lugar Hackathon Local NASA",
+            "contibutions": [
+                "Despliegue de servicios de IA basados en RAG usando NestJS.",
+                "Integración de técnicas RAG para mejorar la recuperación de información de grandes conjuntos de datos.",
+                "Servicios desplegados en Google Cloud Platform"
+            ],
+            "skills": [
+                "Generación Aumentada por Recuperación",
+                "NestJS",
+                "Servicios de Google Cloud"
+            ],
+            "imgs": [
+                "/projects/nasa.png"
+            ]
         },
         {
-            "name": "Project Three",
-            "description": "An innovative solution to a common problem."
-        },
-        {
-            "name": "Project Four",
-            "description": "A cutting-edge app built with modern technologies."
+            "index": 2,
+            "name": "CTQAlert",
+            "description": "Plataforma web para aseguramiento de calidad de productos con sistema de notificaciones en tiempo real y panel de administración para gestión de usuarios y productos, implementada con arquitectura de múltiples servicios.",
+            "skills": ["TypeScript", "Express", "PostgreSQL"]
         }
     ],
     "experience": [
         {
             "company": "Company 1",
             "role": "Role",
-            "duration": "Jan 2020 - Present",
+            "duration": "Ene 2020 - Presente",
             "responsibilities": [
-                "Developed and maintained web applications using React and Node.js.",
-                "Collaborated with cross-functional teams to define project requirements.",
-                "Implemented RESTful APIs and integrated third-party services."
+                "Desarrollé y mantuve aplicaciones web usando React y Node.js.",
+                "Colaboré con equipos multidisciplinarios para definir requisitos del proyecto.",
+                "Implementé APIs RESTful e integré servicios de terceros."
             ]
         },
         {
             "company": "Company 2",
             "role": "Role",
-            "duration": "Jun 2018 - Dec 2019",
+            "duration": "Jun 2018 - Dic 2019",
             "responsibilities": [
-                "Assisted in the development of client websites and applications.",
-                "Participated in code reviews and contributed to team knowledge sharing.",
-                "Maintained documentation for various projects."
+                "Asistí en el desarrollo de sitios web y aplicaciones para clientes.",
+                "Participé en revisiones de código y contribuí al intercambio de conocimientos del equipo.",
+                "Mantuve la documentación de varios proyectos."
             ]
         }
     ],
