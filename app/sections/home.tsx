@@ -5,12 +5,8 @@ import SplitText from "@/components/ui/SplitText";
 import TextType from "@/components/ui/TextType";
 
 export default function Home() {
-
     return (
-        <section
-            id="home"
-            className="min-h-screen text-white relative px-6 sm:px-10"
-        >
+        <div className="min-h-screen text-white relative px-6 sm:px-10">
             <div className="absolute inset-0 flex items-center">
                 <div className="max-w-10xl sm:pl-6 md:pl-12 lg:pl-18">
                     <div className="block">
@@ -57,6 +53,6 @@ export default function Home() {
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
     );
 }

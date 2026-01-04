@@ -8,10 +8,7 @@ import TiltedCard from "@/components/ui/TiltedCard";
 
 export default function About() {
     return (
-        <section
-            id="about"
-            className="min-h-screen flex items-center justify-center px-4 sm:px-6 md:px-8 lg:px-12 xl:px-24 py-12 sm:py-16"
-        >
+        <div className="min-h-screen flex items-center justify-center px-4 sm:px-6 md:px-8 lg:px-12 xl:px-24 py-12 sm:py-16">
             <div className="text-white text-left max-w-6xl w-full">
                 <div className="flex flex-col sm:flex-row gap-6 sm:gap-8 lg:gap-12 sm:items-center">
                     <div className="w-40 mx-auto sm:mx-0 sm:w-48 md:w-56 lg:w-64 shrink-0">
@@ -69,6 +66,6 @@ export default function About() {
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
     );
 }

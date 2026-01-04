@@ -4,10 +4,7 @@ import { BLUR_AMOUNT, DISPLACEMENT_SCALE } from "@/lib/data";
 
 export default function Contact() {
     return (
-        <section
-            id="contact"
-            className="min-h-screen flex items-center justify-center px-6"
-        >
+        <div className="min-h-screen flex items-center justify-center px-6">
             <div className="max-w-2xl mx-auto text-center text-white">
                 <GlassCard
                     blurAmount={BLUR_AMOUNT}
@@ -18,6 +15,6 @@ export default function Contact() {
                     </div>
                 </GlassCard>
             </div>
-        </section>
+        </div>
     );
 }

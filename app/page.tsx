@@ -3,18 +3,32 @@ import Navbar from "@/components/layout/navbar";
 import { Home, About, Projects, Contact, Experience } from "./sections";
 
 export default function Page() {
-  return (
-    <div>
-      <Navbar />
+    return (
+        <div>
+            <Navbar />
 
-      <main className="relative z-10">
-          <Home />
-          <Experience />
-          <Projects />
-          <About />
-          <Contact />
-      </main>
-      <Background />
-    </div>
-  );
+            <main className="relative z-10">
+                <section id="home">
+                    <Home />
+                </section>
+
+                <section id="experience">
+                    <Experience />
+                </section>
+
+                <section id="projects">
+                    <Projects />
+                </section>
+
+                <section id="about">
+                    <About />
+                </section>
+
+                <section id="contact">
+                    <Contact />
+                </section>
+            </main>
+            <Background />
+        </div>
+    );
 }

@@ -5,10 +5,7 @@ import user from "@/data/data-eng.json";
 
 export default function Projects() {
     return (
-        <section
-            id="projects"
-            className="min-h-screen py-20 px-6"
-        >
+        <div className="min-h-screen py-20 px-6">
             <div className="max-w-7xl mx-auto">
                 <h1 className="text-5xl font-bold mb-12 text-center text-white">
                     Projects
@@ -35,6 +32,6 @@ export default function Projects() {
                     ))}
                 </div>
             </div>
-        </section>
+        </div>
     );
 }
