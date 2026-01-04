@@ -1,9 +1,10 @@
 interface MobileNavItemProps {
     item: { label: string; href: string };
     onClick: () => void;
+    isActive?: boolean;
 }
 
-export default function MobileNavItem({ item, onClick }: MobileNavItemProps) {
+export default function MobileNavItem({ item, onClick, isActive = false }: MobileNavItemProps) {
     const handleClick = () => {
         const element = document.getElementById(item.href);
         if (element) {
@@ -15,7 +16,11 @@ export default function MobileNavItem({ item, onClick }: MobileNavItemProps) {
     return (
         <button
             onClick={handleClick}
-            className="w-full text-left py-4 px-6 text-white hover:text-blue-300 transition-colors duration-200 text-lg font-medium border-b border-white/10 last:border-b-0"
+            className={`w-full max-w-xs text-left py-4 px-6 transition-colors duration-200 text-lg font-medium border-b rounded-lg border-white/10 last:border-b-0 ${
+                isActive 
+                    ? 'text-black bg-white' 
+                    : 'text-white'
+            }`}
         >
             {item.label}
         </button>

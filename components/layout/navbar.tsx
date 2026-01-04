@@ -6,6 +6,7 @@ import { engNavData } from "@/lib/data";
 import GooeyNav from "../ui/GooeyNav";
 import HamburgerMenu from "../ui/Mobile/HamburgerMenu";
 import MobileSidebar from "../ui/Mobile/MobileSidebar";
+import useActiveSection from "../hook/useActiveSection";
 
 const GlassSurface = dynamic(() => import("../ui/GlassSurface"), {
     ssr: false,
@@ -14,17 +15,22 @@ const GlassSurface = dynamic(() => import("../ui/GlassSurface"), {
 export default function Navbar() {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [isMobile, setIsMobile] = useState(false);
+    const sectionIds = engNavData.map((item) => item.href);
+    const { activeSection, isScrolling, startNavbarNavigation } = useActiveSection(sectionIds, {
+        threshold: 0.1,
+        rootMargin: "-20% 0px -70% 0px",
+    });
+    const activeIndex = sectionIds.findIndex((id) => id === activeSection);
+    const validActiveIndex = activeIndex >= 0 ? activeIndex : 0;
 
-    useEffect(() => {
-        const checkMobile = () => {
-            setIsMobile(window.innerWidth < 768);
-        };
-        
-        checkMobile();
-        window.addEventListener('resize', checkMobile);
-        
-        return () => window.removeEventListener('resize', checkMobile);
-    }, []);
+    const handleNavClick = (index: number) => {
+        const sectionId = sectionIds[index];
+        startNavbarNavigation(sectionId); // Mark this as navbar navigation to specific section
+        const element = document.getElementById(sectionId);
+        if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
 
     const toggleMobileMenu = () => {
         setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -34,16 +40,30 @@ export default function Navbar() {
         setIsMobileMenuOpen(false);
     };
 
-    // Prevent scroll when mobile menu is open
+    /**
+     * Handle responsiveness for mobile view
+     */
+
+    useEffect(() => {
+        const checkMobile = () => {
+            setIsMobile(window.innerWidth < 768);
+        };
+
+        checkMobile();
+        window.addEventListener("resize", checkMobile);
+
+        return () => window.removeEventListener("resize", checkMobile);
+    }, []);
+
     useEffect(() => {
         if (isMobileMenuOpen && isMobile) {
-            document.body.style.overflow = 'hidden';
+            document.body.style.overflow = "hidden";
         } else {
-            document.body.style.overflow = 'auto';
+            document.body.style.overflow = "auto";
         }
-        
+
         return () => {
-            document.body.style.overflow = 'auto';
+            document.body.style.overflow = "auto";
         };
     }, [isMobileMenuOpen, isMobile]);
 
@@ -58,15 +78,19 @@ export default function Navbar() {
                         redOffset={25}
                         greenOffset={15}
                         blueOffset={5}
-                        distortionScale={15}
+                        distortionScale={-100}
+                        blur={20}
                         className="flex justify-center items-center"
-                    >
-                    </GlassSurface>
+                    ></GlassSurface>
                     <div className="absolute inset-0 flex justify-center items-center pointer-events-auto z-100">
                         <GooeyNav
                             items={engNavData}
                             particleCount={15}
-                            colors={[10, 150, 22,33, 55, 255,222, 100, 200, 250]}
+                            colors={[
+                                10, 150, 22, 33, 55, 255, 222, 100, 200, 250,
+                            ]}
+                            activeIndex={validActiveIndex}
+                            onActiveIndexChange={handleNavClick}
                         />
                     </div>
                 </div>
@@ -84,7 +108,10 @@ export default function Navbar() {
                     className="flex justify-center items-center"
                 >
                     <div className="absolute inset-0 flex justify-center items-center pointer-events-auto">
-                        <HamburgerMenu isOpen={isMobileMenuOpen} onClick={toggleMobileMenu} />
+                        <HamburgerMenu
+                            isOpen={isMobileMenuOpen}
+                            onClick={toggleMobileMenu}
+                        />
                     </div>
                 </GlassSurface>
             </nav>
@@ -94,6 +121,7 @@ export default function Navbar() {
                 isOpen={isMobileMenuOpen}
                 onClose={closeMobileMenu}
                 navItems={engNavData}
+                activeSection={activeSection}
             />
         </>
     );

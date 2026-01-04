@@ -9,9 +9,10 @@ interface MobileSidebarProps {
     isOpen: boolean;
     onClose: () => void;
     navItems: { label: string; href: string }[];
+    activeSection?: string;
 }
 
-export default function MobileSidebar({ isOpen, onClose, navItems }: MobileSidebarProps) {
+export default function MobileSidebar({ isOpen, onClose, navItems, activeSection }: MobileSidebarProps) {
     return (
         <div className={`fixed inset-0 z-40 md:hidden transition-all duration-300 ${
             isOpen ? 'visible opacity-100' : 'invisible opacity-0'
@@ -47,6 +48,7 @@ export default function MobileSidebar({ isOpen, onClose, navItems }: MobileSideb
                                     key={index} 
                                     item={item} 
                                     onClick={onClose}
+                                    isActive={activeSection === item.href}
                                 />
                             ))}
                         </div>

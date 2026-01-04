@@ -14,6 +14,8 @@ export interface GooeyNavProps {
   timeVariance?: number;
   colors?: number[];
   initialActiveIndex?: number;
+  activeIndex?: number;
+  onActiveIndexChange?: (index: number) => void;
 }
 
 const GooeyNav: React.FC<GooeyNavProps> = ({
@@ -24,13 +26,16 @@ const GooeyNav: React.FC<GooeyNavProps> = ({
   particleR = 100,
   timeVariance = 300,
   colors = [1, 2, 3, 1, 2, 3, 1, 4],
-  initialActiveIndex = 0
+  initialActiveIndex = 0,
+  activeIndex: externalActiveIndex,
+  onActiveIndexChange
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const navRef = useRef<HTMLUListElement>(null);
   const filterRef = useRef<HTMLSpanElement>(null);
   const textRef = useRef<HTMLSpanElement>(null);
-  const [activeIndex, setActiveIndex] = useState<number>(initialActiveIndex);
+  const [internalActiveIndex, setInternalActiveIndex] = useState<number>(initialActiveIndex);
+  const activeIndex = externalActiveIndex !== undefined ? externalActiveIndex : internalActiveIndex;
 
   const noise = (n = 1) => n / 2 - Math.random() * n;
   const getXY = (distance: number, pointIndex: number, totalPoints: number): [number, number] => {
@@ -100,7 +105,14 @@ const GooeyNav: React.FC<GooeyNavProps> = ({
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, index: number) => {
     const liEl = e.currentTarget;
     if (activeIndex === index) return;
-    setActiveIndex(index);
+    
+    // Use external callback if provided, otherwise use internal state
+    if (onActiveIndexChange) {
+      onActiveIndexChange(index);
+    } else {
+      setInternalActiveIndex(index);
+    }
+    
     updateEffectPosition(liEl);
     if (filterRef.current) {
       const particles = filterRef.current.querySelectorAll('.particle');
@@ -115,7 +127,6 @@ const GooeyNav: React.FC<GooeyNavProps> = ({
       makeParticles(filterRef.current);
     }
 
-    handleScroll(items[index].href);
   };
   const handleKeyDown = (e: React.KeyboardEvent<HTMLAnchorElement>, index: number) => {
     if (e.key === 'Enter' || e.key === ' ') {
@@ -147,16 +158,6 @@ const GooeyNav: React.FC<GooeyNavProps> = ({
     resizeObserver.observe(containerRef.current);
     return () => resizeObserver.disconnect();
   }, [activeIndex]);
-
-  const handleScroll = (id: string) => {
-        const el = document.getElementById(id);
-        if (!el) return;
-
-        el.scrollIntoView({
-            behavior: "smooth",
-            block: "start",
-        });
-    };
 
   return (
     <>
