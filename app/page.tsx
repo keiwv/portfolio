@@ -1,8 +1,17 @@
 import Background from "@/components/background";
 import Navbar from "@/components/layout/navbar";
-import { Home, About, Projects, Contact, Experience } from "./sections";
+import {
+    Home,
+    About,
+    Projects,
+    Contact,
+    Experience,
+} from "@/components/sections";
+import { useTranslations } from "next-intl";
 
 export default function Page() {
+    const t = useTranslations("nav");
+
     return (
         <div>
             <Navbar />

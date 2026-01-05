@@ -7,6 +7,7 @@ import GooeyNav from "../ui/GooeyNav";
 import HamburgerMenu from "../ui/Mobile/HamburgerMenu";
 import MobileSidebar from "../ui/Mobile/MobileSidebar";
 import useActiveSection from "../hook/useActiveSection";
+import { useTranslations } from "next-intl";
 
 const GlassSurface = dynamic(() => import("../ui/GlassSurface"), {
     ssr: false,
@@ -22,6 +23,13 @@ export default function Navbar() {
     });
     const activeIndex = sectionIds.findIndex((id) => id === activeSection);
     const validActiveIndex = activeIndex >= 0 ? activeIndex : 0;
+
+    // Insert the href to the translation
+    const t = useTranslations("nav");
+    const navItems = engNavData.map((item) => ({
+        ...item,
+        label: t(item.label.toLowerCase()),
+    }));
 
     const handleNavClick = (index: number) => {
         const sectionId = sectionIds[index];
@@ -84,7 +92,7 @@ export default function Navbar() {
                     ></GlassSurface>
                     <div className="absolute inset-0 flex justify-center items-center pointer-events-auto z-100">
                         <GooeyNav
-                            items={engNavData}
+                            items={navItems}
                             particleCount={15}
                             colors={[
                                 10, 150, 22, 33, 55, 255, 222, 100, 200, 250,
