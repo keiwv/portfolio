@@ -1,0 +1,81 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "experience": "Experiencia",
+    "projects": "Proyectos",
+    "about": "Acerca",
+    "contact": "Contacto"
+  },
+  "hero": {
+    "title": "Hola, soy Brayan",
+    "subtitle": "Ingeniero en Software y Tecnologías Emergentes",
+    "description": "Apasionado por crear aplicaciones web eficientes y escalables con enfoque en la experiencia del usuario."
+  },
+  "about": {
+    "title": "Sobre mí",
+    "paragraphs": [
+      "Hola, soy un estudiante de Ingeniería de Software apasionado por resolver problemas complejos, generalmente usando TypeScript, Python y algunos snacks. Me enfoco en el desarrollo backend, buscando que las soluciones funcionen desde el primer intento (aunque sin garantías).",
+      "NestJS y FastAPI forman parte de mi kit diario de herramientas, y actualmente estoy explorando el desarrollo frontend para fortalecer mi perfil full-stack.",
+      "Fuera de la programación, paso tiempo en el gimnasio, buscando nuevas librerías o jugando Overwatch (Genji main) con amigos. Disfruto crear, aprender, experimentar con nuevas tecnologías y resolver problemas constantemente."
+    ]
+  },
+  "projects": {
+    "title": "Mis Proyectos",
+    "items": [
+      {
+        "name": "Sippy",
+        "description": "Plataforma móvil multiplataforma desarrollada con backend en Node.js y frontend en React Native. El proyecto destaca por su implementación de una arquitectura escalable capaz de manejar algoritmos de feed dinámicos, procesamiento distribuido en Azure y gestión compleja de bases de datos relacionales y NoSQL.",
+        "contributions": [
+          "Diseñé esquemas de bases de datos y APIs RESTful usando NestJS.",
+          "Optimicé consultas NoSQL para mejorar el rendimiento de recuperación de datos.",
+          "Uso de GraphQL para agilizar la obtención de datos entre frontend y backend.",
+          "Desplegué y gestioné servicios en la nube en Microsoft Azure."
+        ],
+        "skills": ["JavaScript", "React Native", "NestJS", "Azure"]
+      },
+      {
+        "name": "Nasa Explorer",
+        "description": "Motor de conocimiento de biología espacial que utiliza IA para resumir publicaciones científicas de la NASA. Permite a los investigadores explorar décadas de información usando procesamiento de lenguaje natural y búsqueda semántica.",
+        "awards": "1er Lugar Hackathon Local NASA",
+        "contributions": [
+          "Despliegue de servicios de IA basados en RAG usando NestJS.",
+          "Implementación de bases de datos vectoriales para búsqueda semántica.",
+          "Creación de pipelines de datos para procesar literatura científica."
+        ],
+        "skills": ["Python", "NestJS", "AI/ML", "Vector DB"]
+      }
+    ]
+  },
+  "contact": {
+    "title": "Ponte en Contacto",
+    "email": "brayan.ivan@example.com",
+    "location": "Ensenada, Baja California, México",
+    "description": "¡No dudes en contactarme si quieres colaborar o simplemente saludar!"
+  },
+  "skills": {
+    "title": "Habilidades",
+    "items": [
+      "JavaScript",
+      "TypeScript",
+      "React",
+      "Node.js",
+      "Express",
+      "PostgreSQL",
+      "HTML5",
+      "CSS3",
+      "Git",
+      "Docker",
+      "Linux"
+    ]
+  },
+  "experience": {
+    "title": "Experiencia"
+  },
+  "common": {
+    "viewProject": "Ver Proyecto",
+    "learnMore": "Leer Más",
+    "skills": "Habilidades",
+    "contributions": "Contribuciones",
+    "awards": "Premios"
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "nav": {
+    "home": "Home",
+    "experience": "Experience",
+    "projects": "Projects",
+    "about": "About",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "Hi, I'm Brayan",
+    "subtitle": "Software Engineer & Emerging Technologies Student",
+    "description": "Passionate about crafting efficient and scalable web applications with a focus on user experience."
+  },
+  "about": {
+    "title": "About Me",
+    "paragraphs": [
+      "Hi, I'm a Software Engineering student passionate about solving complex problems, usually using TypeScript, Python, and a few snacks. I focus on backend development, aiming to make solutions work right from the first try (no guarantees though).",
+      "NestJS and FastAPI are part of my daily toolkit, and I'm currently exploring frontend development to strengthen my full-stack profile.",
+      "Outside of coding, I spend time at the gym, looking for new libraries, or playing Overwatch (Genji main) with friends. I enjoy creating, learning, experimenting with new technologies, and constantly solving problems."
+    ]
+  },
+  "projects": {
+    "title": "My Projects",
+    "items": [
+      {
+        "name": "Sippy",
+        "description": "Cross-platform mobile platform developed with a Node.js backend and a React Native frontend. The project stands out for its implementation of a scalable architecture capable of handling dynamic feed algorithms, distributed processing on Azure, and complex management of both relational and NoSQL databases.",
+        "contributions": [
+          "Designed database schemas and RESTful APIs using NestJS.",
+          "Optimized NoSQL queries to enhance data retrieval performance.",
+          "Using GraphQL to streamline data fetching between frontend and backend.",
+          "Deployed and managed cloud services on Microsoft Azure."
+        ],
+        "skills": ["JavaScript", "React Native", "NestJS", "Azure"]
+      },
+      {
+        "name": "Nasa Explorer",
+        "description": "A spatial biology knowledge engine that uses AI to summarize NASA scientific publications. It enables researchers to explore decades of information using natural language processing and semantic search.",
+        "awards": "1st Place Local Hackathon NASA",
+        "contributions": [
+          "Deploying RAG-based AI services using NestJS.",
+          "Implementing vector databases for semantic search.",
+          "Creating data pipelines for processing scientific literature."
+        ],
+        "skills": ["Python", "NestJS", "AI/ML", "Vector DB"]
+      }
+    ]
+  },
+  "contact": {
+    "title": "Get In Touch",
+    "email": "brayan.ivan@example.com",
+    "location": "Ensenada, Baja California, México",
+    "description": "Feel free to reach out if you want to collaborate or just say hi!"
+  },
+  "skills": {
+    "title": "Skills",
+    "items": [
+      "JavaScript",
+      "TypeScript", 
+      "React",
+      "Node.js",
+      "Express",
+      "PostgreSQL",
+      "HTML5",
+      "CSS3",
+      "Git",
+      "Docker",
+      "Linux"
+    ]
+  },
+  "experience": {
+    "title": "Experience"
+  },
+  "common": {
+    "viewProject": "View Project",
+    "learnMore": "Learn More",
+    "skills": "Skills",
+    "contributions": "Contributions",
+    "awards": "Awards"
+  }
+}
