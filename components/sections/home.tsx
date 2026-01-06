@@ -3,15 +3,19 @@
 import user from "@/data/data-eng.json";
 import SplitText from "@/components/ui/SplitText";
 import TextType from "@/components/ui/TextType";
+import { useTranslations } from "next-intl";
 
 export default function Home() {
+
+    const t = useTranslations("hero");
+
     return (
         <div className="min-h-screen text-white relative px-6 sm:px-10">
             <div className="absolute inset-0 flex items-center">
-                <div className="max-w-10xl sm:pl-6 md:pl-12 lg:pl-18">
+                <div className="max-w-[1500px] sm:pl-6 md:pl-12 lg:pl-18">
                     <div className="block">
                         <SplitText
-                            text={user.name}
+                            text={t("title")}
                             className="text-[3.2rem] leading-[0.95] font-extrabold uppercase block
                              sm:text-[6rem]
                              md:text-[8rem]
@@ -27,9 +31,9 @@ export default function Home() {
                         />
                     </div>
 
-                    <div className="block">
+                    {/* <div className="block">
                         <SplitText
-                            text={user.last_name}
+                            text={t("subtitle")}
                             className="text-[3.2rem] leading-[0.95] font-extrabold uppercase block
                              sm:text-[6rem]
                              md:text-[8rem]
@@ -43,11 +47,11 @@ export default function Home() {
                             threshold={0.1}
                             textAlign="left"
                         />
-                    </div>
+                    </div> */}
 
                     <div className="mt-4 sm:mt-6 max-w sm:pl-1 md:pl-1 lg:pl-2">
                         <TextType 
-                        text={user.role} 
+                        text={t("subtitle")} 
                         className="text-sm sm:text-3xl tracking-widest uppercase font-light"
                         pauseDuration={3000} />
                     </div>

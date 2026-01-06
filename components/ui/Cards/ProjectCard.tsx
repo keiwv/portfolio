@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { useState, useEffect, useRef } from "react";
 
 interface ProjectCardProps {
     name: string;
@@ -17,6 +18,41 @@ export default function ProjectCard({
     imgs,
     skills,
 }: ProjectCardProps) {
+    const [currentImageIndex, setCurrentImageIndex] = useState(0);
+    const [isHovering, setIsHovering] = useState(false);
+    const intervalRef = useRef<NodeJS.Timeout | null>(null);
+    const SECONDS = 0.8;
+
+    useEffect(() => {
+        if (isHovering && imgs && imgs.length > 1) {
+            intervalRef.current = setInterval(() => {
+                setCurrentImageIndex((prevIndex) => 
+                    (prevIndex + 1) % imgs.length
+                );
+            }, SECONDS * 1000);
+        } else {
+            if (intervalRef.current) {
+                clearInterval(intervalRef.current);
+                intervalRef.current = null;
+            }
+        }
+
+        return () => {
+            if (intervalRef.current) {
+                clearInterval(intervalRef.current);
+            }
+        };
+    }, [isHovering, imgs]);
+
+    const handleMouseEnter = () => {
+        setIsHovering(true);
+    };
+
+    const handleMouseLeave = () => {
+        setIsHovering(false);
+        setCurrentImageIndex(0);
+    };
+
     return (
         <div
             className="
@@ -30,16 +66,33 @@ export default function ProjectCard({
                 hover:-translate-y-1
                 shadow-[0_10px_40px_rgba(0,0,0,0.25)]
             "
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
         >
             {imgs?.length && (
                 <div className="relative w-full aspect-video bg-black/20">
                     <Image
-                        src={imgs[0]}
+                        src={imgs[currentImageIndex]}
                         alt={name}
                         fill
-                        className="object-contain p-3"
+                        className="object-contain p-3 transition-opacity duration-300"
                         sizes="(max-width: 768px) 100vw, 33vw"
                     />
+                    
+                    {imgs.length > 1 && (
+                        <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 flex gap-1">
+                            {imgs.map((_, idx) => (
+                                <div
+                                    key={idx}
+                                    className={`w-1.5 h-1.5 rounded-full transition-all duration-200 ${
+                                        idx === currentImageIndex
+                                            ? 'bg-white'
+                                            : 'bg-white/40'
+                                    }`}
+                                />
+                            ))}
+                        </div>
+                    )}
                 </div>
             )}
 

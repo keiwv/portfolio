@@ -2,13 +2,19 @@
 
 import ProjectCard from "@/components/ui/Cards/ProjectCard";
 import user from "@/data/data-eng.json";
+import { useTranslations } from "next-intl";
+import { Project } from "@/types/project";
 
 export default function Projects() {
+
+    const t = useTranslations("projects");
+    const projects = t.raw("items") as Project[];
+
     return (
         <div className="min-h-screen py-20 px-6">
             <div className="max-w-7xl mx-auto">
                 <h1 className="text-5xl font-bold mb-12 text-center text-white">
-                    Projects
+                    {t("title")}
                 </h1>
 
                 <div
@@ -19,13 +25,13 @@ export default function Projects() {
                         lg:grid-cols-3
                     "
                 >
-                    {user.projects.map((project, index) => (
+                    {projects.map((project, index) => (
                         <ProjectCard
                             key={index}
                             name={project.name}
                             description={project.description}
                             skills={project.skills}
-                            contributions={project.contibutions}
+                            contributions={project.contributions}
                             awards={project.awards}
                             imgs={project.imgs}
                         />

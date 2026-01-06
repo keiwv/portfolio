@@ -1,12 +1,16 @@
 "use client";
 import { GlassCard } from "@developer-hub/liquid-glass";
 import { BLUR_AMOUNT, DISPLACEMENT_SCALE } from "@/lib/data";
-import user from "@/data/data-eng.json";
 import { MapPin } from "lucide-react";
 import ScrollFloat from "@/components/ui/ScrollFloat";
 import TiltedCard from "@/components/ui/TiltedCard";
+import { useTranslations } from "next-intl";
 
 export default function About() {
+
+    const t = useTranslations("about");
+    const aboutMe = t.raw("paragraphs") as string[];
+
     return (
         <div className="min-h-screen flex items-center justify-center px-4 sm:px-6 md:px-8 lg:px-12 xl:px-24 py-12 sm:py-16">
             <div className="text-white text-left max-w-6xl w-full">
@@ -31,12 +35,12 @@ export default function About() {
                             stagger={0.03}
                             containerClassName="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold"
                         >
-                            About Me
+                            {t("title")}
                         </ScrollFloat>
 
                         <div className="space-y-3 sm:space-y-4">
-                            {Array.isArray(user["about-me"]) ? (
-                                user["about-me"].map((paragraph, index) => (
+                            {Array.isArray(aboutMe) ? (
+                                aboutMe.map((paragraph, index) => (
                                     <p key={index}>{paragraph}</p>
                                 ))
                             ) : (   
@@ -46,7 +50,7 @@ export default function About() {
                                     stagger={0.01}
                                     textClassName="text-sm sm:text-base md:text-lg font-light leading-relaxed"
                                 >
-                                    {user["about-me"]}
+                                    {aboutMe}
                                 </ScrollFloat>
                             )}
                         </div>
@@ -59,7 +63,7 @@ export default function About() {
                             <div className="flex items-center gap-2 px-3 py-2.5 sm:p-3">
                                 <MapPin className="w-4 h-4 sm:w-5 sm:h-5 shrink-0" />
                                 <p className="text-xs sm:text-sm md:text-base whitespace-nowrap">
-                                    {user.location}
+                                    Ensenada, Baja California, México.
                                 </p>
                             </div>
                         </GlassCard>

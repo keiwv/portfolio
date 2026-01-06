@@ -7,7 +7,7 @@
     "contact": "Contact"
   },
   "hero": {
-    "title": "Hello! Brayan Here!",
+    "title": "Brayan Ivan Perez Ventura",
     "subtitle": "Software Engineer & Emerging Technologies Student",
     "description": "Passionate about crafting efficient and scalable web applications with a focus on user experience."
   },
@@ -20,7 +20,7 @@
     ]
   },
   "projects": {
-    "title": "My Projects",
+    "title": "Projects",
     "items": [
       {
         "name": "Sippy",
@@ -31,7 +31,8 @@
           "Using GraphQL to streamline data fetching between frontend and backend.",
           "Deployed and managed cloud services on Microsoft Azure."
         ],
-        "skills": ["JavaScript", "React Native", "NestJS", "Azure"]
+        "skills": ["JavaScript", "React Native", "NestJS", "Azure"],
+        "imgs": ["/projects/sippy1.png", "/projects/sippy2.png"]
       },
       {
         "name": "Nasa Explorer",
@@ -42,7 +43,8 @@
           "Implementing vector databases for semantic search.",
           "Creating data pipelines for processing scientific literature."
         ],
-        "skills": ["Python", "NestJS", "AI/ML", "Vector DB"]
+        "skills": ["Python", "NestJS", "AI/ML", "Vector DB"],
+        "imgs": ["/projects/nasa.png", "/projects/nasa2.png", "/projects/cs1.webp", "/projects/cs2.webp", "/projects/cs3.webp"]
       }
     ]
   },
