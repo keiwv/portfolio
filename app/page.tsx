@@ -1,5 +1,5 @@
 import Background from "@/components/background";
-import Navbar from "@/components/layout/Navbars";
+import Navbar from "@/components/layout/Navbar";
 import {
     Home,
     About,
