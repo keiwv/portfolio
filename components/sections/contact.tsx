@@ -10,8 +10,8 @@ export default function Contact() {
                     blurAmount={BLUR_AMOUNT}
                     displacementScale={DISPLACEMENT_SCALE}
                 >
-                    <div className="p-12">
-                        <h1 className="text-6xl font-bold mb-6">Contact</h1>
+                    <div className="p-8 md:p-12">
+                        <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-6">Contact</h1>
                     </div>
                 </GlassCard>
             </div>

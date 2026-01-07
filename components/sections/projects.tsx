@@ -11,15 +11,15 @@ export default function Projects() {
     const projects = t.raw("items") as Project[];
 
     return (
-        <div className="min-h-screen py-20 px-6">
+        <div className="min-h-screen py-16 px-6">
             <div className="max-w-7xl mx-auto">
-                <h1 className="text-5xl font-bold mb-12 text-center text-white">
+                <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-8 md:mb-12 text-center text-white">
                     {t("title")}
                 </h1>
 
                 <div
                     className="
-                        grid gap-8
+                        grid gap-6 md:gap-8
                         grid-cols-1
                         sm:grid-cols-2
                         lg:grid-cols-3

@@ -26,19 +26,19 @@ export default function About() {
                         />
                     </div>
 
-                    <div className="flex-1 space-y-4 sm:space-y-6">
+                    <div className="flex-1 space-y-6">
                         <ScrollFloat
                             animationDuration={5}
                             ease="back.inOut(2)"
                             scrollStart="center bottom+=50%"
                             scrollEnd="bottom bottom-=40%"
                             stagger={0.03}
-                            containerClassName="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold"
+                            containerClassName="text-2xl md:text-3xl lg:text-4xl font-bold"
                         >
                             {t("title")}
                         </ScrollFloat>
 
-                        <div className="space-y-3 sm:space-y-4">
+                        <div className="space-y-4">
                             {Array.isArray(aboutMe) ? (
                                 aboutMe.map((paragraph, index) => (
                                     <p key={index}>{paragraph}</p>
@@ -48,7 +48,7 @@ export default function About() {
                                     animationDuration={3}
                                     ease="back.inOut(2)"
                                     stagger={0.01}
-                                    textClassName="text-sm sm:text-base md:text-lg font-light leading-relaxed"
+                                    textClassName="text-sm md:text-base font-light leading-relaxed"
                                 >
                                     {aboutMe}
                                 </ScrollFloat>
@@ -62,7 +62,7 @@ export default function About() {
                         >
                             <div className="flex items-center gap-2 px-3 py-2.5 sm:p-3">
                                 <MapPin className="w-4 h-4 sm:w-5 sm:h-5 shrink-0" />
-                                <p className="text-xs sm:text-sm md:text-base whitespace-nowrap">
+                                <p className="text-xs md:text-sm whitespace-nowrap">
                                     Ensenada, Baja California, México.
                                 </p>
                             </div>
