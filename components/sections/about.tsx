@@ -5,9 +5,9 @@ import { MapPin } from "lucide-react";
 import ScrollFloat from "@/components/ui/ScrollFloat";
 import TiltedCard from "@/components/ui/TiltedCard";
 import { useTranslations } from "next-intl";
+import Skills from "../layout/Skills";
 
 export default function About() {
-
     const t = useTranslations("about");
     const aboutMe = t.raw("paragraphs") as string[];
 
@@ -16,12 +16,12 @@ export default function About() {
             <div className="text-white text-left max-w-6xl w-full">
                 <div className="flex flex-col sm:flex-row gap-6 sm:gap-8 lg:gap-12 sm:items-center">
                     <div className="w-40 mx-auto sm:mx-0 sm:w-48 md:w-56 lg:w-64 shrink-0">
-                        <TiltedCard 
-                            imageSrc="/user.png" 
-                            altText="Me" 
-                            rotateAmplitude={12} 
-                            scaleOnHover={1.1} 
-                            showMobileWarning={false} 
+                        <TiltedCard
+                            imageSrc="/user.png"
+                            altText="Me"
+                            rotateAmplitude={12}
+                            scaleOnHover={1.1}
+                            showMobileWarning={false}
                             showTooltip={false}
                         />
                     </div>
@@ -43,7 +43,7 @@ export default function About() {
                                 aboutMe.map((paragraph, index) => (
                                     <p key={index}>{paragraph}</p>
                                 ))
-                            ) : (   
+                            ) : (
                                 <ScrollFloat
                                     animationDuration={3}
                                     ease="back.inOut(2)"
@@ -68,7 +68,12 @@ export default function About() {
                             </div>
                         </GlassCard>
                     </div>
+
                 </div>
+                <div className="mt-10">
+                    <Skills />
+                </div>
+                    
             </div>
         </div>
     );
