@@ -10,7 +10,7 @@ export default function Home() {
     const t = useTranslations("hero");
 
     return (
-        <div className="min-h-screen text-white relative px-6 sm:px-10">
+        <div className="h-screen text-white relative px-6 sm:px-10">
             <div className="absolute inset-0 flex items-center">
                 <div className="max-w-[1500px] sm:pl-6 md:pl-12 lg:pl-18">
                     <div className="block">
