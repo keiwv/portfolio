@@ -5,7 +5,7 @@ import { MapPin } from "lucide-react";
 import ScrollFloat from "@/components/ui/ScrollFloat";
 import TiltedCard from "@/components/ui/TiltedCard";
 import { useTranslations } from "next-intl";
-import Skills from "../layout/Skills";
+import Skills from "../layout/HorizontalLoop";
 
 export default function About() {
     const t = useTranslations("about");
