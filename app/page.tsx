@@ -1,5 +1,6 @@
 import Background from "@/components/background";
 import Navbar from "@/components/layout/Navbar";
+import Footer from "@/components/layout/Footer";
 import {
     Home,
     About,
@@ -34,7 +35,9 @@ export default function Page() {
                 <section id="contact">
                     <Contact />
                 </section>
+
             </main>
+            <Footer />
             <Background />
         </div>
     );
