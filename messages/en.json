@@ -44,7 +44,35 @@
           "Creating data pipelines for processing scientific literature."
         ],
         "skills": ["Python", "NestJS", "AI/ML", "Vector DB"],
-        "imgs": ["/projects/nasa.png", "/projects/nasa2.png", "/projects/cs1.webp", "/projects/cs2.webp", "/projects/cs3.webp"]
+        "imgs": [
+          "/projects/nasa.png",
+          "/projects/nasa2.png",
+          "/projects/cs1.webp",
+          "/projects/cs2.webp",
+          "/projects/cs3.webp"
+        ]
+      },
+      {
+        "name": "CTQAlert",
+        "description": "A real-time monitoring system for industrial equipment to track measurements and send real-time alerts. It includes a web dashboard for visualization and historical data analysis.",
+        "contributions": [
+          "Developed real-time data processing modules using FastAPI.",
+          "Implemented WebSocket communication for live updates.",
+          "Designed and built a user-friendly dashboard with React."
+        ],
+        "skills": ["TypeScript", "Next.js", "Tailwind CSS", "FastAPI", "React"],
+        "imgs": ["/projects/portfolio1.png", "/projects/portfolio2.png"]
+      },
+      {
+        "name": "Sumpy",
+        "description": "Video Game based in the classic 'Candy Crush' but ludic ally redesigned to teach programming concepts to kids in an engaging way.",
+        "contributions": [
+          "Developed game mechanics and logic using C.",
+          "Integrated animations and sound effects to enhance user experience.",
+          "Optimized using data structures for efficient gameplay."
+        ],
+        "skills": ["C", "Raylib", "Game Design", "Algorithms"],
+        "imgs": ["/projects/portfolio1.png", "/projects/portfolio2.png"]
       }
     ]
   },
@@ -58,7 +86,7 @@
     "title": "Skills",
     "items": [
       "JavaScript",
-      "TypeScript", 
+      "TypeScript",
       "React",
       "Node.js",
       "Express",
@@ -75,22 +103,28 @@
     "items": [
       {
         "id": 1,
-        "role": "Software Engineering Intern",
-        "company": "Tech Solutions Inc.",
-        "duration": "June 2023 - August 2023",
+        "role": "Machine Learning Intern",
+        "company": "Tech4Good Lab",
+        "duration": "January 2025 - November 2025",
         "contributions": [
-          "Developed RESTful APIs using Node.js and Express.",
-          "Collaborated with frontend developers to integrate APIs with React applications.",
-          "Implemented database schemas and optimized queries in PostgreSQL."
+          "Conducted data analysis and preprocessing on multiple facial expression and emotion recognition datasets, with a focus on children with Down syndrome.",
+          "Designed and implemented machine learning and deep learning models for facial expression and emotion recognition.",
+          "Applied bio-inspired optimization algorithms (e.g., Equilibrium Optimizer) to enhance model performance and convergence.",
+          "Performed comparative evaluation across multiple datasets to assess accuracy, robustness, and generalization."
         ]
       },
       {
         "id": 2,
-        "role": "Junior Developer",
-        "company": "Web Innovations LLC",
-        "duration": "January 2022 - May 2023",
+        "role": "Research Assistant",
+        "company": "Healthcare Robotics Lab",
+        "location": "San Diego, California",
+        "duration": "July 2025 – August 2025",
         "contributions": [
-          "Assisted in building and maintaining client websites, focusing on frontend development and ensuring cross-browser compatibility."
+          "Documented robotic system code with detailed diagrams to improve maintainability and scalability.",
+          "Designed and enhanced custom Blockly blocks to extend robot functionality and improve user interaction.",
+          "Refactored the existing codebase to enhance performance by approximately 25%, as well as improve readability and modularity.",
+          "Contributed to the exploration of auditory interaction cues in CARMEN, an assistive robot for people with Mild Cognitive Impairment (MCI), and PODER, its programming system.",
+          "Implemented sound effects in both CARMEN and PODER as foundational steps toward enhancing interaction and personalization for individuals with MCI."
         ]
       }
     ]
