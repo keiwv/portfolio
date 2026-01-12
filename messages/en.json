@@ -105,11 +105,12 @@
         "id": 1,
         "role": "Machine Learning Intern",
         "company": "Tech4Good Lab",
+        "location": "Ensenada, Baja California, Mexico",
         "duration": "January 2025 - November 2025",
         "contributions": [
-          "Conducted data analysis and preprocessing on multiple facial expression and emotion recognition datasets, with a focus on children with Down syndrome.",
-          "Designed and implemented machine learning and deep learning models for facial expression and emotion recognition.",
-          "Applied bio-inspired optimization algorithms (e.g., Equilibrium Optimizer) to enhance model performance and convergence.",
+          "Conducted data analysis and preprocessing on multiple facial expression and emotion recognition datasets.",
+          "Designed and implemented deep learning models for facial expression and emotion recognition.",
+          "Applied bio-inspired optimization algorithms to enhance model performance and convergence.",
           "Performed comparative evaluation across multiple datasets to assess accuracy, robustness, and generalization."
         ]
       },
@@ -117,14 +118,13 @@
         "id": 2,
         "role": "Research Assistant",
         "company": "Healthcare Robotics Lab",
-        "location": "San Diego, California",
+        "location": "San Diego, California, United States",
         "duration": "July 2025 – August 2025",
         "contributions": [
           "Documented robotic system code with detailed diagrams to improve maintainability and scalability.",
           "Designed and enhanced custom Blockly blocks to extend robot functionality and improve user interaction.",
           "Refactored the existing codebase to enhance performance by approximately 25%, as well as improve readability and modularity.",
-          "Contributed to the exploration of auditory interaction cues in CARMEN, an assistive robot for people with Mild Cognitive Impairment (MCI), and PODER, its programming system.",
-          "Implemented sound effects in both CARMEN and PODER as foundational steps toward enhancing interaction and personalization for individuals with MCI."
+          "Implemented sound effects in both CARMEN and PODER as foundational steps toward."
         ]
       }
     ]
