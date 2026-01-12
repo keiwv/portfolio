@@ -1,6 +1,6 @@
 export default function Footer() {
     return (
-        <footer>
+        <footer className="relative z-20">
             <div>
                 <div className="bg-white/5 backdrop-blur-sm border border-white/10 py-4 px-6">
                     <p className="text-white/60 text-sm text-center">

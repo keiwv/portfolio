@@ -69,7 +69,7 @@ export default function Contact() {
 
     return (
         <>
-            <div className="min-h-screen flex flex-col justify-center px-6">
+            <div className="min-h-[75vh] md:min-h-[85vh] flex flex-col justify-center px-6 py-12 md:py-20">
                 <div className="max-w-4xl mx-auto text-center text-white flex-1 flex items-center justify-center">
                     <div className="p-8 md:p-12">
                         <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-6">
