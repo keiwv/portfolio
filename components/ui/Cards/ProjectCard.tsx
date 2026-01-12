@@ -65,6 +65,7 @@ export default function ProjectCard({
                 hover:border-white/20
                 hover:-translate-y-1
                 shadow-[0_10px_40px_rgba(0,0,0,0.25)]
+                h-full flex flex-col
             "
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
@@ -96,7 +97,7 @@ export default function ProjectCard({
                 </div>
             )}
 
-            <div className="p-6 flex flex-col">
+            <div className="p-6 flex flex-col flex-1">
                 <div className="mb-4">
                     <div className="flex items-center justify-between gap-2">
                         <h2 className="text-xl font-bold text-white">
@@ -119,16 +120,18 @@ export default function ProjectCard({
                     </p>
                 </div>
 
-                {contributions?.length && (
-                    <ul className="mb-4 space-y-1 text-sm text-gray-300">
-                        {contributions.slice(0, 2).map((item, idx) => (
-                            <li key={idx} className="flex gap-2">
-                                <span className="text-purple-400">→</span>
-                                <span>{item}</span>
-                            </li>
-                        ))}
-                    </ul>
-                )}
+                <div className="flex-1">
+                    {contributions?.length && (
+                        <ul className="mb-4 space-y-1 text-sm text-gray-300">
+                            {contributions.slice(0, 2).map((item, idx) => (
+                                <li key={idx} className="flex gap-2">
+                                    <span className="text-purple-400">→</span>
+                                    <span>{item}</span>
+                                </li>
+                            ))}
+                        </ul>
+                    )}
+                </div>
 
                 <div className="mt-auto">
                     <div className="flex flex-wrap gap-2">

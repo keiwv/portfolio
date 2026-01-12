@@ -14,6 +14,7 @@
     "@paper-design/shaders-react": "^0.0.68",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "embla-carousel-react": "^8.6.0",
     "gsap": "^3.14.2",
     "lucide-react": "^0.562.0",
     "motion": "^12.23.26",
