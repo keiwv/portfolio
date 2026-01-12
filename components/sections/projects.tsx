@@ -61,7 +61,7 @@ export default function Projects() {
                     {!isMobile && (
                         <>
                             <button
-                                className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-16 z-10 bg-white/10 hover:bg-white/20 backdrop-blur-xl rounded-full p-3 border border-white/20 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+                                className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-16 z-10 bg-white/10 hover:bg-white/20 backdrop-blur-xl rounded-full p-3 border border-white/20 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
                                 onClick={scrollPrev}
                                 disabled={!canScrollPrev}
                             >
@@ -69,7 +69,7 @@ export default function Projects() {
                             </button>
                             
                             <button
-                                className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-16 z-10 bg-white/10 hover:bg-white/20 backdrop-blur-xl rounded-full p-3 border border-white/20 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+                                className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-16 z-10 bg-white/10 hover:bg-white/20 backdrop-blur-xl rounded-full p-3 border border-white/20 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
                                 onClick={scrollNext}
                                 disabled={!canScrollNext}
                             >
@@ -78,7 +78,7 @@ export default function Projects() {
                         </>
                     )}
 
-                    <div ref={emblaRef} className="overflow-hidden max-w-[1250px] mx-auto">
+                    <div ref={emblaRef} className="overflow-hidden max-w-[1250px] mx-auto pt-2">
                         <div className="flex">
                             {projects.map((project, index) => (
                                 <div
@@ -106,7 +106,7 @@ export default function Projects() {
                         {projects.map((_, index) => (
                             <button
                                 key={index}
-                                className={`w-2 h-2 rounded-full transition-all duration-200 ${
+                                className={`w-2 h-2 rounded-full transition-all duration-200 cursor-pointer ${
                                     index === selectedIndex
                                         ? 'bg-white'
                                         : 'bg-white/40 hover:bg-white/60'
