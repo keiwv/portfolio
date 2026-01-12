@@ -32,7 +32,10 @@
           "Deployed and managed cloud services on Microsoft Azure."
         ],
         "skills": ["JavaScript", "React Native", "NestJS", "Azure"],
-        "imgs": ["/projects/Sippy/wallpaper.png", "/projects/Sippy/wallpaper2.png"]
+        "imgs": [
+          "/projects/Sippy/wallpaper.png",
+          "/projects/Sippy/wallpaper2.png"
+        ]
       },
       {
         "name": "Nasa Explorer",
@@ -45,11 +48,9 @@
         ],
         "skills": ["Python", "NestJS", "AI/ML", "Vector DB"],
         "imgs": [
-          "/projects/nasa.png",
-          "/projects/nasa2.png",
-          "/projects/cs1.webp",
-          "/projects/cs2.webp",
-          "/projects/cs3.webp"
+          "/projects/Nasa-Explorer/nasa.webp",
+          "/projects/Nasa-Explorer/nasa-2.webp",
+          "/projects/Nasa-Explorer/nasa-3.webp"
         ]
       },
       {
@@ -61,7 +62,12 @@
           "Designed and built a user-friendly dashboard with React."
         ],
         "skills": ["TypeScript", "Next.js", "Tailwind CSS", "FastAPI", "React"],
-        "imgs": ["/projects/portfolio1.png", "/projects/portfolio2.png"]
+        "imgs": [
+          "/projects/CTQAlert/CTQAlert.png",
+          "/projects/CTQAlert/CTQAlert-2.png",
+          "/projects/CTQAlert/CTQAlert-3.png",
+          "/projects/CTQAlert/CTQAlert-4.png"
+        ]
       },
       {
         "name": "Sumpy",
@@ -72,7 +78,12 @@
           "Optimized using data structures for efficient gameplay."
         ],
         "skills": ["C", "Raylib", "Game Design", "Algorithms"],
-        "imgs": ["/projects/portfolio1.png", "/projects/portfolio2.png"]
+        "imgs": [
+          "/projects/Sumpy/sumpy.png",
+          "/projects/Sumpy/sumpy-2.png",
+          "/projects/Sumpy/sumpy-3.png",
+          "/projects/Sumpy/sumpy-4.png"
+        ]
       }
     ]
   },
