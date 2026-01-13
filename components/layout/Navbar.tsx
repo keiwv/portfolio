@@ -6,6 +6,7 @@ import { engNavData } from "@/lib/data";
 import GooeyNav from "../ui/GooeyNav";
 import HamburgerMenu from "../ui/Mobile/HamburgerMenu";
 import MobileSidebar from "../ui/Mobile/MobileSidebar";
+import LanguageSwitcher from "../ui/LanguageSwitcher";
 import useActiveSection from "../hook/useActiveSection";
 import { useTranslations } from "next-intl";
 
@@ -104,7 +105,10 @@ export default function Navbar() {
                 </div>
             </nav>
 
-            {/* Mobile Navigation */}
+            <div className="fixed top-6 right-6 z-50 hidden md:block cursor-pointer">
+                <LanguageSwitcher />
+            </div>
+
             <nav className="fixed top-4 right-4 z-50 md:hidden">
                 <GlassSurface
                     width={60}
@@ -124,7 +128,6 @@ export default function Navbar() {
                 </GlassSurface>
             </nav>
 
-            {/* Mobile Sidebar */}
             <MobileSidebar
                 isOpen={isMobileMenuOpen}
                 onClose={closeMobileMenu}

@@ -1,5 +1,6 @@
 import dynamic from "next/dynamic";
 import MobileNavItem from "./MobileNavItem";
+import LanguageSwitcher from "../LanguageSwitcher";
 
 const GlassSurface = dynamic(() => import("../GlassSurface"), {
     ssr: false,
@@ -51,6 +52,12 @@ export default function MobileSidebar({ isOpen, onClose, navItems, activeSection
                                     isActive={activeSection === item.href}
                                 />
                             ))}
+                        </div>
+
+                        <div className="mt-8 px-6">
+                            <div className="border-t border-white/20 pt-6">
+                                <LanguageSwitcher />
+                            </div>
                         </div>
                     </div>
                 </GlassSurface>

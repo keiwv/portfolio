@@ -3,46 +3,89 @@
     "home": "Inicio",
     "experience": "Experiencia",
     "projects": "Proyectos",
-    "about": "Acerca",
+    "about": "Sobre mí",
     "contact": "Contacto"
   },
   "hero": {
-    "title": "Hola, ¡Brayan Aquí!",
-    "subtitle": "Ingeniero en Software y Tecnologías Emergentes",
-    "description": "Apasionado por crear aplicaciones web eficientes y escalables con enfoque en la experiencia del usuario."
+    "title": "Brayan Ivan Perez Ventura",
+    "subtitle": "Ingeniero en Software y Estudiante de Tecnologías Emergentes",
+    "description": "Apasionado por crear aplicaciones web eficientes y escalables, con un fuerte enfoque en la experiencia del usuario."
   },
   "about": {
     "title": "Sobre mí",
     "paragraphs": [
-      "Hola, soy un estudiante de Ingeniería de Software apasionado por resolver problemas complejos, generalmente usando TypeScript, Python y algunos snacks. Me enfoco en el desarrollo backend, buscando que las soluciones funcionen desde el primer intento (aunque sin garantías).",
-      "NestJS y FastAPI forman parte de mi kit diario de herramientas, y actualmente estoy explorando el desarrollo frontend para fortalecer mi perfil full-stack.",
-      "Fuera de la programación, paso tiempo en el gimnasio, buscando nuevas librerías o jugando Overwatch (Genji main) con amigos. Disfruto crear, aprender, experimentar con nuevas tecnologías y resolver problemas constantemente."
+      "Hola, soy un estudiante de Ingeniería de Software apasionado por resolver problemas complejos, generalmente usando TypeScript, Python y algunos snacks. Me enfoco principalmente en el desarrollo backend, buscando que las soluciones funcionen correctamente desde el primer intento (no prometo nada).",
+      "NestJS y FastAPI forman parte de mi conjunto de herramientas diario, y actualmente estoy explorando el desarrollo frontend para fortalecer mi perfil full-stack.",
+      "Fuera de la programación, paso tiempo en el gimnasio, buscando nuevas librerías o jugando Overwatch (main Genji) con amigos. Disfruto crear, aprender, experimentar con nuevas tecnologías y resolver problemas de forma constante."
     ]
   },
   "projects": {
-    "title": "Mis Proyectos",
+    "title": "Proyectos",
     "items": [
       {
         "name": "Sippy",
-        "description": "Plataforma móvil multiplataforma desarrollada con backend en Node.js y frontend en React Native. El proyecto destaca por su implementación de una arquitectura escalable capaz de manejar algoritmos de feed dinámicos, procesamiento distribuido en Azure y gestión compleja de bases de datos relacionales y NoSQL.",
+        "description": "Plataforma móvil multiplataforma desarrollada con un backend en Node.js y un frontend en React Native. El proyecto destaca por su arquitectura escalable capaz de manejar algoritmos de feed dinámicos, procesamiento distribuido en Azure y la gestión compleja de bases de datos relacionales y NoSQL.",
         "contributions": [
-          "Diseñé esquemas de bases de datos y APIs RESTful usando NestJS.",
-          "Optimicé consultas NoSQL para mejorar el rendimiento de recuperación de datos.",
-          "Uso de GraphQL para agilizar la obtención de datos entre frontend y backend.",
-          "Desplegué y gestioné servicios en la nube en Microsoft Azure."
+          "Diseño de esquemas de bases de datos y APIs RESTful utilizando NestJS.",
+          "Optimización de consultas NoSQL para mejorar el rendimiento en la recuperación de datos.",
+          "Uso de GraphQL para agilizar la comunicación y obtención de datos entre frontend y backend.",
+          "Despliegue y gestión de servicios en la nube en Microsoft Azure."
         ],
-        "skills": ["JavaScript", "React Native", "NestJS", "Azure"]
+        "skills": ["JavaScript", "React Native", "NestJS", "Azure"],
+        "imgs": [
+          "/projects/Sippy/sippy-gif.webp",
+          "/projects/Sippy/wallpaper.png",
+          "/projects/Sippy/wallpaper2.png"
+        ]
       },
       {
         "name": "Nasa Explorer",
-        "description": "Motor de conocimiento de biología espacial que utiliza IA para resumir publicaciones científicas de la NASA. Permite a los investigadores explorar décadas de información usando procesamiento de lenguaje natural y búsqueda semántica.",
-        "awards": "1er Lugar Hackathon Local NASA",
+        "description": "Motor de conocimiento en biología espacial que utiliza inteligencia artificial para resumir publicaciones científicas de la NASA. Permite a los investigadores explorar décadas de información mediante procesamiento de lenguaje natural y búsqueda semántica.",
+        "awards": "1er Lugar – Hackathon Local NASA",
         "contributions": [
-          "Despliegue de servicios de IA basados en RAG usando NestJS.",
-          "Implementación de bases de datos vectoriales para búsqueda semántica.",
-          "Creación de pipelines de datos para procesar literatura científica."
+          "Despliegue de servicios de IA basados en RAG utilizando NestJS.",
+          "Implementación de bases de datos vectoriales para habilitar búsqueda semántica.",
+          "Creación de pipelines de datos para el procesamiento de literatura científica."
         ],
-        "skills": ["Python", "NestJS", "AI/ML", "Vector DB"]
+        "skills": ["Python", "NestJS", "IA/ML", "Base de Datos Vectorial"],
+        "imgs": [
+          "/projects/Nasa-Explorer/nasa.webp",
+          "/projects/Nasa-Explorer/nasa-2.webp",
+          "/projects/Nasa-Explorer/nasa-3.webp"
+        ]
+      },
+      {
+        "name": "Sumpy",
+        "description": "Videojuego inspirado en el clásico \"Candy Crush\", rediseñado de manera lúdica para enseñar conceptos de programación a niños de forma atractiva.",
+        "contributions": [
+          "Desarrollo de mecánicas y lógica del juego utilizando C.",
+          "Integración de animaciones y efectos de sonido para mejorar la experiencia del usuario.",
+          "Optimización del rendimiento mediante el uso de estructuras de datos."
+        ],
+        "skills": ["C", "Raylib", "Diseño de Videojuegos", "Algoritmos"],
+        "imgs": [
+          "/projects/Sumpy/sumpy-gif.webp",
+          "/projects/Sumpy/sumpy.png",
+          "/projects/Sumpy/sumpy-2.png",
+          "/projects/Sumpy/sumpy-3.png",
+          "/projects/Sumpy/sumpy-4.png"
+        ]
+      },
+      {
+        "name": "CTQAlert",
+        "description": "Sistema de monitoreo en tiempo real para equipos industriales que permite registrar mediciones y enviar alertas instantáneas. Incluye un panel web para visualización y análisis histórico de datos.",
+        "contributions": [
+          "Desarrollo de módulos de procesamiento de datos en tiempo real utilizando FastAPI.",
+          "Implementación de comunicación WebSocket para actualizaciones en vivo.",
+          "Diseño y construcción de un dashboard intuitivo utilizando React."
+        ],
+        "skills": ["TypeScript", "Next.js", "Tailwind CSS", "FastAPI", "React"],
+        "imgs": [
+          "/projects/CTQAlert/CTQAlert.png",
+          "/projects/CTQAlert/CTQAlert-2.png",
+          "/projects/CTQAlert/CTQAlert-3.png",
+          "/projects/CTQAlert/CTQAlert-4.png"
+        ]
       }
     ]
   },
@@ -50,7 +93,7 @@
     "title": "Ponte en Contacto",
     "email": "brayan.ivan@example.com",
     "location": "Ensenada, Baja California, México",
-    "description": "¡No dudes en contactarme si quieres colaborar o simplemente saludar!"
+    "description": "No dudes en contactarme si deseas colaborar o simplemente saludar."
   },
   "skills": {
     "title": "Habilidades",
@@ -69,7 +112,35 @@
     ]
   },
   "experience": {
-    "title": "Experiencia"
+    "title": "Experiencia",
+    "items": [
+      {
+        "id": 1,
+        "role": "Practicante de Machine Learning",
+        "company": "Tech4Good Lab",
+        "location": "Ensenada, Baja California, México",
+        "duration": "Enero 2025 - Noviembre 2025",
+        "contributions": [
+          "Análisis y preprocesamiento de datos en múltiples conjuntos de datos de reconocimiento de expresiones faciales y emociones.",
+          "Diseño e implementación de modelos de deep learning para reconocimiento de expresiones faciales y emociones.",
+          "Aplicación de algoritmos de optimización bioinspirados para mejorar el rendimiento y la convergencia del modelo.",
+          "Evaluación comparativa en múltiples conjuntos de datos para analizar precisión, robustez y generalización."
+        ]
+      },
+      {
+        "id": 2,
+        "role": "Asistente de Investigación",
+        "company": "Healthcare Robotics Lab",
+        "location": "San Diego, California, Estados Unidos",
+        "duration": "Julio 2025 – Agosto 2025",
+        "contributions": [
+          "Documentación del código del sistema robótico con diagramas detallados para mejorar la mantenibilidad y escalabilidad.",
+          "Diseño y mejora de bloques personalizados en Blockly para extender la funcionalidad del robot y mejorar la interacción del usuario.",
+          "Refactorización del código existente para mejorar el rendimiento aproximadamente en un 25%, así como la legibilidad y modularidad.",
+          "Implementación de efectos de sonido en CARMEN y PODER como pasos fundamentales."
+        ]
+      }
+    ]
   },
   "common": {
     "viewProject": "Ver Proyecto",
