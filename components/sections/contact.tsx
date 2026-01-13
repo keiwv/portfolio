@@ -1,4 +1,6 @@
 "use client";
+import { useTranslations } from "next-intl";
+
 export default function Contact() {
     const contactLinks = [
         {
@@ -35,7 +37,7 @@ export default function Contact() {
         },
         {
             name: "LinkedIn",
-            href: "https://linkedin.com/in/keiwv",
+            href: "https://www.linkedin.com/in/brayanperez56/",
             icon: (
                 <svg
                     className="w-6 h-6"
@@ -67,18 +69,18 @@ export default function Contact() {
         },
     ];
 
+    const t = useTranslations("contact");
+
     return (
         <>
             <div className="min-h-[75vh] md:min-h-[85vh] flex flex-col justify-center px-6 py-12 md:py-20">
                 <div className="max-w-4xl mx-auto text-center text-white flex-1 flex items-center justify-center">
                     <div className="p-8 md:p-12">
                         <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-6">
-                            Get In Touch
+                            {t("title")}
                         </h1>
                         <p className="text-lg text-white/80 mb-8 max-w-2xl mx-auto">
-                            Feel free to reach out if you want to collaborate or
-                            just say hi! I'm always open to discussing new
-                            opportunities and interesting projects.
+                            {t("description")}
                         </p>
 
                         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
@@ -110,7 +112,7 @@ export default function Contact() {
 
                         <div className="text-center">
                             <p className="text-white/60 text-sm">
-                                Ensenada, Baja California, México
+                                {t("location")}
                             </p>
                         </div>
                     </div>

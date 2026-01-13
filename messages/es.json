@@ -17,7 +17,9 @@
       "Hola, soy un estudiante de Ingeniería de Software apasionado por resolver problemas complejos, generalmente usando TypeScript, Python y algunos snacks. Me enfoco principalmente en el desarrollo backend, buscando que las soluciones funcionen correctamente desde el primer intento (no prometo nada).",
       "NestJS y FastAPI forman parte de mi conjunto de herramientas diario, y actualmente estoy explorando el desarrollo frontend para fortalecer mi perfil full-stack.",
       "Fuera de la programación, paso tiempo en el gimnasio, buscando nuevas librerías o jugando Overwatch (main Genji) con amigos. Disfruto crear, aprender, experimentar con nuevas tecnologías y resolver problemas de forma constante."
-    ]
+    ],
+    "technology": "Tecnologías y Herramientas",
+    "libraries": "Librerías y Frameworks"
   },
   "projects": {
     "title": "Proyectos",

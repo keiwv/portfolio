@@ -71,7 +71,7 @@ export default function About() {
 
                 </div>
                 <div className="mt-10">
-                    <Skills />
+                    <Skills technologies={t("technology")} libraries={t("libraries")} />
                 </div>
                     
             </div>

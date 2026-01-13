@@ -25,6 +25,12 @@ import {
 } from "react-icons/si";
 import { VscAzure } from "react-icons/vsc";
 
+// Define the Text interface for translating headings
+interface Text {
+    technologies: string;
+    libraries: string;
+}
+
 const techLogos = [
     {
         node: <SiTypescript />,
@@ -132,12 +138,12 @@ const libraryLogos = [
     },
 ];
 
-export default function Skills() {
+export default function Skills({ technologies, libraries }: Text) {
     return (
         <div>
             <div>
                 <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-6 tracking-tight text-center">
-                    Technologies & Tools
+                    {technologies}
                 </h2>
             </div>
             <LogoLoop
@@ -153,7 +159,7 @@ export default function Skills() {
             <div>
                 <div>
                     <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-6 tracking-tight text-center mt-12">
-                        Library & Frameworks
+                        {libraries}
                     </h2>
                 </div>
                 <LogoLoop

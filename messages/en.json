@@ -17,7 +17,9 @@
       "Hi, I'm a Software Engineering student passionate about solving complex problems, usually using TypeScript, Python, and a few snacks. I focus on backend development, aiming to make solutions work right from the first try (no guarantees though).",
       "NestJS and FastAPI are part of my daily toolkit, and I'm currently exploring frontend development to strengthen my full-stack profile.",
       "Outside of coding, I spend time at the gym, looking for new libraries, or playing Overwatch (Genji main) with friends. I enjoy creating, learning, experimenting with new technologies, and constantly solving problems."
-    ]
+    ],
+    "technology": "Technologies & Tools",
+    "libraries": "Libraries & Frameworks"
   },
   "projects": {
     "title": "Projects",
@@ -90,12 +92,6 @@
       
     ]
   },
-  "contact": {
-    "title": "Get In Touch",
-    "email": "brayan.ivan@example.com",
-    "location": "Ensenada, Baja California, México",
-    "description": "Feel free to reach out if you want to collaborate or just say hi!"
-  },
   "skills": {
     "title": "Skills",
     "items": [
@@ -142,6 +138,12 @@
         ]
       }
     ]
+  },
+  "contact": {
+    "title": "Get In Touch",
+    "email": "brayan.ivan@example.com",
+    "location": "Ensenada, Baja California, México",
+    "description": "Feel free to reach out if you want to collaborate or just say hi!"
   },
   "common": {
     "viewProject": "View Project",
