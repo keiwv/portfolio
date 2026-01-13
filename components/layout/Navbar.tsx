@@ -2,7 +2,6 @@
 
 import dynamic from "next/dynamic";
 import { useState, useEffect } from "react";
-import { engNavData } from "@/lib/data";
 import GooeyNav from "../ui/GooeyNav";
 import HamburgerMenu from "../ui/Mobile/HamburgerMenu";
 import MobileSidebar from "../ui/Mobile/MobileSidebar";
@@ -17,20 +16,18 @@ const GlassSurface = dynamic(() => import("../ui/GlassSurface"), {
 export default function Navbar() {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [isMobile, setIsMobile] = useState(false);
-    const sectionIds = engNavData.map((item) => item.href);
+    
+    // Get navigation data from translations
+    const t = useTranslations();
+    const navItems = t.raw("nav") as Array<{ label: string; href: string }>;
+    const sectionIds = navItems.map((item) => item.href);
+    
     const { activeSection, isScrolling, startNavbarNavigation } = useActiveSection(sectionIds, {
         threshold: 0.1,
         rootMargin: "-20% 0px -70% 0px",
     });
     const activeIndex = sectionIds.findIndex((id) => id === activeSection);
     const validActiveIndex = activeIndex >= 0 ? activeIndex : 0;
-
-    // Insert the href to the translation
-    const t = useTranslations("nav");
-    const navItems = engNavData.map((item) => ({
-        ...item,
-        label: t(item.label.toLowerCase()),
-    }));
 
     const handleNavClick = (index: number) => {
         const sectionId = sectionIds[index];
@@ -131,7 +128,7 @@ export default function Navbar() {
             <MobileSidebar
                 isOpen={isMobileMenuOpen}
                 onClose={closeMobileMenu}
-                navItems={engNavData}
+                navItems={navItems}
                 activeSection={activeSection}
             />
         </>

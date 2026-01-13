@@ -1,14 +1,17 @@
 {
-  "nav": {
-    "home": "Inicio",
-    "experience": "Experiencia",
-    "projects": "Proyectos",
-    "about": "Sobre mí",
-    "contact": "Contacto"
-  },
+  "nav": [
+    { "label": "Inicio", "href": "home" },
+    { "label": "Experiencia", "href": "experience" },
+    { "label": "Proyectos", "href": "projects" },
+    { "label": "Sobre mí", "href": "about" },
+    { "label": "Contacto", "href": "contact" }
+  ],
   "hero": {
-    "title": "Brayan Ivan Perez Ventura",
-    "subtitle": "Ingeniero en Software y Estudiante de Tecnologías Emergentes",
+    "title": {
+      "name": "Brayan Ivan",
+      "lastname": "Perez Ventura"
+    },
+    "subtitle": "Estudiante Ingeniero en Software y Tecnologías Emergentes",
     "description": "Apasionado por crear aplicaciones web eficientes y escalables, con un fuerte enfoque en la experiencia del usuario."
   },
   "about": {
