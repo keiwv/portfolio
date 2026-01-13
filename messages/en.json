@@ -33,6 +33,7 @@
         ],
         "skills": ["JavaScript", "React Native", "NestJS", "Azure"],
         "imgs": [
+          "/projects/Sippy/sippy-gif.webp",
           "/projects/Sippy/wallpaper.png",
           "/projects/Sippy/wallpaper2.png"
         ]
@@ -54,6 +55,23 @@
         ]
       },
       {
+        "name": "Sumpy",
+        "description": "Video Game based in the classic 'Candy Crush' but ludic ally redesigned to teach programming concepts to kids in an engaging way.",
+        "contributions": [
+          "Developed game mechanics and logic using C.",
+          "Integrated animations and sound effects to enhance user experience.",
+          "Optimized using data structures for efficient gameplay."
+        ],
+        "skills": ["C", "Raylib", "Game Design", "Algorithms"],
+        "imgs": [
+          "/projects/Sumpy/sumpy-gif.webp",
+          "/projects/Sumpy/sumpy.png",
+          "/projects/Sumpy/sumpy-2.png",
+          "/projects/Sumpy/sumpy-3.png",
+          "/projects/Sumpy/sumpy-4.png"
+        ]
+      },
+      {
         "name": "CTQAlert",
         "description": "A real-time monitoring system for industrial equipment to track measurements and send real-time alerts. It includes a web dashboard for visualization and historical data analysis.",
         "contributions": [
@@ -68,23 +86,8 @@
           "/projects/CTQAlert/CTQAlert-3.png",
           "/projects/CTQAlert/CTQAlert-4.png"
         ]
-      },
-      {
-        "name": "Sumpy",
-        "description": "Video Game based in the classic 'Candy Crush' but ludic ally redesigned to teach programming concepts to kids in an engaging way.",
-        "contributions": [
-          "Developed game mechanics and logic using C.",
-          "Integrated animations and sound effects to enhance user experience.",
-          "Optimized using data structures for efficient gameplay."
-        ],
-        "skills": ["C", "Raylib", "Game Design", "Algorithms"],
-        "imgs": [
-          "/projects/Sumpy/sumpy.png",
-          "/projects/Sumpy/sumpy-2.png",
-          "/projects/Sumpy/sumpy-3.png",
-          "/projects/Sumpy/sumpy-4.png"
-        ]
       }
+      
     ]
   },
   "contact": {
