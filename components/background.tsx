@@ -26,19 +26,19 @@ export default function WarpBackground() {
     return (
         <div
             aria-hidden
-            className="fixed -z-10 bg-black"
+            className="fixed -z-10 bg-black overflow-hidden"
             style={{
                 height: "100lvh",
                 width: "100vw",
                 top: 0,
                 left: 0,
-                transform: "scale(1.1)",
+                transform: "scale(1.05)", 
             }}
         >
             <div
                 ref={ref}
-                className={`absolute -inset-5 brightness-70 ${
-                    backgroundType === "warp" ? "blur-[10px]" : ""
+                className={`absolute -inset-2 md:-inset-5 brightness-70 ${
+                    backgroundType === "warp" ? "blur-[6px] md:blur-[10px]" : ""
                 } `}
             >
                 {size.width > 0 && (

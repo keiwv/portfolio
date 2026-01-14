@@ -60,6 +60,7 @@ export default function ProjectCard({
                 border border-white/10
                 overflow-hidden
                 h-full flex flex-col
+                w-full max-w-full
             "
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}

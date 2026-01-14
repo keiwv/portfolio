@@ -14,10 +14,10 @@ import {
 export default function Page() {
   return (
     <ClientWrapper>
-      <div className="min-h-screen-safe flex flex-col relative">
+      <div className="min-h-screen-safe flex flex-col relative overflow-x-hidden">
         <Navbar />
 
-        <main className="relative z-10 flex-1">
+        <main className="relative z-10 flex-1 overflow-x-hidden">
           <section id="home">
             <Home />
           </section>

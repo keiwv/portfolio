@@ -57,7 +57,7 @@ export default function Projects() {
     }, [emblaApi, onSelect]);
 
     return (
-        <div ref={ref} className={` pt-20 pb-32 md:py-12 md:pb-40 px-4 md:px-10 ${isMobile ? '' : 'min-h-screen flex items-center justify-center'}`}>
+        <div ref={ref} className={` pt-20 pb-32 md:py-12 md:pb-40 px-2 sm:px-4 md:px-10 ${isMobile ? '' : 'flex items-center justify-center'}`}>
             <div className={`max-w-7xl mx-auto ${isMobile ? 'pt-5' : 'pt-20'}`}>
 
                 <motion.div 
@@ -113,13 +113,13 @@ export default function Projects() {
                         </>
                     )}
 
-                    <div ref={emblaRef} className="overflow-hidden max-w-[1250px] mx-auto pt-6 pb-0.5">
+                    <div ref={emblaRef} className={`overflow-hidden ${isMobile ? 'max-w-[calc(100vw-2rem)]' : 'max-w-[1250px]'} mx-auto pt-6 pb-0.5`}>
                         <div className="flex">
                             {projects.map((project, index) => (
                                 <div
                                     key={index}
                                     className={`
-                                        ${isMobile ? 'flex-[0_0_350px]' : 'flex-[0_0_401px]'}
+                                        ${isMobile ? 'flex-[0_0_min(340px,calc(100vw-2rem))]' : 'flex-[0_0_401px]'}
                                         h-[600px]
                                         mr-6
                                     `}
