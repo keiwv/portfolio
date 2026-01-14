@@ -12,38 +12,39 @@ import {
 } from "@/components/sections";
 
 export default function Page() {
+  return (
+    <ClientWrapper>
+      <div className="min-h-screen-safe flex flex-col relative">
+        <Navbar />
 
-    return (
-        <ClientWrapper>
-        <div className="min-h-screen-safe">
-            <Navbar />
+        <main className="relative z-10 flex-1">
+          <section id="home">
+            <Home />
+          </section>
 
-            <main className="relative z-10">
-                <section id="home">
-                    <Home />
-                </section>
+          <section id="experience">
+            <Experience />
+          </section>
 
-                <section id="experience">
-                    <Experience />
-                </section>
+          <section id="projects">
+            <Projects />
+          </section>
 
-                <section id="projects">
-                    <Projects />
-                </section>
+          <section id="about">
+            <About />
+          </section>
 
-                <section id="about">
-                    <About />
-                </section>
+          <section id="contact">
+            <Contact />
+          </section>
+        </main>
 
-                <section id="contact">
-                    <Contact />
-                </section>
+        <Footer />
 
-            </main>
-            <Footer />
-            <Background />
-            <BackgroundToggle />
-        </div>
-        </ClientWrapper>
-    );
+        {/* Background layers */}
+        <Background />
+        <BackgroundToggle />
+      </div>
+    </ClientWrapper>
+  );
 }
