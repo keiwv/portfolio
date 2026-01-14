@@ -17,6 +17,12 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
     title: "Brayan Iván",
     description: "Personal portfolio of Brayan Iván",
+    viewport: {
+        width: "device-width",
+        initialScale: 1,
+        maximumScale: 1,
+        viewportFit: "cover",
+    },
 };
 
 export default function RootLayout({

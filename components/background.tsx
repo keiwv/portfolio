@@ -30,7 +30,7 @@ export default function WarpBackground() {
       aria-hidden
       style={{ 
         width: '100vw',
-        height: '100vh',
+        height: '100dvh',
         minHeight: '100dvh',
       }}
     >
