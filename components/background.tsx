@@ -26,7 +26,7 @@ export default function WarpBackground() {
 
   return (
     <div
-      className="fixed inset-0 -z-10 overflow-hidden bg-black"
+      className="fixed inset-0 -z-10 overflow-hidden bg-black min-h-screen-safe w-full"
       aria-hidden
     >
       <div
