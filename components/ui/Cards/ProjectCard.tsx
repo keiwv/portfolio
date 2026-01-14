@@ -167,7 +167,7 @@ export default function ProjectCard({
                                 >
                                     {idx === currentImageIndex && (
                                         <motion.div
-                                            className="h-full bg-gradient-to-r from-purple-400 to-pink-400"
+                                            className="h-full bg-linear-to-r from-purple-400 to-pink-400"
                                             initial={{ scaleX: 0 }}
                                             animate={{ scaleX: 1 }}
                                             transition={{ duration: 3, ease: "linear" }}
@@ -178,9 +178,6 @@ export default function ProjectCard({
                             ))}
                         </motion.div>
                     )}
-
-
-                    
                 </motion.div>
             )}
 

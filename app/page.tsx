@@ -1,6 +1,7 @@
 import Background from "@/components/background";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import BackgroundToggle from "@/components/ui/BackgroundToggle";
 import {
     Home,
     About,
@@ -39,6 +40,7 @@ export default function Page() {
             </main>
             <Footer />
             <Background />
+            <BackgroundToggle />
         </div>
     );
 }

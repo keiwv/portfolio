@@ -25,7 +25,7 @@ export const socials = [
     },
     {
         icon: FaRegFileLines,
-        url: `/Brayan_Perez_CV.pdf`,
+        url: `/cv_v1.pdf`,
         label: "CV",
         delay: 1.4,
     }

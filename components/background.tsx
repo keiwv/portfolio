@@ -2,12 +2,10 @@
 
 import { Warp, GrainGradient } from "@paper-design/shaders-react";
 import { useEffect, useRef, useState } from "react";
+import { useBackground } from "@/components/providers/BackgroundProvider";
 
-interface WarpBackgroundProps {
-  backgroundType?: string;
-}
-
-export default function WarpBackground({ backgroundType = "warp" }: WarpBackgroundProps) {
+export default function WarpBackground() {
+  const { backgroundType } = useBackground();
   const ref = useRef<HTMLDivElement>(null);
   const [size, setSize] = useState({ width: 0, height: 0 });
 
