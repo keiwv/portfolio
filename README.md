@@ -180,10 +180,10 @@ This project is open source and available under the [MIT License](LICENSE).
 
 ## Connect
 
-- **Portfolio**: [Live Demo](https://keiwv.dev)
+- **Portfolio**: [Live Demo](https://keiwv.dev/)
 - **GitHub**: [@keiwv](https://github.com/keiwv)
 - **LinkedIn**: [brayanperez56](https://linkedin.com/in/brayanperez56)
-- **Email**: [Contact Me](mailto:your-email@domain.com)
+- **Email**: [Contact Me](mailto:contact@keiwv.dev)
 
 ---
 

@@ -19,7 +19,7 @@ export const socials = [
     },
     {
         icon: FaEnvelope,
-        url: `mailto:brayan.ivan@uabc.edu.mx`,
+        url: `mailto:contact@keiwv.dev`,
         label: "Email",
         delay: 1.2,
     },
