@@ -6,14 +6,16 @@ import ScrollFloat from "@/components/ui/ScrollFloat";
 import TiltedCard from "@/components/ui/TiltedCard";
 import { useTranslations } from "next-intl";
 import Skills from "../layout/HorizontalLoop";
+import { useIsMobile } from "../hook/useIsMobile";
 
 export default function About() {
     const t = useTranslations("about");
     const aboutMe = t.raw("paragraphs") as string[];
+    const isMobile = useIsMobile();
 
     return (
         <div className="min-h-screen flex items-center justify-center px-4 sm:px-6 md:px-8 lg:px-12 xl:px-24 py-12 sm:py-16">
-            <div className="text-white text-left max-w-6xl w-full">
+            <div className={`text-white text-left max-w-6xl w-full ${isMobile ? 'pt-20' : ''}`}>
                 <div className="flex flex-col sm:flex-row gap-6 sm:gap-8 lg:gap-12 sm:items-center">
                     <div className="w-40 mx-auto sm:mx-0 sm:w-48 md:w-56 lg:w-64 shrink-0">
                         <TiltedCard

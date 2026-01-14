@@ -50,7 +50,7 @@ export default function Projects() {
 
     return (
         <div className="pt-20 pb-5 md:py-12 px-4 md:px-10">
-            <div className="max-w-7xl mx-auto pt-20">
+            <div className={`max-w-7xl mx-auto ${isMobile ? 'pt-5' : 'pt-20'}`}>
                 <div className="mb-8 md:mb-12">
                     <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-6 tracking-tight text-center">
                         {t("title")}

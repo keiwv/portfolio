@@ -50,7 +50,7 @@ export default function ExperienceCard({ experience }: ExperienceCardProps) {
                         {experience.contributions.map((contribution, idx) => (
                             <div key={idx} className="flex items-start gap-3">
                                 <div className="w-1.5 h-1.5 bg-purple-400 rounded-full mt-2 shrink-0"></div>
-                                <p className="text-gray-300 leading-relaxed text-sm md:text-base">
+                                <p className={`text-gray-300 leading-relaxed text-sm md:text-base ${isMobile ? 'text-[12px]': ''}`}>
                                     {contribution}
                                 </p>
                             </div>

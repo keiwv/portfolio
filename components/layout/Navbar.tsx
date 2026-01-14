@@ -23,15 +23,15 @@ export default function Navbar() {
     const sectionIds = navItems.map((item) => item.href);
     
     const { activeSection, isScrolling, startNavbarNavigation } = useActiveSection(sectionIds, {
-        threshold: 0.1,
-        rootMargin: "-20% 0px -70% 0px",
+        threshold: isMobile ? 0.05 : 0.1, 
+        rootMargin: isMobile ? "-15% 0px -50% 0px" : "-20% 0px -70% 0px", 
     });
     const activeIndex = sectionIds.findIndex((id) => id === activeSection);
     const validActiveIndex = activeIndex >= 0 ? activeIndex : 0;
 
     const handleNavClick = (index: number) => {
         const sectionId = sectionIds[index];
-        startNavbarNavigation(sectionId); // Mark this as navbar navigation to specific section
+        startNavbarNavigation(sectionId); 
         const element = document.getElementById(sectionId);
         if (element) {
             element.scrollIntoView({ behavior: 'smooth' });
