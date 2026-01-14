@@ -16,7 +16,7 @@ export default function About() {
     const isMobile = useIsMobile();
 
     const { ref, inView } = useInView({
-        threshold: 0.2,
+        threshold: isMobile ? 0.2 : 0.3,
         triggerOnce: false,
     });
 

@@ -57,7 +57,7 @@ export default function Projects() {
     }, [emblaApi, onSelect]);
 
     return (
-        <div ref={ref} className="pt-20 pb-5 md:py-12 px-4 md:px-10">
+        <div ref={ref} className={` pt-20 pb-32 md:py-12 md:pb-40 px-4 md:px-10 ${isMobile ? '' : 'min-h-screen flex items-center justify-center'}`}>
             <div className={`max-w-7xl mx-auto ${isMobile ? 'pt-5' : 'pt-20'}`}>
 
                 <motion.div 

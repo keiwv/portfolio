@@ -7,7 +7,7 @@ interface WarpBackgroundProps {
   backgroundType?: string;
 }
 
-export default function WarpBackground({ backgroundType = "grain" }: WarpBackgroundProps) {
+export default function WarpBackground({ backgroundType = "warp" }: WarpBackgroundProps) {
   const ref = useRef<HTMLDivElement>(null);
   const [size, setSize] = useState({ width: 0, height: 0 });
 
