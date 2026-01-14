@@ -38,9 +38,9 @@
         ],
         "skills": ["JavaScript", "React Native", "NestJS", "Azure"],
         "imgs": [
-          "/projects/Sippy/sippy-gif.webp",
-          "/projects/Sippy/wallpaper.png",
-          "/projects/Sippy/wallpaper2.png"
+          "/projects/sippy/sippy-gif.webp",
+          "/projects/sippy/wallpaper.png",
+          "/projects/sippy/wallpaper2.png"
         ]
       },
       {
