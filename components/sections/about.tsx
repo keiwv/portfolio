@@ -1,6 +1,5 @@
 "use client";
-import { GlassCard } from "@developer-hub/liquid-glass";
-import { BLUR_AMOUNT, DISPLACEMENT_SCALE } from "@/lib/data";
+
 import { MapPin } from "lucide-react";
 import TiltedCard from "@/components/ui/TiltedCard";
 import { useTranslations } from "next-intl";
@@ -8,6 +7,7 @@ import Skills from "../layout/HorizontalLoop";
 import { useIsMobile } from "../hook/useIsMobile";
 import { motion } from "motion/react";
 import { useInView } from "react-intersection-observer";
+import ScrollFloat from "../ui/ScrollFloat";
 
 export default function About() {
     const t = useTranslations("about");
