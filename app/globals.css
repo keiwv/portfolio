@@ -140,20 +140,20 @@
 }
 
 @layer base {
-  html,
+  html {
+    background: #000000 !important;
+    height: -webkit-fill-available;
+  }
   body {
     height: 100%;
     overflow-x: hidden;
   }
 
   body {
-    min-height: 100dvh;
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
     margin: 0;
     padding: 0;
-    position: relative;
-    -webkit-text-size-adjust: 100%;
-    -webkit-tap-highlight-color: transparent;
-    @apply bg-background text-foreground;
   }
 }
 

@@ -41,7 +41,6 @@ export default function Page() {
 
         <Footer />
 
-        {/* Background layers */}
         <Background />
         <BackgroundToggle />
       </div>
