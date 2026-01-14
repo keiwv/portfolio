@@ -24,7 +24,7 @@ export default function Navbar() {
     
     const { activeSection, isScrolling, startNavbarNavigation } = useActiveSection(sectionIds, {
         threshold: isMobile ? 0.05 : 0.1, 
-        rootMargin: isMobile ? "-15% 0px -50% 0px" : "-20% 0px -70% 0px", 
+        rootMargin: isMobile ? "-15% 0px -50% 0px" : "-20% 0px -50% 0px", 
     });
     const activeIndex = sectionIds.findIndex((id) => id === activeSection);
     const validActiveIndex = activeIndex >= 0 ? activeIndex : 0;

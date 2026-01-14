@@ -23,7 +23,7 @@ export default function About() {
     return (
         <div
             ref={ref}
-            className="min-h-screen flex items-center justify-center px-4 sm:px-6 md:px-8 lg:px-12 xl:px-24 py-12 sm:py-16"
+            className="min-h-screen-safe flex items-center justify-center px-4 sm:px-6 md:px-8 lg:px-12 xl:px-24 py-12 sm:py-16"
         >
             <div
                 className={`text-white text-left max-w-6xl w-full ${

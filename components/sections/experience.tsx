@@ -9,7 +9,7 @@ export default function Experience() {
     const experiences = t.raw("experience.items") as Experience[];
 
     return (
-        <div className="min-h-screen py-8 md:py-12 px-4 md:px-6 flex items-center justify-center">
+        <div className="min-h-screen-safe py-8 md:py-12 px-4 md:px-6 flex items-center justify-center">
             <div className="max-w-5xl mx-auto w-full">
                 <motion.div
                     className="mb-8 md:mb-12"

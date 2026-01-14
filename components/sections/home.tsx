@@ -24,7 +24,7 @@ export default function Home() {
     });
 
     return (
-        <div ref={ref} className="h-screen text-white relative px-6 sm:px-10">
+        <div ref={ref} className="h-screen-safe text-white relative px-6 sm:px-10">
             <div className="absolute inset-0 flex justify-center items-center z-20">
                 <div
                     className={`w-full ${

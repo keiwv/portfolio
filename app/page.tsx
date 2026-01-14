@@ -2,6 +2,7 @@ import Background from "@/components/background";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import BackgroundToggle from "@/components/ui/BackgroundToggle";
+import ClientWrapper from "@/components/ClientWrapper";
 import {
     Home,
     About,
@@ -13,6 +14,7 @@ import {
 export default function Page() {
 
     return (
+        <ClientWrapper>
         <div>
             <Navbar />
 
@@ -42,5 +44,6 @@ export default function Page() {
             <Background />
             <BackgroundToggle />
         </div>
+        </ClientWrapper>
     );
 }
