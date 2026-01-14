@@ -2,7 +2,6 @@
 import { GlassCard } from "@developer-hub/liquid-glass";
 import { BLUR_AMOUNT, DISPLACEMENT_SCALE } from "@/lib/data";
 import { MapPin } from "lucide-react";
-import ScrollFloat from "@/components/ui/ScrollFloat";
 import TiltedCard from "@/components/ui/TiltedCard";
 import { useTranslations } from "next-intl";
 import Skills from "../layout/HorizontalLoop";
@@ -75,16 +74,18 @@ export default function About() {
                             }
                             transition={{ duration: 0.7, delay: 0.3 }}
                         >
-                            <ScrollFloat
-                                animationDuration={5}
-                                ease="back.inOut(2)"
-                                scrollStart="center bottom+=50%"
-                                scrollEnd="bottom bottom-=40%"
-                                stagger={0.03}
-                                containerClassName="text-2xl md:text-3xl lg:text-4xl font-bold"
+                            <motion.h2
+                                className="text-2xl md:text-3xl lg:text-4xl font-bold"
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={
+                                    inView
+                                        ? { opacity: 1, y: 0 }
+                                        : { opacity: 0, y: 20 }
+                                }
+                                transition={{ duration: 0.6, delay: 0.4 }}
                             >
                                 {t("title")}
-                            </ScrollFloat>
+                            </motion.h2>
                         </motion.div>
 
                         <motion.div

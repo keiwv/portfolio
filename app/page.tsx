@@ -15,7 +15,7 @@ export default function Page() {
 
     return (
         <ClientWrapper>
-        <div>
+        <div className="min-h-screen-safe">
             <Navbar />
 
             <main className="relative z-10">
