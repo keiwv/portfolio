@@ -10,40 +10,47 @@ export default function WarpBackground() {
   const [size, setSize] = useState({ width: 0, height: 0 });
 
   useEffect(() => {
-    if (!ref.current) return;
+    const updateSize = () => {
+      const viewport = window.visualViewport;
 
-    const observer = new ResizeObserver(([entry]) => {
-      const { width, height } = entry.contentRect;
-      setSize({
-        width: Math.floor(width),
-        height: Math.floor(height),
-      });
+      const width = Math.floor(viewport?.width ?? window.innerWidth);
+      const height = Math.floor(viewport?.height ?? window.innerHeight);
 
-    });
-    observer.observe(ref.current);
-    return () => observer.disconnect();
+      setSize({ width, height });
+    };
+
+    updateSize();
+
+    window.visualViewport?.addEventListener("resize", updateSize);
+    window.addEventListener("orientationchange", updateSize);
+
+    return () => {
+      window.visualViewport?.removeEventListener("resize", updateSize);
+      window.removeEventListener("orientationchange", updateSize);
+    };
   }, []);
 
   return (
     <div
-      className="fixed top-0 left-0 -z-10 overflow-hidden bg-black"
       aria-hidden
-      style={{ 
-        width: '100vw',
-        height: '100dvh',
-        minHeight: '100dvh',
+      className="fixed inset-0 -z-10 overflow-hidden bg-black"
+      style={{
+        height: "100dvh",
+        width: "100vw",
       }}
     >
       <div
         ref={ref}
-        className={`absolute -inset-5 brightness-70 ${backgroundType === "warp" ? "blur-[10px]" : ""} `}
+        className={`absolute inset-0 brightness-70 ${
+          backgroundType === "warp" ? "blur-[10px]" : ""
+        }`}
       >
-        {size.width > 0 && (
+        {size.width > 0 && size.height > 0 && (
           <>
             {backgroundType === "warp" && (
               <Warp
-                width={size.width + 40}
-                height={size.height + 40}
+                width={size.width}
+                height={size.height}
                 colors={[
                   "#000000",
                   "#0a0a1a",
@@ -68,10 +75,11 @@ export default function WarpBackground() {
                 rotation={120}
               />
             )}
+
             {backgroundType === "grain" && (
               <GrainGradient
-                width={size.width + 40}
-                height={size.height + 40}
+                width={size.width}
+                height={size.height}
                 colors={["#7300ff", "#eba8ff", "#00bfff", "#2b00ff"]}
                 colorBack="#000000"
                 softness={0.5}
