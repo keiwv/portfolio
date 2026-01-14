@@ -26,8 +26,13 @@ export default function WarpBackground() {
 
   return (
     <div
-      className="fixed inset-0 -z-10 overflow-hidden bg-black min-h-screen-safe w-full"
+      className="fixed top-0 left-0 -z-10 overflow-hidden bg-black"
       aria-hidden
+      style={{ 
+        width: '100vw',
+        height: '100vh',
+        minHeight: '100dvh',
+      }}
     >
       <div
         ref={ref}
