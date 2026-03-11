@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { useState, useEffect, useRef } from "react";
+import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { useIsMobile } from "@/components/hook/useIsMobile";
 
@@ -25,16 +25,7 @@ export default function ProjectCard({
     inView,
 }: ProjectCardProps) {
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
-    const [isHovering, setIsHovering] = useState(false);
     const isMobile = useIsMobile();
-
-    const handleMouseEnter = () => {
-        setIsHovering(true);
-    };
-
-    const handleMouseLeave = () => {
-        setIsHovering(false);
-    };
 
     const goToPrevImage = () => {
         if (!imgs || imgs.length <= 1) return;
@@ -54,37 +45,27 @@ export default function ProjectCard({
         <motion.div
             className="
                 group relative
-                bg-linear-to-br from-white/5 to-white/2
-                backdrop-blur-xl
+                y2k-card
                 rounded-2xl
-                border border-white/10
                 overflow-hidden
                 h-full flex flex-col
                 w-full max-w-full
             "
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-            initial={{ opacity: 0, y: 50, scale: 0.95, rotateX: 10 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={inView ? { 
                 opacity: 1, 
-                y: 0, 
-                scale: 1,
-                rotateX: 0
+                y: 0
             } : { 
                 opacity: 0, 
-                y: 50, 
-                scale: 0.95,
-                rotateX: 10
+                y: 30
             }}
             transition={{ 
-                duration: 0.1, 
-                delay: 0.2,
-                type: "spring",
-                stiffness: 80
+                duration: 0.4, 
+                delay: 0.2 + (index * 0.1),
+                ease: "easeOut"
             }}
             whileHover={{ 
                 y: -12,
-                borderColor: "rgba(255, 255, 255, 0.3)",
                 transition: { duration: 0.2 }
             }}
             
@@ -92,7 +73,7 @@ export default function ProjectCard({
 
             {imgs?.length && (
                 <motion.div 
-                    className="relative w-full h-48 bg-black/20 overflow-hidden group/image p-2"
+                    className="relative w-full h-48 bg-y2k-surface-subtle overflow-hidden group/image p-2"
                     initial={{ opacity: 0, y: -20 }}
                     animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: -20 }}
                     transition={{ duration: 0.6, delay: 0.7 + (index * 0.15) }}
@@ -112,6 +93,7 @@ export default function ProjectCard({
                                 fill
                                 className="object-cover"
                                 sizes="(max-width: 768px) 100vw, 33vw"
+                                unoptimized={imgs[currentImageIndex].includes('gif')}
                             />
                         </motion.div>
                     </AnimatePresence>
@@ -119,7 +101,7 @@ export default function ProjectCard({
                     {imgs.length > 1 && (
                         <>
                             <motion.button
-                                className={`absolute left-4 top-1/2 -translate-y-1/2 w-8 h-8 bg-black/60 hover:bg-black/80 backdrop-blur-sm rounded-full flex items-center justify-center transition-all duration-200 z-10 cursor-pointer ${
+                                className={`absolute left-4 top-1/2 -translate-y-1/2 w-8 h-8 bg-black/60 hover:bg-black/80 rounded-full flex items-center justify-center transition-all duration-200 z-10 cursor-pointer ${
                                     isMobile ? 'opacity-100' : 'opacity-0 group-hover/image:opacity-100'
                                 }`}
                                 onClick={goToPrevImage}
@@ -132,7 +114,7 @@ export default function ProjectCard({
                             </motion.button>
                             
                             <motion.button
-                                className={`absolute right-4 top-1/2 -translate-y-1/2 w-8 h-8 bg-black/60 hover:bg-black/80 backdrop-blur-sm rounded-full flex items-center justify-center transition-all duration-200 z-10 cursor-pointer ${
+                                className={`absolute right-4 top-1/2 -translate-y-1/2 w-8 h-8 bg-black/60 hover:bg-black/80 rounded-full flex items-center justify-center transition-all duration-200 z-10 cursor-pointer ${
                                     isMobile ? 'opacity-100' : 'opacity-0 group-hover/image:opacity-100'
                                 }`}
                                 onClick={goToNextImage}
@@ -148,7 +130,7 @@ export default function ProjectCard({
                     
                     {imgs.length > 1 && (
                         <motion.div 
-                            className="absolute bottom-3 left-1/2 transform -translate-x-1/2 flex gap-1.5 bg-black/40 backdrop-blur-sm px-2 py-1.5 rounded-full"
+                            className="absolute bottom-3 left-1/2 transform -translate-x-1/2 flex gap-1.5 bg-black/40 px-2 py-1.5 rounded-full"
                             initial={{ opacity: 0, y: 10 }}
                             animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
                             transition={{ duration: 0.4, delay: 0.9 + (index * 0.15) }}
@@ -196,7 +178,7 @@ export default function ProjectCard({
                 >
                     <div className="flex items-center justify-between gap-2 mb-2">
                         <motion.h2 
-                            className="text-xl font-bold text-white"
+                            className="text-xl font-bold text-y2k-text"
                             whileHover={{ x: 3, color: "#e9d5ff" }}
                             transition={{ duration: 0.2 }}
                         >
@@ -207,8 +189,8 @@ export default function ProjectCard({
                             <motion.span 
                                 className="
                                     text-xs px-2.5 py-1 rounded-full
-                                    bg-white/10 border border-white/20
-                                    text-white
+                                    bg-y2k-pill-bg border border-y2k-pill-border
+                                    text-y2k-text
                                     font-medium
                                 "
                                 initial={{ opacity: 0, scale: 0.8, rotate: -5 }}
@@ -239,7 +221,7 @@ export default function ProjectCard({
                     </div>
 
                     <motion.p 
-                        className="text-sm text-gray-300 leading-relaxed"
+                        className="text-sm text-y2k-text-secondary leading-relaxed"
                         initial={{ opacity: 0, y: 5 }}
                         animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 5 }}
                         transition={{ duration: 0.4, delay: 1 + (index * 0.15) }}
@@ -251,7 +233,7 @@ export default function ProjectCard({
                 <div className="flex-1">
                     {contributions?.length && (
                         <motion.ul 
-                            className="mb-4 space-y-2 text-sm text-gray-300"
+                            className="mb-4 space-y-2 text-sm text-y2k-text-secondary"
                             initial={{ opacity: 0 }}
                             animate={inView ? { opacity: 1 } : { opacity: 0 }}
                             transition={{ duration: 0.4, delay: 1.1 + (index * 0.15) }}
@@ -271,16 +253,7 @@ export default function ProjectCard({
                                     whileHover={{ x: 4 }}
                                 >
                                     <motion.span 
-                                        className="text-purple-400 font-bold mt-0.5"
-                                        animate={isHovering ? {
-                                            x: [0, 4, 0],
-                                            scale: [1, 1.2, 1]
-                                        } : {}}
-                                        transition={{
-                                            duration: 1.5,
-                                            repeat: isHovering ? Infinity : 0,
-                                            delay: idx * 0.3
-                                        }}
+                                        className="text-y2k-accent font-bold mt-0.5"
                                     >
                                         →
                                     </motion.span>
@@ -304,8 +277,8 @@ export default function ProjectCard({
                                 className="
                                     px-2.5 py-1 rounded-full
                                     text-xs
-                                    bg-white/10 text-white
-                                    border border-white/20
+                                    bg-y2k-pill-bg text-y2k-text
+                                    border border-y2k-pill-border
                                     font-medium
                                 "
                                 initial={{ opacity: 0, scale: 0.7, y: 10 }}

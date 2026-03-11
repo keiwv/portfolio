@@ -11,17 +11,17 @@ export default function HamburgerMenu({ isOpen, onClick }: HamburgerMenuProps) {
             aria-label="Toggle menu"
         >
             <span 
-                className={`w-6 h-0.5 bg-white transition-all duration-300 ${
+                className={`w-6 h-0.5 bg-y2k-text transition-all duration-300 ${
                     isOpen ? 'rotate-45 translate-y-0' : '-translate-y-1.5'
                 }`}
             />
             <span 
-                className={`w-6 h-0.5 bg-white transition-all duration-300 ${
+                className={`w-6 h-0.5 bg-y2k-text transition-all duration-300 ${
                     isOpen ? 'opacity-0' : 'opacity-100'
                 }`}
             />
             <span 
-                className={`w-6 h-0.5 bg-white transition-all duration-300 ${
+                className={`w-6 h-0.5 bg-y2k-text transition-all duration-300 ${
                     isOpen ? '-rotate-45 translate-y-0' : 'translate-y-1.5'
                 }`}
             />

@@ -2,47 +2,35 @@
 
 import { motion } from "motion/react";
 import { useBackground } from "@/components/providers/BackgroundProvider";
-import { Sparkles, Waves } from "lucide-react";
+import { Moon, Sun } from "lucide-react";
 
 export default function BackgroundToggle() {
   const { backgroundType, toggleBackground } = useBackground();
+  const isDark = backgroundType === "dark";
 
   return (
     <motion.button
       onClick={toggleBackground}
-      className="fixed bottom-6 right-6 z-50 p-3 rounded-full bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20 transition-all duration-300 group"
-      whileHover={{ scale: 1.1 }}
+      className="fixed bottom-6 right-6 z-50 flex items-center w-16 h-9 rounded-full pixel-border cursor-pointer transition-colors duration-500"
+      style={{ backgroundColor: "var(--y2k-toggle-track)" }}
       whileTap={{ scale: 0.95 }}
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 1 }}
+      aria-label={`Switch to ${isDark ? "light" : "dark"} mode`}
     >
-      <div className="relative w-6 h-6">
-        <motion.div
-          animate={{
-            opacity: backgroundType === "warp" ? 1 : 0,
-            rotate: backgroundType === "warp" ? 0 : 180,
-          }}
-          transition={{ duration: 0.3 }}
-          className="absolute inset-0"
-        >
-          <Waves className="w-6 h-6 text-white" />
-        </motion.div>
-        <motion.div
-          animate={{
-            opacity: backgroundType === "grain" ? 1 : 0,
-            rotate: backgroundType === "grain" ? 0 : -180,
-          }}
-          transition={{ duration: 0.3 }}
-          className="absolute inset-0"
-        >
-          <Sparkles className="w-6 h-6 text-white" />
-        </motion.div>
-      </div>
-      
-      <div className="absolute bottom-full right-0 mb-2 px-3 py-1 bg-black/80 backdrop-blur-sm text-white text-xs rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap">
-        Switch to {backgroundType === "warp" ? "grain" : "warp"} background
-      </div>
+      <motion.div
+        className="w-7 h-7 rounded-full shadow-md flex items-center justify-center"
+        style={{ backgroundColor: "var(--y2k-toggle-knob)" }}
+        animate={{ x: isDark ? 4 : 30 }}
+        transition={{ type: "spring", stiffness: 500, damping: 30 }}
+      >
+        {isDark ? (
+          <Moon className="w-3.5 h-3.5" style={{ color: "var(--y2k-toggle-track)" }} />
+        ) : (
+          <Sun className="w-3.5 h-3.5" style={{ color: "var(--y2k-toggle-track)" }} />
+        )}
+      </motion.div>
     </motion.button>
   );
 }

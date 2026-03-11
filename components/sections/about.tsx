@@ -25,7 +25,7 @@ export default function About() {
             className="min-h-screen-safe flex items-center justify-center px-4 sm:px-6 md:px-8 lg:px-12 xl:px-24 py-12 sm:py-16"
         >
             <div
-                className={`text-white text-left max-w-6xl w-full ${
+                className={`text-y2k-text text-left max-w-6xl w-full ${
                     isMobile ? "pt-20" : ""
                 }`}
             >
@@ -75,7 +75,7 @@ export default function About() {
                             transition={{ duration: 0.7, delay: 0.3 }}
                         >
                             <motion.h2
-                                className="text-2xl md:text-3xl lg:text-4xl font-bold"
+                                className="text-2xl md:text-3xl lg:text-4xl font-bold font-pixel text-3d"
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={
                                     inView
@@ -98,7 +98,7 @@ export default function About() {
                                 aboutMe.map((paragraph, index) => (
                                     <motion.p
                                         key={index}
-                                        className="text-sm md:text-base font-light leading-relaxed text-gray-300"
+                                        className="text-sm md:text-base font-light leading-relaxed text-y2k-text-secondary"
                                         initial={{ opacity: 0, x: -20 }}
                                         animate={
                                             inView

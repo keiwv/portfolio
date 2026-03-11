@@ -142,7 +142,7 @@ export default function Skills({ technologies, libraries }: Text) {
     return (
         <div>
             <div>
-                <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-6 tracking-tight text-center">
+                <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold font-pixel text-y2k-text mb-6 tracking-tight text-center text-3d">
                     {technologies}
                 </h2>
             </div>
@@ -158,7 +158,7 @@ export default function Skills({ technologies, libraries }: Text) {
 
             <div>
                 <div>
-                    <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-6 tracking-tight text-center mt-12">
+                    <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold font-pixel text-y2k-text mb-6 tracking-tight text-center mt-12 text-3d">
                         {libraries}
                     </h2>
                 </div>

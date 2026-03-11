@@ -22,7 +22,7 @@ export default function Experience() {
                     }}
                 >
                     <motion.h2
-                        className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-6 tracking-tight text-center"
+                        className="text-2xl md:text-3xl lg:text-4xl font-bold font-pixel text-y2k-text mb-6 tracking-tight text-center text-3d"
                         initial={{ opacity: 0, scale: 0.9 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 0.6, delay: 0.2 }}
@@ -38,7 +38,7 @@ export default function Experience() {
                     transition={{ duration: 0.8, delay: 0.3 }}
                 >
                     <motion.div
-                        className="absolute left-[15px] md:left-[37px] top-0 bottom-0 w-0.5 bg-linear-to-b from-purple-500 via-purple-400 to-purple-500/30"
+                        className="absolute left-[15px] md:left-[37px] top-0 bottom-0 w-0.5 bg-linear-to-b from-y2k-accent via-y2k-accent-pink to-y2k-accent/30"
                         initial={{ scaleY: 0, opacity: 0 }}
                         animate={{ scaleY: 1, opacity: 1 }}
                         transition={{
@@ -49,7 +49,7 @@ export default function Experience() {
                         style={{ originY: 0 }}
                     >
                         <motion.div
-                            className="absolute inset-0 w-1 -translate-x-1/4 bg-purple-500 blur-sm"
+                            className="absolute inset-0 w-1 -translate-x-1/4 bg-y2k-accent blur-sm"
                             animate={{
                                 opacity: [0.3, 0.6, 0.3],
                             }}

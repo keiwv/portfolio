@@ -26,7 +26,7 @@ export default function ExperienceCard({
             transition={{ duration: 0.6, delay: index * 0.15 }}
         >
             <motion.div
-                className="absolute left-[7px] md:left-[29px] top-6 w-4 h-4 md:w-[18px] md:h-[18px] bg-white rounded-full border-[3px] border-purple-500 z-10 shadow-lg shadow-purple-500/50"
+                className="absolute left-[7px] md:left-[29px] top-6 w-4 h-4 md:w-[18px] md:h-[18px] bg-y2k-bg rounded-full border-[3px] border-y2k-accent z-10"
                 initial={{ scale: 0, rotate: -180 }}
                 animate={
                     inView
@@ -48,7 +48,7 @@ export default function ExperienceCard({
                 }}
             >
                 <motion.div
-                    className="absolute inset-0 rounded-full bg-purple-500"
+                    className="absolute inset-0 rounded-full bg-y2k-accent"
                     animate={
                         inView
                             ? {
@@ -89,34 +89,13 @@ export default function ExperienceCard({
                 }}
             >
                 <motion.div
-                    className="relative bg-linear-to-br from-white/5 to-white/2 backdrop-blur-sm border border-white/20 rounded-xl md:rounded-2xl p-6 md:p-8 overflow-hidden group cursor-pointer"
+                    className="relative y2k-card rounded-xl md:rounded-2xl p-6 md:p-8 overflow-hidden group cursor-pointer"
                     whileHover={{
                         scale: 1.02,
-                        backgroundColor: "rgba(255, 255, 255, 0.1)",
                         transition: { duration: 0.3 },
                     }}
                     whileTap={{ scale: 0.98 }}
                 >
-                    <motion.div
-                        className="absolute inset-0 bg-linear-to-r from-purple-500/0 via-purple-500/10 to-purple-500/0"
-                        initial={{ x: "-100%" }}
-                        whileHover={{ x: "100%" }}
-                        transition={{ duration: 0.8, ease: "easeInOut" }}
-                    />
-
-                    <motion.div
-                        className="absolute top-0 right-0 w-32 h-32 bg-purple-500/10 rounded-full blur-3xl"
-                        animate={{
-                            scale: [1, 1.2, 1],
-                            opacity: [0.3, 0.5, 0.3],
-                        }}
-                        transition={{
-                            duration: 3,
-                            repeat: Infinity,
-                            delay: index * 0.3,
-                        }}
-                    />
-
                     <div className="relative z-10">
                         <motion.div
                             className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-4"
@@ -130,7 +109,7 @@ export default function ExperienceCard({
                         >
                             <div className="flex flex-col gap-1">
                                 <motion.h3
-                                    className="text-lg md:text-xl font-semibold text-white"
+                                    className="text-lg md:text-xl font-semibold text-y2k-text"
                                     initial={{ opacity: 0, x: -20 }}
                                     animate={
                                         inView
@@ -142,7 +121,7 @@ export default function ExperienceCard({
                                     {experience.role}
                                 </motion.h3>
                                 <motion.p
-                                    className="text-sm md:text-sm text-purple-300 font-medium"
+                                    className="text-sm md:text-sm text-y2k-accent font-medium"
                                     initial={{ opacity: 0, x: -20 }}
                                     animate={
                                         inView
@@ -164,10 +143,10 @@ export default function ExperienceCard({
                                 }
                                 transition={{ delay: index * 0.15 + 0.4 }}
                             >
-                                <div className="text-purple-300 text-xs md:text-sm whitespace-nowrap">
+                                <div className="text-y2k-accent text-xs md:text-sm whitespace-nowrap">
                                     {experience.duration}
                                 </div>
-                                <p className="text-sm md:text-sm text-gray-400">
+                                <p className="text-sm md:text-sm text-y2k-text-muted">
                                     {experience.location}
                                 </p>
                             </motion.div>
@@ -198,7 +177,7 @@ export default function ExperienceCard({
                                         }}
                                     >
                                         <motion.div
-                                            className="w-1.5 h-1.5 bg-purple-400 rounded-full mt-2 shrink-0"
+                                            className="w-1.5 h-1.5 bg-y2k-accent rounded-full mt-2 shrink-0"
                                             initial={{ scale: 0 }}
                                             animate={
                                                 inView
@@ -213,7 +192,7 @@ export default function ExperienceCard({
                                                 type: "spring",
                                             }}
                                         />
-                                        <p className="text-gray-300 leading-relaxed text-sm md:text-base">
+                                        <p className="text-y2k-text-secondary leading-relaxed text-sm md:text-base">
                                             {contribution}
                                         </p>
                                     </motion.div>
@@ -235,7 +214,7 @@ export default function ExperienceCard({
                                 {experience.skills.map((skill, idx) => (
                                     <motion.span
                                         key={idx}
-                                        className="px-3 py-1.5 bg-white/5 border border-white/20 rounded-full text-xs md:text-sm text-gray-300"
+                                        className="px-3 py-1.5 bg-y2k-pill-bg border border-y2k-pill-border rounded-full text-xs md:text-sm text-y2k-text-secondary"
                                         initial={{
                                             opacity: 0,
                                             scale: 0.8,

@@ -1,22 +1,35 @@
 "use client";
 
-import { createContext, useContext, useState, ReactNode } from "react";
+import { createContext, useContext, useState, useEffect, useCallback, ReactNode } from "react";
 
-type BackgroundType = "warp" | "grain";
+type ThemeType = "light" | "dark";
 
 interface BackgroundContextType {
-  backgroundType: BackgroundType;
-  setBackgroundType: (type: BackgroundType) => void;
+  backgroundType: ThemeType;
+  setBackgroundType: (type: ThemeType) => void;
   toggleBackground: () => void;
 }
 
 const BackgroundContext = createContext<BackgroundContextType | undefined>(undefined);
 
 export function BackgroundProvider({ children }: { children: ReactNode }) {
-  const [backgroundType, setBackgroundType] = useState<BackgroundType>("warp");
+  const [backgroundType, setBackgroundType] = useState<ThemeType>("dark");
+
+  const applyTheme = useCallback((theme: ThemeType) => {
+    const root = document.documentElement;
+    if (theme === "dark") {
+      root.classList.add("dark");
+    } else {
+      root.classList.remove("dark");
+    }
+  }, []);
+
+  useEffect(() => {
+    applyTheme(backgroundType);
+  }, [backgroundType, applyTheme]);
 
   const toggleBackground = () => {
-    setBackgroundType(prev => prev === "warp" ? "grain" : "warp");
+    setBackgroundType(prev => prev === "dark" ? "light" : "dark");
   };
 
   return (

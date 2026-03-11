@@ -68,7 +68,7 @@ export default function Projects() {
                     transition={{ duration: 0.8, type: "spring", stiffness: 100 }}
                 >
                     <motion.h2 
-                        className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-6 tracking-tight text-center"
+                        className="text-2xl md:text-3xl lg:text-4xl font-bold font-pixel text-y2k-text mb-6 tracking-tight text-center text-3d"
                         initial={{ opacity: 0, scale: 0.9 }}
                         animate={inView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
                         transition={{ duration: 0.6, delay: 0.2 }}
@@ -87,7 +87,7 @@ export default function Projects() {
                     {!isMobile && (
                         <>
                             <motion.button
-                                className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-16 z-10 bg-white/10 hover:bg-white/20 backdrop-blur-xl rounded-full p-3 border border-white/20 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
+                                className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-16 z-10 bg-y2k-surface hover:bg-y2k-surface-hover rounded-full p-3 border border-y2k-border-strong transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
                                 onClick={scrollPrev}
                                 disabled={!canScrollPrev}
                                 initial={{ opacity: 0, x: 20 }}
@@ -96,11 +96,11 @@ export default function Projects() {
                                 whileHover={{ scale: 1.1 }}
                                 whileTap={{ scale: 0.95 }}
                             >
-                                <ChevronLeft className="w-6 h-6 text-white" />
+                                <ChevronLeft className="w-6 h-6 text-y2k-text" />
                             </motion.button>
                             
                             <motion.button
-                                className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-16 z-10 bg-white/10 hover:bg-white/20 backdrop-blur-xl rounded-full p-3 border border-white/20 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
+                                className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-16 z-10 bg-y2k-surface hover:bg-y2k-surface-hover rounded-full p-3 border border-y2k-border-strong transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
                                 onClick={scrollNext}
                                 disabled={!canScrollNext}
                                 initial={{ opacity: 0, x: -20 }}
@@ -109,7 +109,7 @@ export default function Projects() {
                                 whileHover={{ scale: 1.1 }}
                                 whileTap={{ scale: 0.95 }}
                             >
-                                <ChevronRight className="w-6 h-6 text-white" />
+                                <ChevronRight className="w-6 h-6 text-y2k-text" />
                             </motion.button>
                         </>
                     )}
@@ -151,8 +151,8 @@ export default function Projects() {
                                 key={index}
                                 className={`w-2 h-2 rounded-full transition-all duration-200 cursor-pointer ${
                                     index === selectedIndex
-                                        ? 'bg-white'
-                                        : 'bg-white/40 hover:bg-white/60'
+                                        ? 'bg-y2k-accent'
+                                        : 'bg-y2k-text-muted hover:bg-y2k-text-secondary'
                                 }`}
                                 onClick={() => emblaApi?.scrollTo(index)}
                                 initial={{ scale: 0 }}

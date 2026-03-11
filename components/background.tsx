@@ -1,98 +1,13 @@
 "use client";
 
-import { Warp, GrainGradient } from "@paper-design/shaders-react";
-import { useEffect, useRef, useState } from "react";
-import { useBackground } from "@/components/providers/BackgroundProvider";
-
-export default function WarpBackground() {
-    const { backgroundType } = useBackground();
-    const ref = useRef<HTMLDivElement>(null);
-    const [size, setSize] = useState({ width: 0, height: 0 });
-
-    useEffect(() => {
-        if (!ref.current) return;
-
-        const observer = new ResizeObserver(([entry]) => {
-            const { width, height } = entry.contentRect;
-            setSize({
-                width: Math.floor(width),
-                height: Math.floor(height),
-            });
-        });
-        observer.observe(ref.current);
-        return () => observer.disconnect();
-    }, []);
-
+export default function Background() {
     return (
         <div
             aria-hidden
-            className="fixed -z-10 bg-black overflow-hidden"
+            className="fixed inset-0 z-0 transition-all duration-700"
             style={{
-                height: "100lvh",
-                width: "100vw",
-                top: 0,
-                left: 0,
-                transform: "scale(1.05)", 
+                background: `linear-gradient(135deg, var(--y2k-bg-from), var(--y2k-bg), var(--y2k-bg-to))`,
             }}
-        >
-            <div
-                ref={ref}
-                className={`absolute -inset-2 md:-inset-5 brightness-70 ${
-                    backgroundType === "warp" ? "blur-[6px] md:blur-[10px]" : ""
-                } `}
-            >
-                {size.width > 0 && (
-                    <>
-                        {backgroundType === "warp" && (
-                            <Warp
-                                width={size.width + 40}
-                                height={size.height + 40}
-                                colors={[
-                                    "#000000",
-                                    "#0a0a1a",
-                                    "#000014",
-                                    "#7a0047",
-                                    "#00001f",
-                                    "#000152",
-                                    "#7a0047",
-                                    "#000014",
-                                    "#ff1492",
-                                    "#000000",
-                                ]}
-                                proportion={0.5}
-                                softness={1}
-                                distortion={0.5}
-                                swirl={0.5}
-                                swirlIterations={10}
-                                shape="checks"
-                                shapeScale={1}
-                                speed={0.2}
-                                scale={10}
-                                rotation={120}
-                            />
-                        )}
-                        {backgroundType === "grain" && (
-                            <GrainGradient
-                                width={size.width + 40}
-                                height={size.height + 40}
-                                colors={[
-                                    "#7300ff",
-                                    "#eba8ff",
-                                    "#00bfff",
-                                    "#2b00ff",
-                                ]}
-                                colorBack="#000000"
-                                softness={0.5}
-                                intensity={0.5}
-                                noise={0.25}
-                                shape="corners"
-                                speed={1}
-                                scale={1.5}
-                            />
-                        )}
-                    </>
-                )}
-            </div>
-        </div>
+        />
     );
 }
