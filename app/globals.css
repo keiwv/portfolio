@@ -44,26 +44,26 @@
   --sidebar-ring: oklch(0.708 0 0);
 
   /* --- Y2K Light Palette --- */
-  --y2k-bg: #e8ddf0;
-  --y2k-bg-from: #ddc8f0;
-  --y2k-bg-to: #c8b0e0;
-  --y2k-text: #2d1b4e;
-  --y2k-text-secondary: #5a3d7a;
-  --y2k-text-muted: #7b6897;
-  --y2k-accent: #9b59b6;
-  --y2k-accent-pink: #e84393;
-  --y2k-surface: #f5f0fa;
-  --y2k-surface-hover: #ede4f5;
-  --y2k-surface-subtle: #f0eaf6;
-  --y2k-border: rgba(155, 89, 182, 0.3);
-  --y2k-border-strong: rgba(155, 89, 182, 0.5);
-  --y2k-pill-bg: rgba(155, 89, 182, 0.12);
-  --y2k-pill-border: rgba(155, 89, 182, 0.25);
-  --y2k-timeline: #9b59b6;
-  --y2k-gradient-line: rgba(155, 89, 182, 0.6);
-  --y2k-glow: transparent;
-  --y2k-toggle-track: #d4b8e8;
-  --y2k-toggle-knob: #2d1b4e;
+  --y2k-bg: #f4e7c1;              /* Weathered Map Parchment */
+  --y2k-bg-from: #fdf5e6;         /* Light Sand */
+  --y2k-bg-to: #e9d7a5;           /* Aged Paper Edge */
+  --y2k-text: #1a0a2e;            /* Deep Royal Purple */
+  --y2k-text-secondary: #c0392b;  /* Luffy's Vest Red */
+  --y2k-text-muted: #5d6d7e;      /* Sea Sky Blue-Grey */
+  --y2k-accent: #e74c3c;          /* Iconic Straw Hat Ribbon Red */
+  --y2k-accent-pink: #f1c40f;     /* Treasure Gold / Straw Hat Yellow */
+  --y2k-surface: #fffcf2;         /* Clean Page White */
+  --y2k-surface-hover: #f9f3e0;   /* Soft Highlight */
+  --y2k-surface-subtle: #fcf8ed;  /* Map Background Tint */
+  --y2k-border: rgba(0, 0, 0, 0.2);
+  --y2k-border-strong: #000000;   /* Black line-work for 3D */
+  --y2k-pill-bg: rgba(231, 76, 60, 0.1); /* Subtle Red Wash */
+  --y2k-pill-border: #e74c3c;     /* Red Accent Border */
+  --y2k-timeline: #2980b9;        /* Deep Ocean Blue */
+  --y2k-gradient-line: rgba(41, 128, 185, 0.6);
+  --y2k-glow: rgba(241, 196, 15, 0.3); /* Golden Shimmer */
+  --y2k-toggle-track: #dcdde1;    /* Cloud White/Grey */
+  --y2k-toggle-knob: #c0392b;     /* Red Toggle */
 }
 
 @theme inline {
@@ -231,24 +231,18 @@
 .y2k-card {
   background: var(--y2k-surface);
   border: 1px solid var(--y2k-border-strong);
-  box-shadow:
-    4px 4px 0 var(--y2k-border),
-    8px 8px 0 color-mix(in srgb, var(--y2k-border) 50%, transparent);
+  box-shadow: 4px 4px 0 var(--y2k-border-strong);
   transition: background 0.5s, border-color 0.5s, box-shadow 0.4s, transform 0.3s;
 }
 
 .y2k-card:hover {
   background: var(--y2k-surface-hover);
-  box-shadow:
-    2px 2px 0 var(--y2k-border),
-    4px 4px 0 color-mix(in srgb, var(--y2k-border) 50%, transparent);
+  box-shadow: 2px 2px 0 var(--y2k-border-strong);
   transform: translate(-2px, -2px);
 }
 
 .text-3d {
-  text-shadow:
-    4px 4px 0 var(--y2k-border-strong),
-    8px 8px 0 color-mix(in srgb, var(--y2k-accent) 30%, transparent);
+  text-shadow: 4px 4px 0 var(--y2k-border-strong);
 }
 
 @layer base {

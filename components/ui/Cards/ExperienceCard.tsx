@@ -89,7 +89,7 @@ export default function ExperienceCard({
                 }}
             >
                 <motion.div
-                    className="relative y2k-card rounded-xl md:rounded-2xl p-6 md:p-8 overflow-hidden group cursor-pointer"
+                    className="relative y2k-card rounded-none p-6 md:p-8 overflow-hidden group cursor-pointer"
                     whileHover={{
                         scale: 1.02,
                         transition: { duration: 0.3 },

@@ -65,7 +65,7 @@ export default function Contact() {
                                             ? "noopener noreferrer"
                                             : undefined
                                     }
-                                    className="group relative flex flex-col items-center p-6 rounded-xl y2k-card overflow-hidden"
+                                    className="group relative flex flex-col items-center p-6 rounded-none y2k-card overflow-hidden"
                                     initial={{ 
                                         opacity: 0, 
                                         y: 30,

@@ -46,7 +46,7 @@ export default function ProjectCard({
             className="
                 group relative
                 y2k-card
-                rounded-2xl
+                rounded-none
                 overflow-hidden
                 h-full flex flex-col
                 w-full max-w-full

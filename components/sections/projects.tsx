@@ -114,15 +114,15 @@ export default function Projects() {
                         </>
                     )}
 
-                    <div ref={emblaRef} className={`overflow-hidden ${isMobile ? 'max-w-[calc(100vw-2rem)]' : 'max-w-[1250px]'} mx-auto pt-6 pb-0.5`}>
+                    <div ref={emblaRef} className={`overflow-hidden ${isMobile ? 'max-w-[calc(100vw-2rem)]' : 'max-w-[1250px]'} mx-auto p-2`}>
                         <div className="flex">
                             {projects.map((project, index) => (
                                 <div
                                     key={index}
                                     className={`
-                                        ${isMobile ? 'flex-[0_0_min(340px,calc(100vw-2rem))]' : 'flex-[0_0_401px]'}
-                                        h-[600px]
-                                        mr-6
+                                        ${isMobile ? 'flex-[0_0_min(340px,calc(100vw-3rem))]' : 'flex-[0_0_390px]'}
+                                        h-[620px]
+                                        mr-8
                                     `}
                                 >
                                     <ProjectCard
