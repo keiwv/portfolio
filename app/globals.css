@@ -44,9 +44,9 @@
   --sidebar-ring: oklch(0.708 0 0);
 
   /* --- Y2K Light Palette --- */
-  --y2k-bg: #f4e7c1;              /* Weathered Map Parchment */
-  --y2k-bg-from: #fdf5e6;         /* Light Sand */
-  --y2k-bg-to: #e9d7a5;           /* Aged Paper Edge */
+  --y2k-bg: #87CEEB;              /* Sky Blue */
+  --y2k-bg-from: #b0e0f6;         /* Light Sky Blue */
+  --y2k-bg-to: #6bb8e0;           /* Deeper Sky Blue */
   --y2k-text: #1a0a2e;            /* Deep Royal Purple */
   --y2k-text-secondary: #c0392b;  /* Luffy's Vest Red */
   --y2k-text-muted: #5d6d7e;      /* Sea Sky Blue-Grey */
