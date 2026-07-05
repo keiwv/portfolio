@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { useState, useEffect, useRef } from "react";
+import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { useIsMobile } from "@/components/hook/useIsMobile";
 
@@ -25,16 +25,7 @@ export default function ProjectCard({
     inView,
 }: ProjectCardProps) {
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
-    const [isHovering, setIsHovering] = useState(false);
     const isMobile = useIsMobile();
-
-    const handleMouseEnter = () => {
-        setIsHovering(true);
-    };
-
-    const handleMouseLeave = () => {
-        setIsHovering(false);
-    };
 
     const goToPrevImage = () => {
         if (!imgs || imgs.length <= 1) return;
@@ -54,45 +45,43 @@ export default function ProjectCard({
         <motion.div
             className="
                 group relative
-                bg-linear-to-br from-white/5 to-white/2
-                backdrop-blur-xl
-                rounded-2xl
-                border border-white/10
+                manga-panel
+                rounded-none
                 overflow-hidden
                 h-full flex flex-col
                 w-full max-w-full
             "
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-            initial={{ opacity: 0, y: 50, scale: 0.95, rotateX: 10 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={inView ? { 
                 opacity: 1, 
-                y: 0, 
-                scale: 1,
-                rotateX: 0
+                y: 0
             } : { 
                 opacity: 0, 
-                y: 50, 
-                scale: 0.95,
-                rotateX: 10
+                y: 30
             }}
             transition={{ 
-                duration: 0.1, 
-                delay: 0.2,
-                type: "spring",
-                stiffness: 80
+                duration: 0.4, 
+                delay: 0.2 + (index * 0.1),
+                ease: "easeOut"
             }}
             whileHover={{ 
                 y: -12,
-                borderColor: "rgba(255, 255, 255, 0.3)",
                 transition: { duration: 0.2 }
             }}
-            
+
         >
+            <div className="manga-window-bar">
+                <span className="manga-window-dot" />
+                <span className="manga-window-dot" />
+                <span className="manga-window-dot" />
+                <span className="ml-2 font-comic text-[9px] uppercase tracking-wider truncate text-manga-surface">
+                    {name}.exe
+                </span>
+            </div>
 
             {imgs?.length && (
                 <motion.div 
-                    className="relative w-full h-48 bg-black/20 overflow-hidden group/image p-2"
+                    className="relative w-full h-48 bg-manga-surface-subtle overflow-hidden group/image p-2"
                     initial={{ opacity: 0, y: -20 }}
                     animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: -20 }}
                     transition={{ duration: 0.6, delay: 0.7 + (index * 0.15) }}
@@ -104,7 +93,7 @@ export default function ProjectCard({
                             animate={{ opacity: 1, scale: 1, rotate: 0 }}
                             exit={{ opacity: 0, scale: 0.95, rotate: -2 }}
                             transition={{ duration: 0.5, ease: "easeOut" }}
-                            className="relative w-full h-full rounded-lg overflow-hidden"
+                            className="relative w-full h-full rounded-none overflow-hidden border-2 border-manga-border-strong"
                         >
                             <Image
                                 src={imgs[currentImageIndex]}
@@ -112,6 +101,7 @@ export default function ProjectCard({
                                 fill
                                 className="object-cover"
                                 sizes="(max-width: 768px) 100vw, 33vw"
+                                unoptimized={imgs[currentImageIndex].includes('gif')}
                             />
                         </motion.div>
                     </AnimatePresence>
@@ -119,7 +109,7 @@ export default function ProjectCard({
                     {imgs.length > 1 && (
                         <>
                             <motion.button
-                                className={`absolute left-4 top-1/2 -translate-y-1/2 w-8 h-8 bg-black/60 hover:bg-black/80 backdrop-blur-sm rounded-full flex items-center justify-center transition-all duration-200 z-10 cursor-pointer ${
+                                className={`absolute left-4 top-1/2 -translate-y-1/2 w-8 h-8 bg-black/60 hover:bg-black/80 rounded-full flex items-center justify-center transition-all duration-200 z-10 cursor-pointer ${
                                     isMobile ? 'opacity-100' : 'opacity-0 group-hover/image:opacity-100'
                                 }`}
                                 onClick={goToPrevImage}
@@ -132,7 +122,7 @@ export default function ProjectCard({
                             </motion.button>
                             
                             <motion.button
-                                className={`absolute right-4 top-1/2 -translate-y-1/2 w-8 h-8 bg-black/60 hover:bg-black/80 backdrop-blur-sm rounded-full flex items-center justify-center transition-all duration-200 z-10 cursor-pointer ${
+                                className={`absolute right-4 top-1/2 -translate-y-1/2 w-8 h-8 bg-black/60 hover:bg-black/80 rounded-full flex items-center justify-center transition-all duration-200 z-10 cursor-pointer ${
                                     isMobile ? 'opacity-100' : 'opacity-0 group-hover/image:opacity-100'
                                 }`}
                                 onClick={goToNextImage}
@@ -148,7 +138,7 @@ export default function ProjectCard({
                     
                     {imgs.length > 1 && (
                         <motion.div 
-                            className="absolute bottom-3 left-1/2 transform -translate-x-1/2 flex gap-1.5 bg-black/40 backdrop-blur-sm px-2 py-1.5 rounded-full"
+                            className="absolute bottom-3 left-1/2 transform -translate-x-1/2 flex gap-1.5 bg-black/40 px-2 py-1.5 rounded-full"
                             initial={{ opacity: 0, y: 10 }}
                             animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
                             transition={{ duration: 0.4, delay: 0.9 + (index * 0.15) }}
@@ -160,15 +150,15 @@ export default function ProjectCard({
                                     animate={{
                                         width: idx === currentImageIndex ? 20 : 6,
                                         height: 6,
-                                        backgroundColor: idx === currentImageIndex 
-                                            ? "rgba(168, 85, 247, 1)" 
+                                        backgroundColor: idx === currentImageIndex
+                                            ? "rgba(255, 255, 255, 0.9)"
                                             : "rgba(255, 255, 255, 0.4)"
                                     }}
                                     transition={{ duration: 0.4, ease: "easeOut" }}
                                 >
                                     {idx === currentImageIndex && (
                                         <motion.div
-                                            className="h-full bg-linear-to-r from-purple-400 to-pink-400"
+                                            className="h-full bg-manga-accent"
                                             initial={{ scaleX: 0 }}
                                             animate={{ scaleX: 1 }}
                                             transition={{ duration: 3, ease: "linear" }}
@@ -182,8 +172,8 @@ export default function ProjectCard({
                 </motion.div>
             )}
 
-            <motion.div 
-                className="p-6 flex flex-col flex-1 relative z-10"
+            <motion.div
+                className="p-6 flex flex-col flex-1 relative z-10 screentone-corner"
                 initial={{ opacity: 0 }}
                 animate={inView ? { opacity: 1 } : { opacity: 0 }}
                 transition={{ duration: 0.5, delay: 0.8 + (index * 0.15) }}
@@ -195,21 +185,20 @@ export default function ProjectCard({
                     transition={{ duration: 0.4, delay: 0.9 + (index * 0.15) }}
                 >
                     <div className="flex items-center justify-between gap-2 mb-2">
-                        <motion.h2 
-                            className="text-xl font-bold text-white"
-                            whileHover={{ x: 3, color: "#e9d5ff" }}
+                        <motion.h2
+                            className="text-xl font-bold text-manga-text"
+                            whileHover={{ x: 3 }}
                             transition={{ duration: 0.2 }}
                         >
                             {name}
                         </motion.h2>
 
                         {awards && (
-                            <motion.span 
+                            <motion.span
                                 className="
                                     text-xs px-2.5 py-1 rounded-full
-                                    bg-white/10 border border-white/20
-                                    text-white
-                                    font-medium
+                                    sticker-gold -rotate-2
+                                    font-bold
                                 "
                                 initial={{ opacity: 0, scale: 0.8, rotate: -5 }}
                                 animate={inView ? { 
@@ -227,10 +216,9 @@ export default function ProjectCard({
                                     type: "spring",
                                     stiffness: 200
                                 }}
-                                whileHover={{ 
+                                whileHover={{
                                     scale: 1.15,
                                     rotate: 3,
-                                    backgroundColor: "rgba(255, 255, 255, 0.15)"
                                 }}
                             >
                                 {awards}
@@ -239,7 +227,7 @@ export default function ProjectCard({
                     </div>
 
                     <motion.p 
-                        className="text-sm text-gray-300 leading-relaxed"
+                        className="text-sm text-manga-text-secondary leading-relaxed"
                         initial={{ opacity: 0, y: 5 }}
                         animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 5 }}
                         transition={{ duration: 0.4, delay: 1 + (index * 0.15) }}
@@ -251,7 +239,7 @@ export default function ProjectCard({
                 <div className="flex-1">
                     {contributions?.length && (
                         <motion.ul 
-                            className="mb-4 space-y-2 text-sm text-gray-300"
+                            className="mb-4 space-y-2 text-sm text-manga-text-secondary"
                             initial={{ opacity: 0 }}
                             animate={inView ? { opacity: 1 } : { opacity: 0 }}
                             transition={{ duration: 0.4, delay: 1.1 + (index * 0.15) }}
@@ -271,16 +259,7 @@ export default function ProjectCard({
                                     whileHover={{ x: 4 }}
                                 >
                                     <motion.span 
-                                        className="text-purple-400 font-bold mt-0.5"
-                                        animate={isHovering ? {
-                                            x: [0, 4, 0],
-                                            scale: [1, 1.2, 1]
-                                        } : {}}
-                                        transition={{
-                                            duration: 1.5,
-                                            repeat: isHovering ? Infinity : 0,
-                                            delay: idx * 0.3
-                                        }}
+                                        className="text-manga-accent font-bold mt-0.5"
                                     >
                                         →
                                     </motion.span>
@@ -304,8 +283,7 @@ export default function ProjectCard({
                                 className="
                                     px-2.5 py-1 rounded-full
                                     text-xs
-                                    bg-white/10 text-white
-                                    border border-white/20
+                                    sticker-pill text-manga-text
                                     font-medium
                                 "
                                 initial={{ opacity: 0, scale: 0.7, y: 10 }}
@@ -324,10 +302,8 @@ export default function ProjectCard({
                                     type: "spring",
                                     stiffness: 200
                                 }}
-                                whileHover={{ 
+                                whileHover={{
                                     scale: 1.15,
-                                    backgroundColor: "rgba(255, 255, 255, 0.15)",
-                                    borderColor: "rgba(255, 255, 255, 0.4)",
                                     y: -3,
                                     transition: { duration: 0.1 }
                                 }}

@@ -25,7 +25,7 @@ export const socials = [
     },
     {
         icon: FaRegFileLines,
-        url: `/cv_v1.pdf`,
+        url: `/Brayan Ivan - contact@keiwv.dev.pdf`,
         label: "CV",
         delay: 1.4,
     }

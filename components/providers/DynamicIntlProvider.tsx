@@ -2,6 +2,7 @@
 
 import { ReactNode, useState, useEffect, createContext, useContext } from 'react';
 import { NextIntlClientProvider } from 'next-intl';
+import { IntroScreenContent } from '@/components/IntroLoader';
 
 const LanguageContext = createContext<{
     locale: string;
@@ -65,11 +66,16 @@ export default function DynamicIntlProvider({ children }: DynamicIntlProviderPro
         }
     };
 
-    // Only show loading screen on initial load, not during language changes
+    // Only show the intro screen on initial load, not during language
+    // changes. Same visual as IntroLoader, so booting reads as ONE screen.
     if (isInitialLoading) {
         return (
-            <div className="flex items-center justify-center h-screen bg-black">
-                <div className="text-white">Loading...</div>
+            <div
+                className="fixed inset-0 z-[100] overflow-hidden"
+                style={{ background: "#ffffff" }}
+                aria-hidden
+            >
+                <IntroScreenContent />
             </div>
         );
     }

@@ -16,10 +16,10 @@ export default function MobileNavItem({ item, onClick, isActive = false }: Mobil
     return (
         <button
             onClick={handleClick}
-            className={`w-full max-w-xs text-left py-4 px-6 transition-colors duration-200 text-lg font-medium border-b rounded-lg border-white/10 last:border-b-0 ${
+            className={`w-full max-w-xs text-left py-4 px-6 transition-colors duration-200 text-lg font-medium border-b rounded-lg border-manga-border last:border-b-0 ${
                 isActive 
-                    ? 'text-black bg-white' 
-                    : 'text-white'
+                    ? 'text-manga-bg bg-manga-text' 
+                    : 'text-manga-text'
             }`}
         >
             {item.label}

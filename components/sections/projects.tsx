@@ -51,6 +51,7 @@ export default function Projects() {
 
     useEffect(() => {
         if (!emblaApi) return;
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         onSelect();
         emblaApi.on("select", onSelect);
         emblaApi.on("reInit", onSelect);
@@ -66,14 +67,15 @@ export default function Projects() {
                     animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: -30 }}
                     transition={{ duration: 0.8, type: "spring", stiffness: 100 }}
                 >
-                    <motion.h2 
-                        className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-6 tracking-tight text-center"
+                    <motion.h2
+                        className="text-2xl md:text-3xl lg:text-4xl font-bold font-comic text-manga-text mb-4 tracking-tight text-center text-manga"
                         initial={{ opacity: 0, scale: 0.9 }}
                         animate={inView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
                         transition={{ duration: 0.6, delay: 0.2 }}
                     >
                         {t("title")}
                     </motion.h2>
+                    <div className="halftone-strip w-44 mx-auto mb-6" />
 
                 </motion.div>
 
@@ -86,7 +88,7 @@ export default function Projects() {
                     {!isMobile && (
                         <>
                             <motion.button
-                                className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-16 z-10 bg-white/10 hover:bg-white/20 backdrop-blur-xl rounded-full p-3 border border-white/20 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
+                                className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-16 z-10 bg-manga-surface hover:bg-manga-surface-hover rounded-none p-3 manga-chip transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
                                 onClick={scrollPrev}
                                 disabled={!canScrollPrev}
                                 initial={{ opacity: 0, x: 20 }}
@@ -95,11 +97,11 @@ export default function Projects() {
                                 whileHover={{ scale: 1.1 }}
                                 whileTap={{ scale: 0.95 }}
                             >
-                                <ChevronLeft className="w-6 h-6 text-white" />
+                                <ChevronLeft className="w-6 h-6 text-manga-text" />
                             </motion.button>
                             
                             <motion.button
-                                className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-16 z-10 bg-white/10 hover:bg-white/20 backdrop-blur-xl rounded-full p-3 border border-white/20 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
+                                className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-16 z-10 bg-manga-surface hover:bg-manga-surface-hover rounded-none p-3 manga-chip transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
                                 onClick={scrollNext}
                                 disabled={!canScrollNext}
                                 initial={{ opacity: 0, x: -20 }}
@@ -108,20 +110,20 @@ export default function Projects() {
                                 whileHover={{ scale: 1.1 }}
                                 whileTap={{ scale: 0.95 }}
                             >
-                                <ChevronRight className="w-6 h-6 text-white" />
+                                <ChevronRight className="w-6 h-6 text-manga-text" />
                             </motion.button>
                         </>
                     )}
 
-                    <div ref={emblaRef} className={`overflow-hidden ${isMobile ? 'max-w-[calc(100vw-2rem)]' : 'max-w-[1250px]'} mx-auto pt-6 pb-0.5`}>
+                    <div ref={emblaRef} className={`overflow-hidden ${isMobile ? 'max-w-[calc(100vw-2rem)]' : 'max-w-[1250px]'} mx-auto p-2`}>
                         <div className="flex">
                             {projects.map((project, index) => (
                                 <div
                                     key={index}
                                     className={`
-                                        ${isMobile ? 'flex-[0_0_min(340px,calc(100vw-2rem))]' : 'flex-[0_0_401px]'}
-                                        h-[600px]
-                                        mr-6
+                                        ${isMobile ? 'flex-[0_0_min(340px,calc(100vw-3rem))]' : 'flex-[0_0_390px]'}
+                                        h-[620px]
+                                        mr-8
                                     `}
                                 >
                                     <ProjectCard
@@ -148,10 +150,10 @@ export default function Projects() {
                         {projects.map((_, index) => (
                             <motion.button
                                 key={index}
-                                className={`w-2 h-2 rounded-full transition-all duration-200 cursor-pointer ${
+                                className={`w-2.5 h-2.5 rotate-45 rounded-none transition-all duration-200 cursor-pointer ${
                                     index === selectedIndex
-                                        ? 'bg-white'
-                                        : 'bg-white/40 hover:bg-white/60'
+                                        ? 'bg-manga-accent'
+                                        : 'bg-manga-text-muted hover:bg-manga-text-secondary'
                                 }`}
                                 onClick={() => emblaApi?.scrollTo(index)}
                                 initial={{ scale: 0 }}

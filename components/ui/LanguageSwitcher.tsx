@@ -24,13 +24,13 @@ export default function LanguageSwitcher() {
             <button
                 onClick={() => setIsOpen(!isOpen)}
                 disabled={isLoading}
-                className="flex items-center gap-2 px-3 py-2 rounded-lg bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 transition-all duration-200 disabled:opacity-50 cursor-pointer"
+                className="flex items-center gap-2 px-3 py-2 rounded-lg bg-manga-surface border border-manga-border-strong hover:bg-manga-surface-hover transition-all duration-200 disabled:opacity-50 cursor-pointer"
             >
-                <span className="text-sm font-medium text-white">
+                <span className="text-sm font-medium text-manga-text">
                     {currentLanguage.label}
                 </span>
                 <svg
-                    className={`w-4 h-4 text-white transition-transform duration-200 ${
+                    className={`w-4 h-4 text-manga-text transition-transform duration-200 ${
                         isOpen ? "rotate-180" : ""
                     }`}
                     fill="none"
@@ -47,16 +47,16 @@ export default function LanguageSwitcher() {
             </button>
 
             {isOpen && (
-                <div className="absolute top-full mt-2 right-0 md:right-0 left-0 md:left-auto bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg py-2 min-w-[100px] z-[60]">
+                <div className="absolute top-full mt-2 right-0 md:right-0 left-0 md:left-auto bg-manga-surface border border-manga-border-strong rounded-lg py-2 min-w-[100px] z-[60]">
                     {languages.map((language) => (
                         <button
                             key={language.code}
                             onClick={() => handleLanguageChange(language.code)}
                             disabled={isLoading}
-                            className={`w-full flex items-center gap-2 px-3 py-2 text-sm font-medium transition-colors duration-200 hover:bg-white/10 disabled:opacity-50 cursor-pointer ${
+                            className={`w-full flex items-center gap-2 px-3 py-2 text-sm font-medium transition-colors duration-200 hover:bg-manga-surface-hover disabled:opacity-50 cursor-pointer ${
                                 language.code === locale
-                                    ? "bg-white/20 text-white"
-                                    : "text-white/80"
+                                    ? "bg-manga-surface-hover text-manga-text"
+                                    : "text-manga-text-secondary"
                             }`}
                         >
                             <span>{language.label}</span>

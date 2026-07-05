@@ -18,7 +18,7 @@ export default function Contact() {
                 ref={ref}
                 className="min-h-[75vh] md:min-h-[85vh] flex flex-col justify-center px-6 py-12 md:py-20"
             >
-                <div className="max-w-4xl mx-auto text-center text-white flex-1 flex items-center justify-center">
+                <div className="max-w-4xl mx-auto text-center text-manga-text flex-1 flex items-center justify-center">
                     <div className="p-8 md:p-12 w-full">
                         <motion.div
                             initial={{ opacity: 0, y: 30 }}
@@ -26,7 +26,7 @@ export default function Contact() {
                             transition={{ duration: 0.7, type: "spring", stiffness: 100 }}
                         >
                             <motion.h1 
-                                className="text-2xl md:text-3xl lg:text-4xl font-bold mb-6"
+                                className="text-2xl md:text-3xl lg:text-4xl font-bold font-comic mb-6 text-manga"
                                 initial={{ opacity: 0, scale: 0.9 }}
                                 animate={inView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
                                 transition={{ duration: 0.6, delay: 0.2 }}
@@ -36,14 +36,16 @@ export default function Contact() {
                             
                         </motion.div>
 
-                        <motion.p 
-                            className="text-lg text-white/80 mb-8 max-w-2xl mx-auto"
+                        <motion.div
+                            className="mb-10 flex justify-center"
                             initial={{ opacity: 0, y: 20 }}
                             animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                             transition={{ duration: 0.6, delay: 0.5 }}
                         >
-                            {t("description")}
-                        </motion.p>
+                            <p className="speech-bubble speech-bubble-tail text-lg text-manga-text-secondary max-w-2xl px-6 py-4">
+                                {t("description")}
+                            </p>
+                        </motion.div>
 
                         <motion.div 
                             className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8"
@@ -65,7 +67,7 @@ export default function Contact() {
                                             ? "noopener noreferrer"
                                             : undefined
                                     }
-                                    className="group relative flex flex-col items-center p-6 rounded-xl bg-linear-to-br from-white/5 to-white/2  border border-white/10 overflow-hidden"
+                                    className="group relative flex flex-col items-center p-6 rounded-none manga-panel screentone-corner overflow-hidden"
                                     initial={{ 
                                         opacity: 0, 
                                         y: 30,
@@ -89,40 +91,19 @@ export default function Contact() {
                                     whileHover={{ 
                                         scale: 1.08,
                                         y: -8,
-                                        borderColor: "rgba(168, 85, 247, 0.5)",
                                         transition: { duration: 0.3 }
                                     }}
                                     whileTap={{ scale: 0.95 }}
                                 >
-                                    <motion.div
-                                        className="absolute inset-0 bg-linear-to-br from-purple-500/0 via-purple-500/10 to-pink-500/0"
-                                        initial={{ opacity: 0 }}
-                                        whileHover={{ opacity: 1 }}
-                                        transition={{ duration: 0.3 }}
-                                    />
-
-                                    <motion.div
-                                        className="absolute inset-0 bg-purple-500/20 rounded-xl"
-                                        initial={{ opacity: 0, scale: 0.8 }}
-                                        whileHover={{ opacity: 1, scale: 1 }}
-                                        transition={{ duration: 0.3 }}
-                                    />
 
                                    
 
                                     <motion.div 
-                                        className="text-white/70 group-hover:text-white transition-colors duration-300 mb-3 relative z-10"
+                                        className="text-manga-text-muted group-hover:text-manga-text transition-colors duration-300 mb-3 relative z-10"
                                         whileHover={{ 
                                             scale: 1.2,
                                             rotate: [0, -10, 10, 0],
                                             transition: { duration: 0.5 }
-                                        }}
-                                        animate={{
-                                            filter: [
-                                                "brightness(1) drop-shadow(0 0 0px rgba(255,255,255,0))",
-                                                "brightness(1.3) drop-shadow(0 0 8px rgba(255,255,255,0.6))",
-                                                "brightness(1) drop-shadow(0 0 0px rgba(255,255,255,0))"
-                                            ]
                                         }}
                                         transition={{
                                             duration: 2,
@@ -134,7 +115,7 @@ export default function Contact() {
                                         <link.icon />
                                     </motion.div>
 
-                                    <span className="text-sm font-medium text-white/80 group-hover:text-white transition-colors duration-300 relative z-10">
+                                    <span className="text-sm font-medium text-manga-text-secondary group-hover:text-manga-text transition-colors duration-300 relative z-10">
                                         {link.label}
                                     </span>
                                 </motion.a>
@@ -147,14 +128,11 @@ export default function Contact() {
                             animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                             transition={{ duration: 0.6, delay: 1.1 }}
                         >
-                            <motion.p 
-                                className="text-white/60 text-sm inline-block"
-                                whileHover={{ 
-                                    scale: 1.05,
-                                    color: "rgba(255, 255, 255, 0.8)"
-                                }}
+                            <motion.p
+                                className="text-manga-text-muted text-sm inline-block font-comic text-[10px] tracking-wide"
+                                whileHover={{ scale: 1.05 }}
                             >
-                                {t("location")}
+                                ✦ {t("location")} ✦
                             </motion.p>
                         </motion.div>
                     </div>

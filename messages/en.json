@@ -22,7 +22,8 @@
       "Outside of coding, I spend time at the gym, looking for new libraries, or playing Overwatch (Genji main) with friends. I enjoy creating, learning, experimenting with new technologies, and constantly solving problems."
     ],
     "technology": "Technologies & Tools",
-    "libraries": "Libraries & Frameworks"
+    "libraries": "Libraries & Frameworks",
+    "location": "Baja California, México"
   },
   "projects": {
     "title": "Projects",
@@ -113,12 +114,38 @@
   },
   "experience": {
     "title": "Experience",
+    "current": "CURRENT",
     "items": [
+      {
+        "id": 3,
+        "role": "Software Engineer Intern (Full-time)",
+        "company": "Skill Up Leader Holding AG",
+        "location": "Remote",
+        "duration": "June 2026 - Present",
+        "contributions": [
+          "Promoted to full-time after four months; translate stakeholder requirements into product design, delivering 50+ high fidelity screens for a new product with direct stakeholder feedback.",
+          "Turn early ideas into low-fidelity designs so stakeholders can visualize and validate the new product before development.",
+          "Run QA cycles for web releases, catching defects before production — including cross-tenant security vulnerabilities.",
+          "Author and maintain ISO 27001 and SOC 2 documentation with the compliance team."
+        ]
+      },
+      {
+        "id": 4,
+        "role": "Software Engineer Intern (Part-time)",
+        "company": "Skill Up Leader Holding AG",
+        "location": "Remote",
+        "duration": "February 2026 - May 2026",
+        "contributions": [
+          "Created 3 ISO 27001 and SOC 2 policies, laying the groundwork for the company's compliance program.",
+          "Updated and restructured technical documentation, reducing onboarding friction for the team.",
+          "Supported product design and QA testing during the product's early development."
+        ]
+      },
       {
         "id": 1,
         "role": "Machine Learning Intern",
         "company": "Tech4Good Lab",
-        "location": "Ensenada, Baja California, Mexico",
+        "location": "Baja California, Mexico",
         "duration": "January 2025 - November 2025",
         "contributions": [
           "Conducted data analysis and preprocessing on multiple facial expression and emotion recognition datasets.",
@@ -137,7 +164,7 @@
           "Documented robotic system code with detailed diagrams to improve maintainability and scalability.",
           "Designed and enhanced custom Blockly blocks to extend robot functionality and improve user interaction.",
           "Refactored the existing codebase to enhance performance by approximately 25%, as well as improve readability and modularity.",
-          "Implemented sound effects in both CARMEN and PODER as foundational steps toward."
+          "Implemented sound effects in both CARMEN and PODER social robots."
         ]
       }
     ]
@@ -145,7 +172,7 @@
   "contact": {
     "title": "Get In Touch",
     "email": "brayan.ivan@example.com",
-    "location": "Ensenada, Baja California, México",
+    "location": "Baja California, México",
     "description": "Feel free to reach out if you want to collaborate or just say hi!"
   },
   "common": {
