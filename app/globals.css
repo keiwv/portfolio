@@ -4,7 +4,7 @@
 @custom-variant dark (&:is(.dark *));
 
 /* ══════════════════════════════════════════════
-   Y2K / Vaporwave Theme – Light Mode (default)
+   Manga Theme — black ink on white paper
    ══════════════════════════════════════════════ */
 :root {
   --bg: transparent;
@@ -43,27 +43,28 @@
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
 
-  /* --- Y2K Light Palette --- */
-  --y2k-bg: #87CEEB;              /* Sky Blue */
-  --y2k-bg-from: #b0e0f6;         /* Light Sky Blue */
-  --y2k-bg-to: #6bb8e0;           /* Deeper Sky Blue */
-  --y2k-text: #1a0a2e;            /* Deep Royal Purple */
-  --y2k-text-secondary: #c0392b;  /* Luffy's Vest Red */
-  --y2k-text-muted: #5d6d7e;      /* Sea Sky Blue-Grey */
-  --y2k-accent: #e74c3c;          /* Iconic Straw Hat Ribbon Red */
-  --y2k-accent-pink: #f1c40f;     /* Treasure Gold / Straw Hat Yellow */
-  --y2k-surface: #fffcf2;         /* Clean Page White */
-  --y2k-surface-hover: #f9f3e0;   /* Soft Highlight */
-  --y2k-surface-subtle: #fcf8ed;  /* Map Background Tint */
-  --y2k-border: rgba(0, 0, 0, 0.2);
-  --y2k-border-strong: #000000;   /* Black line-work for 3D */
-  --y2k-pill-bg: rgba(231, 76, 60, 0.1); /* Subtle Red Wash */
-  --y2k-pill-border: #e74c3c;     /* Red Accent Border */
-  --y2k-timeline: #2980b9;        /* Deep Ocean Blue */
-  --y2k-gradient-line: rgba(41, 128, 185, 0.6);
-  --y2k-glow: rgba(241, 196, 15, 0.3); /* Golden Shimmer */
-  --y2k-toggle-track: #dcdde1;    /* Cloud White/Grey */
-  --y2k-toggle-knob: #c0392b;     /* Red Toggle */
+  /* --- Manga Palette — black ink on white paper (only theme) --- */
+  --manga-bg: #ffffff;
+  --manga-bg-from: #ffffff;
+  --manga-bg-to: #ededed;
+  --manga-text: #0a0a0a;
+  --manga-text-secondary: #262626;
+  --manga-text-muted: #595959;
+  --manga-accent: #000000;
+  --manga-accent-pink: #000000;
+  --manga-surface: #ffffff;
+  --manga-surface-hover: #f4f4f4;
+  --manga-surface-subtle: #fafafa;
+  --manga-border: rgba(0, 0, 0, 0.4);
+  --manga-border-strong: #000000;
+  --manga-pill-bg: #ffffff;
+  --manga-pill-border: #000000;
+  --manga-timeline: #000000;
+  --manga-gradient-line: rgba(0, 0, 0, 0.6);
+  --manga-glow: transparent;
+  --manga-sticker-bg: #000000;
+  --manga-sticker-text: #ffffff;
+  --manga-title-fill: #ffffff;      /* White letters inside black ink outline */
 }
 
 @theme inline {
@@ -71,7 +72,7 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-  --font-pixel: var(--font-press-start);
+  --font-comic: var(--font-bangers);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -108,23 +109,23 @@
   --radius-2xl: calc(var(--radius) + 8px);
   --radius-3xl: calc(var(--radius) + 12px);
   --radius-4xl: calc(var(--radius) + 16px);
-  /* Y2K Tailwind tokens */
-  --color-y2k-bg: var(--y2k-bg);
-  --color-y2k-text: var(--y2k-text);
-  --color-y2k-text-secondary: var(--y2k-text-secondary);
-  --color-y2k-text-muted: var(--y2k-text-muted);
-  --color-y2k-accent: var(--y2k-accent);
-  --color-y2k-accent-pink: var(--y2k-accent-pink);
-  --color-y2k-surface: var(--y2k-surface);
-  --color-y2k-surface-hover: var(--y2k-surface-hover);
-  --color-y2k-surface-subtle: var(--y2k-surface-subtle);
-  --color-y2k-border: var(--y2k-border);
-  --color-y2k-border-strong: var(--y2k-border-strong);
-  --color-y2k-pill-bg: var(--y2k-pill-bg);
-  --color-y2k-pill-border: var(--y2k-pill-border);
-  --color-y2k-timeline: var(--y2k-timeline);
-  --color-y2k-gradient-line: var(--y2k-gradient-line);
-  --color-y2k-glow: var(--y2k-glow);
+  /* Manga Tailwind tokens */
+  --color-manga-bg: var(--manga-bg);
+  --color-manga-text: var(--manga-text);
+  --color-manga-text-secondary: var(--manga-text-secondary);
+  --color-manga-text-muted: var(--manga-text-muted);
+  --color-manga-accent: var(--manga-accent);
+  --color-manga-accent-pink: var(--manga-accent-pink);
+  --color-manga-surface: var(--manga-surface);
+  --color-manga-surface-hover: var(--manga-surface-hover);
+  --color-manga-surface-subtle: var(--manga-surface-subtle);
+  --color-manga-border: var(--manga-border);
+  --color-manga-border-strong: var(--manga-border-strong);
+  --color-manga-pill-bg: var(--manga-pill-bg);
+  --color-manga-pill-border: var(--manga-pill-border);
+  --color-manga-timeline: var(--manga-timeline);
+  --color-manga-gradient-line: var(--manga-gradient-line);
+  --color-manga-glow: var(--manga-glow);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -151,111 +152,290 @@
 }
 
 /* ══════════════════════════════════════════════
-   Y2K / Vaporwave Theme – Dark Mode
+   Manga Night — scrolled-down inversion:
+   white ink on black paper
    ══════════════════════════════════════════════ */
-.dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
-
-  /* --- Y2K Dark Palette --- */
-  --y2k-bg: #110a20;
-  --y2k-bg-from: #150d28;
-  --y2k-bg-to: #1f1140;
-  --y2k-text: #f0e6ff;
-  --y2k-text-secondary: #c9b8e8;
-  --y2k-text-muted: #9685b5;
-  --y2k-accent: #b967ff;
-  --y2k-accent-pink: #ff69b4;
-  --y2k-surface: #1a1030;
-  --y2k-surface-hover: #231540;
-  --y2k-surface-subtle: #150c28;
-  --y2k-border: rgba(185, 103, 255, 0.25);
-  --y2k-border-strong: rgba(185, 103, 255, 0.45);
-  --y2k-pill-bg: rgba(185, 103, 255, 0.12);
-  --y2k-pill-border: rgba(185, 103, 255, 0.3);
-  --y2k-timeline: #b967ff;
-  --y2k-gradient-line: rgba(185, 103, 255, 0.6);
-  --y2k-glow: transparent;
-  --y2k-toggle-track: #1f1140;
-  --y2k-toggle-knob: #f0e6ff;
+.manga-night {
+  /* The tide finishes covering the screen just before this class flips,
+     so the bg swap below is invisible — it only backstops slivers
+     (overscroll, viewport quirks) so nothing stays white at night. */
+  --manga-bg: #0a0a0a;
+  --manga-bg-from: #0a0a0a;
+  --manga-bg-to: #000000;
+  --manga-text: #ffffff;
+  --manga-text-secondary: #e6e6e6;
+  --manga-text-muted: #a6a6a6;
+  --manga-accent: #ffffff;
+  --manga-accent-pink: #ffffff;
+  --manga-surface: #0a0a0a;
+  --manga-surface-hover: #1c1c1c;
+  --manga-surface-subtle: #121212;
+  --manga-border: rgba(255, 255, 255, 0.4);
+  --manga-border-strong: #ffffff;
+  --manga-pill-bg: #0a0a0a;
+  --manga-pill-border: #ffffff;
+  --manga-timeline: #ffffff;
+  --manga-gradient-line: rgba(255, 255, 255, 0.6);
+  --manga-sticker-bg: #ffffff;
+  --manga-sticker-text: #000000;
+  --manga-title-fill: #0a0a0a;      /* Ink-black letters inside white outline */
 }
 
 /* ══════════════════════════════════════════════
-   Y2K Pixel-border utilities
+   Manga ink utilities
    ══════════════════════════════════════════════ */
-.pixel-border {
-  border: 2px solid var(--y2k-border-strong);
+
+/* Inset ink border (small controls) */
+.ink-border {
+  border: 2px solid var(--manga-border-strong);
   box-shadow:
-    inset 1px 1px 0 var(--y2k-border),
-    inset -1px -1px 0 var(--y2k-border),
-    2px 2px 0 var(--y2k-border);
+    inset 1px 1px 0 var(--manga-border),
+    inset -1px -1px 0 var(--manga-border),
+    2px 2px 0 var(--manga-border);
 }
 
-.pixel-border-accent {
-  border: 2px solid var(--y2k-accent);
-  box-shadow:
-    inset 1px 1px 0 color-mix(in srgb, var(--y2k-accent) 40%, transparent),
-    inset -1px -1px 0 color-mix(in srgb, var(--y2k-accent) 40%, transparent),
-    2px 2px 0 color-mix(in srgb, var(--y2k-accent) 30%, transparent);
+/* Comic panel — thick ink outline with a hard offset shadow */
+.manga-panel {
+  position: relative;
+  background: var(--manga-surface);
+  border: 3px solid var(--manga-border-strong);
+  box-shadow: 6px 6px 0 var(--manga-border-strong);
+  transition: background 0.5s, border-color 0.5s, box-shadow 0.3s, transform 0.3s;
 }
 
-.y2k-card {
-  background: var(--y2k-surface);
-  border: 1px solid var(--y2k-border-strong);
-  box-shadow: 4px 4px 0 var(--y2k-border-strong);
-  transition: background 0.5s, border-color 0.5s, box-shadow 0.4s, transform 0.3s;
-}
-
-.y2k-card:hover {
-  background: var(--y2k-surface-hover);
-  box-shadow: 2px 2px 0 var(--y2k-border-strong);
+.manga-panel:hover {
+  background: var(--manga-surface-hover);
+  box-shadow: 8px 8px 0 var(--manga-border-strong);
   transform: translate(-2px, -2px);
 }
 
-.text-3d {
-  text-shadow: 4px 4px 0 var(--y2k-border-strong);
+/* Chunky ink-outlined chip (buttons, icons) */
+.manga-chip {
+  border: 2px solid var(--manga-border-strong);
+  box-shadow: 3px 3px 0 var(--manga-border-strong);
+  transition: box-shadow 0.2s, transform 0.2s, background 0.3s, border-color 0.3s;
+}
+
+.manga-chip:hover {
+  box-shadow: 1px 1px 0 var(--manga-border-strong);
+  transform: translate(2px, 2px);
+}
+
+/* Halftone screentone dot pattern */
+.halftone {
+  background-image: radial-gradient(circle, var(--manga-text) 1px, transparent 1.6px);
+  background-size: 9px 9px;
+}
+
+/* Thin screentone divider strip, faded at the edges */
+.halftone-strip {
+  height: 8px;
+  background-image: radial-gradient(circle, var(--manga-text) 1.2px, transparent 1.7px);
+  background-size: 8px 8px;
+  opacity: 0.35;
+  -webkit-mask-image: linear-gradient(90deg, transparent, black 25%, black 75%, transparent);
+  mask-image: linear-gradient(90deg, transparent, black 25%, black 75%, transparent);
+}
+
+/* Screentone wash on a panel's top-right corner */
+.screentone-corner::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 55%;
+  height: 60%;
+  background-image: radial-gradient(circle, var(--manga-text) 1px, transparent 1.5px);
+  background-size: 8px 8px;
+  opacity: 0.1;
+  -webkit-mask-image: radial-gradient(circle at top right, black 10%, transparent 72%);
+  mask-image: radial-gradient(circle at top right, black 10%, transparent 72%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Manga action speed-lines burst (hero) */
+.speed-lines {
+  background-image: repeating-conic-gradient(
+    from 0deg at 50% 50%,
+    var(--manga-text) 0deg 0.8deg,
+    transparent 0.8deg 6deg
+  );
+  -webkit-mask-image: radial-gradient(ellipse at center, transparent 32%, black 85%);
+  mask-image: radial-gradient(ellipse at center, transparent 32%, black 85%);
+  animation: speed-lines-pulse 5s ease-in-out infinite;
+}
+
+@keyframes speed-lines-pulse {
+  0%, 100% { opacity: 0.1; }
+  50% { opacity: 0.18; }
+}
+
+/* Wrapper fade so the burst dissolves before the section boundary instead
+   of cutting off in a hard straight line at the hero's bottom edge */
+.speed-lines-fade {
+  -webkit-mask-image: linear-gradient(to bottom, black 0%, black 60%, transparent 95%);
+  mask-image: linear-gradient(to bottom, black 0%, black 60%, transparent 95%);
+}
+
+/* Ink-outlined display text with hard 3D drop */
+.text-manga {
+  color: var(--manga-title-fill);
+  text-shadow:
+    -2px -2px 0 var(--manga-border-strong),
+    2px -2px 0 var(--manga-border-strong),
+    -2px 2px 0 var(--manga-border-strong),
+    2px 2px 0 var(--manga-border-strong),
+    -2px 0 0 var(--manga-border-strong),
+    2px 0 0 var(--manga-border-strong),
+    0 -2px 0 var(--manga-border-strong),
+    0 2px 0 var(--manga-border-strong),
+    5px 5px 0 var(--manga-border-strong),
+    0 0 18px var(--manga-glow);
+}
+
+/* Manga speech bubble; add .speech-bubble-tail for the pointer */
+.speech-bubble {
+  position: relative;
+  background: var(--manga-surface);
+  border: 2px solid var(--manga-border-strong);
+  border-radius: 14px;
+  box-shadow: 3px 3px 0 var(--manga-border-strong);
+  transition: background 0.5s, border-color 0.5s;
+}
+
+.speech-bubble-tail::before,
+.speech-bubble-tail::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-style: solid;
+}
+
+.speech-bubble-tail::before {
+  top: 100%;
+  border-width: 11px 9px 0 9px;
+  border-color: var(--manga-border-strong) transparent transparent transparent;
+}
+
+.speech-bubble-tail::after {
+  top: calc(100% - 3px);
+  border-width: 8px 6px 0 6px;
+  border-color: var(--manga-surface) transparent transparent transparent;
+}
+
+/* Sticker-style tag pills */
+.sticker-pill {
+  background: var(--manga-pill-bg);
+  border: 2px solid var(--manga-border-strong);
+  box-shadow: 2px 2px 0 var(--manga-border-strong);
+  transition: transform 0.15s, box-shadow 0.15s, background 0.3s;
+}
+
+.sticker-pill:hover {
+  transform: translate(-1px, -1px) rotate(-1deg);
+  box-shadow: 3px 3px 0 var(--manga-border-strong);
+}
+
+/* Accent sticker (awards, dates) — inverted ink */
+.sticker-gold {
+  background: var(--manga-sticker-bg);
+  border: 2px solid var(--manga-border-strong);
+  box-shadow: 2px 2px 0 var(--manga-border-strong);
+  color: var(--manga-sticker-text);
+}
+
+/* Ink window title bar (project cards) */
+.manga-window-bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background: linear-gradient(90deg, var(--manga-accent) 0%, var(--manga-accent-pink) 100%);
+  border-bottom: 3px solid var(--manga-border-strong);
+}
+
+.manga-window-dot {
+  width: 10px;
+  height: 10px;
+  flex-shrink: 0;
+  border: 2px solid var(--manga-border-strong);
+  background: var(--manga-surface);
+}
+
+/* Floating 4-point sparkle */
+.manga-sparkle {
+  position: absolute;
+  clip-path: polygon(50% 0%, 61% 39%, 100% 50%, 61% 61%, 50% 100%, 39% 61%, 0% 50%, 39% 39%);
+  animation: sparkle-float 6s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes sparkle-float {
+  0%, 100% { transform: translateY(0) rotate(0deg) scale(1); opacity: 0.7; }
+  50% { transform: translateY(-14px) rotate(180deg) scale(1.2); opacity: 1; }
+}
+
+/* Gentle floating drift for character art */
+.float-drift {
+  animation: float-drift 7s ease-in-out infinite;
+}
+
+@keyframes float-drift {
+  0%, 100% { transform: translateY(0) rotate(-2deg); }
+  50% { transform: translateY(-14px) rotate(2deg); }
+}
+
+/* Typing dots after LOADING */
+.intro-dots::after {
+  content: "";
+  animation: intro-dots 1.2s steps(1, end) infinite;
+}
+
+@keyframes intro-dots {
+  0% { content: ""; }
+  25% { content: "."; }
+  50% { content: ".."; }
+  75% { content: "..."; }
+}
+
+/* Toon-physics bounce for Gear 5 Luffy — irregular, playful, alive */
+.gear5-bounce {
+  animation: gear5-bounce 6s ease-in-out infinite;
+}
+
+@keyframes gear5-bounce {
+  0%   { transform: translate(0, 0) rotate(-4deg) scale(1); }
+  20%  { transform: translate(10px, -18px) rotate(3deg) scale(1.04); }
+  40%  { transform: translate(-8px, -6px) rotate(-2deg) scale(0.98); }
+  55%  { transform: translate(6px, -24px) rotate(5deg) scale(1.06); }
+  75%  { transform: translate(-10px, -4px) rotate(-5deg) scale(1); }
+  100% { transform: translate(0, 0) rotate(-4deg) scale(1); }
+}
+
+/* Bangers (comic display font) needs a little breathing room */
+.font-comic {
+  letter-spacing: 0.05em;
 }
 
 @layer base {
   html {
     height: -webkit-fill-available;
-    background: var(--y2k-bg);
-    transition: background 0.5s ease;
+    /* Permanent ink black: iOS tints its bottom toolbar from the page
+       canvas color (this element's background) regardless of the content
+       painted there. The white paper look inside the viewport comes from
+       the fixed gradient layer, so this is only ever visible in chrome
+       zones and overscroll. */
+    background: #0a0a0a;
   }
   body {
     height: 100%;
     overflow-x: hidden;
     max-width: 100vw;
-    color: var(--y2k-text);
+    color: var(--manga-text);
     transition: color 0.5s ease;
   }
 
@@ -270,10 +450,12 @@
 
 @layer utilities {
   .min-h-screen-safe {
+    min-height: 100vh; /* fallback for browsers without dvh */
     min-height: 100dvh;
   }
 
   .h-screen-safe {
+    height: 100vh; /* fallback for browsers without dvh */
     height: 100dvh;
   }
 }

@@ -37,7 +37,7 @@ export default function MobileSidebar({ isOpen, onClose, navItems, activeSection
                         <div className="absolute top-4 right-4 z-10">
                             <button
                                 onClick={onClose}
-                                className="w-10 h-10 flex items-center justify-center text-y2k-text hover:bg-y2k-surface rounded-lg transition-colors duration-200"
+                                className="w-10 h-10 flex items-center justify-center text-manga-text hover:bg-manga-surface rounded-lg transition-colors duration-200"
                                 aria-label="Close menu"
                             >
                             </button>
@@ -55,7 +55,7 @@ export default function MobileSidebar({ isOpen, onClose, navItems, activeSection
                         </div>
 
                         <div className="mt-8 px-6">
-                            <div className="border-t border-y2k-border-strong pt-6">
+                            <div className="border-t border-manga-border-strong pt-6">
                                 <LanguageSwitcher />
                             </div>
                         </div>

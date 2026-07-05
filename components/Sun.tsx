@@ -4,10 +4,15 @@ import { useEffect, useRef } from "react";
 
 interface SunProps {
     width: number;
+    /** Canvas height — the large viewport (URL bar hidden). */
     height: number;
+    /** Geometry height — the small viewport (URL bar visible). */
+    baseHeight?: number;
 }
 
-export default function Sun({ width, height }: SunProps) {
+const INK = "#0a0a0a";
+
+export default function Sun({ width, height, baseHeight }: SunProps) {
     const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
     useEffect(() => {
@@ -17,15 +22,20 @@ export default function Sun({ width, height }: SunProps) {
         const ctx = canvas.getContext("2d");
         if (!ctx) return;
 
-        canvas.width = width;
-        canvas.height = height;
+        // Render at device resolution (capped at 2x) so high-DPI phones
+        // don't get a blurry upscaled sun.
+        const dpr = Math.min(window.devicePixelRatio || 1, 2);
+        canvas.width = width * dpr;
+        canvas.height = height * dpr;
+        ctx.scale(dpr, dpr);
 
         let animationFrameId: number;
         let startTime: number | null = null;
 
+        const geometryHeight = baseHeight || height;
         const sunX = width * 0.85;
-        const sunY = height * 0.12;
-        const sunRadius = Math.min(width, height) * 0.06;
+        const sunY = geometryHeight * 0.12;
+        const sunRadius = Math.min(width, geometryHeight) * 0.06;
 
         const animate = (timestamp: number) => {
             if (!startTime) startTime = timestamp;
@@ -33,7 +43,7 @@ export default function Sun({ width, height }: SunProps) {
 
             ctx.clearRect(0, 0, width, height);
 
-            // Animated glow rays
+            // Rotating ink rays
             const rayCount = 12;
             const rayLength = sunRadius * 2.5;
             ctx.save();
@@ -53,40 +63,21 @@ export default function Sun({ width, height }: SunProps) {
                     Math.cos(angle) * (rayLength * pulse),
                     Math.sin(angle) * (rayLength * pulse)
                 );
-                ctx.strokeStyle = "rgba(255, 200, 50, 0.3)";
+                ctx.strokeStyle = "rgba(10, 10, 10, 0.8)";
                 ctx.lineWidth = 3 * pulse;
                 ctx.lineCap = "round";
                 ctx.stroke();
             }
             ctx.restore();
 
-            // Outer glow
-            const glowGradient = ctx.createRadialGradient(
-                sunX, sunY, sunRadius * 0.5,
-                sunX, sunY, sunRadius * 3
-            );
-            glowGradient.addColorStop(0, "rgba(255, 223, 80, 0.35)");
-            glowGradient.addColorStop(0.5, "rgba(255, 200, 50, 0.1)");
-            glowGradient.addColorStop(1, "rgba(255, 200, 50, 0)");
-
-            ctx.beginPath();
-            ctx.arc(sunX, sunY, sunRadius * 3, 0, Math.PI * 2);
-            ctx.fillStyle = glowGradient;
-            ctx.fill();
-
-            // Sun body
-            const sunGradient = ctx.createRadialGradient(
-                sunX - sunRadius * 0.2, sunY - sunRadius * 0.2, sunRadius * 0.1,
-                sunX, sunY, sunRadius
-            );
-            sunGradient.addColorStop(0, "#FFF176");
-            sunGradient.addColorStop(0.6, "#FFD54F");
-            sunGradient.addColorStop(1, "#FFB300");
-
+            // White sun body with a thick ink outline
             ctx.beginPath();
             ctx.arc(sunX, sunY, sunRadius, 0, Math.PI * 2);
-            ctx.fillStyle = sunGradient;
+            ctx.fillStyle = "#ffffff";
             ctx.fill();
+            ctx.strokeStyle = INK;
+            ctx.lineWidth = 4;
+            ctx.stroke();
 
             animationFrameId = requestAnimationFrame(animate);
         };
@@ -94,14 +85,15 @@ export default function Sun({ width, height }: SunProps) {
         animationFrameId = requestAnimationFrame(animate);
 
         return () => cancelAnimationFrame(animationFrameId);
-    }, [width, height]);
+    }, [width, height, baseHeight]);
 
     return (
         <canvas
             ref={canvasRef}
             width={width}
             height={height}
-            className="absolute inset-0 pointer-events-none"
+            className="absolute top-0 left-0 pointer-events-none"
+            style={{ width, height }}
         />
     );
 }

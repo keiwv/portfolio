@@ -1,8 +1,8 @@
 import Background from "@/components/background";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
-import BackgroundToggle from "@/components/ui/BackgroundToggle";
 import ClientWrapper from "@/components/ClientWrapper";
+import IntroLoader from "@/components/IntroLoader";
 import {
     Home,
     About,
@@ -14,6 +14,7 @@ import {
 export default function Page() {
   return (
     <ClientWrapper>
+      <IntroLoader />
       <div className="min-h-screen-safe flex flex-col relative overflow-x-hidden">
         <Navbar />
 
@@ -42,7 +43,6 @@ export default function Page() {
         <Footer />
 
         <Background />
-        <BackgroundToggle />
       </div>
     </ClientWrapper>
   );

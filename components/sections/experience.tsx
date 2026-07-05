@@ -22,52 +22,52 @@ export default function Experience() {
                     }}
                 >
                     <motion.h2
-                        className="text-2xl md:text-3xl lg:text-4xl font-bold font-pixel text-y2k-text mb-6 tracking-tight text-center text-3d"
+                        className="text-2xl md:text-3xl lg:text-4xl font-bold font-comic text-manga-text mb-4 tracking-tight text-center text-manga"
                         initial={{ opacity: 0, scale: 0.9 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 0.6, delay: 0.2 }}
                     >
                         {t("experience.title")}
                     </motion.h2>
+                    <div className="halftone-strip w-44 mx-auto mb-6" />
                 </motion.div>
 
                 <motion.div
-                    className="relative"
+                    className="relative pt-12"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ duration: 0.8, delay: 0.3 }}
                 >
-                    <motion.div
-                        className="absolute left-[15px] md:left-[37px] top-0 bottom-0 w-0.5 bg-linear-to-b from-y2k-accent via-y2k-accent-pink to-y2k-accent/30"
-                        initial={{ scaleY: 0, opacity: 0 }}
-                        animate={{ scaleY: 1, opacity: 1 }}
-                        transition={{
-                            duration: 1.5,
-                            delay: 0.2,
-                            ease: "easeInOut",
-                        }}
-                        style={{ originY: 0 }}
-                    >
-                        <motion.div
-                            className="absolute inset-0 w-1 -translate-x-1/4 bg-y2k-accent blur-sm"
-                            animate={{
-                                opacity: [0.3, 0.6, 0.3],
-                            }}
-                            transition={{
-                                duration: 2,
-                                repeat: Infinity,
-                                ease: "easeInOut",
-                            }}
-                        />
-                    </motion.div>
-
-                    <div className="space-y-6">
+                    {/* Mobile: single stack with the dashed ink stitches */}
+                    <div className="md:hidden">
                         {experiences.map((experience, index) => (
                             <ExperienceCard
                                 key={index}
                                 experience={experience}
                                 index={index}
                             />
+                        ))}
+                    </div>
+
+                    {/* Desktop: manga-page masonry — two real flex columns
+                        (CSS `columns` fragments boxes and sliced the chapter
+                        stickers at column boundaries) */}
+                    <div className="hidden md:flex md:items-start md:gap-8">
+                        {[0, 1].map((column) => (
+                            <div
+                                key={column}
+                                className="flex-1 flex flex-col gap-10"
+                            >
+                                {experiences.map((experience, index) =>
+                                    index % 2 === column ? (
+                                        <ExperienceCard
+                                            key={index}
+                                            experience={experience}
+                                            index={index}
+                                        />
+                                    ) : null
+                                )}
+                            </div>
                         ))}
                     </div>
                 </motion.div>

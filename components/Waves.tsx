@@ -1,29 +1,19 @@
 'use client';
 
 import React, { useEffect, useRef } from 'react';
-
-interface Wave {
-  color: string;
-  speed?: number;
-  amplitude?: number;
-  height: number;
-}
+import { WAVE_CONFIG, waveSurfaceY } from '@/lib/waves';
 
 interface WavesProps {
+  /** Canvas height — the large viewport (URL bar hidden) so the ocean
+      always reaches the bottom of the screen. */
   height: number;
   width: number;
-  waves: Wave[];
-  baseSpeed?: number;
-  baseAmplitude?: number;
+  /** Geometry height — the small viewport (URL bar visible) so wave
+      positions match what's on screen at rest. Defaults to `height`. */
+  baseHeight?: number;
 }
 
-const Waves: React.FC<WavesProps> = ({
-  height,
-  width,
-  waves,
-  baseSpeed = 0.5,
-  baseAmplitude = 20,
-}) => {
+const Waves: React.FC<WavesProps> = ({ height, width, baseHeight }) => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
   useEffect(() => {
@@ -33,44 +23,53 @@ const Waves: React.FC<WavesProps> = ({
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
+    const geometryHeight = baseHeight || height;
     let animationFrameId: number;
-    let startTime: number | null = null;
 
     const setCanvasSize = () => {
       if (canvas) {
-        canvas.width = width;
-        canvas.height = height;
+        // Render at device resolution (capped at 2x) so high-DPI phones
+        // don't get a blurry upscaled scene.
+        const dpr = Math.min(window.devicePixelRatio || 1, 2);
+        canvas.width = width * dpr;
+        canvas.height = height * dpr;
+        ctx.scale(dpr, dpr);
       }
     };
 
     const drawWaves = (timestamp: number) => {
-      if (!startTime) startTime = timestamp;
-      const elapsed = timestamp - startTime;
+      // Raw rAF timestamp — a shared clock with Ship.tsx so the boat stays
+      // perfectly in phase with the wave drawn beneath it.
+      const elapsed = timestamp;
 
       ctx.clearRect(0, 0, width, height);
-      ctx.fillStyle = '#87CEEB';
-      ctx.fillRect(0, 0, width, height);
 
-      waves.forEach((wave, index) => {
+      WAVE_CONFIG.forEach((wave, index) => {
         ctx.beginPath();
         ctx.moveTo(0, height);
 
-        const waveSpeed = wave.speed || baseSpeed;
-        const waveAmplitude = wave.amplitude || baseAmplitude;
-        const waveHeight = wave.height;
-
         for (let x = 0; x < width; x++) {
-          const frequency = 0.01 + index * 0.005;
-          const y = Math.sin(x * frequency + elapsed * waveSpeed * 0.002 + (index * Math.PI * 2) / waves.length) * waveAmplitude;
-          ctx.lineTo(x, waveHeight + y);
+          ctx.lineTo(x, waveSurfaceY(index, x, elapsed, geometryHeight));
         }
 
         ctx.lineTo(width, height);
         ctx.lineTo(0, height);
         ctx.fillStyle = wave.color;
-        ctx.globalAlpha = 0.5; // Set transparency
+        ctx.globalAlpha = wave.alpha ?? 0.5; // Set transparency
         ctx.fill();
         ctx.globalAlpha = 1; // Reset transparency
+
+        // Ink contour along the crest (manga line-work)
+        if (wave.strokeColor) {
+          ctx.beginPath();
+          ctx.moveTo(0, waveSurfaceY(index, 0, elapsed, geometryHeight));
+          for (let x = 1; x < width; x++) {
+            ctx.lineTo(x, waveSurfaceY(index, x, elapsed, geometryHeight));
+          }
+          ctx.strokeStyle = wave.strokeColor;
+          ctx.lineWidth = 3;
+          ctx.stroke();
+        }
       });
 
       animationFrameId = requestAnimationFrame(drawWaves);
@@ -82,7 +81,7 @@ const Waves: React.FC<WavesProps> = ({
     return () => {
       cancelAnimationFrame(animationFrameId);
     };
-  }, [height, width, waves, baseSpeed, baseAmplitude]);
+  }, [height, width, baseHeight]);
 
   return (
     <div
@@ -93,6 +92,7 @@ const Waves: React.FC<WavesProps> = ({
         ref={canvasRef}
         width={width}
         height={height}
+        style={{ width, height }}
       />
     </div>
   );

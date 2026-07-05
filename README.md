@@ -183,7 +183,7 @@ This project is open source and available under the [MIT License](LICENSE).
 - **Portfolio**: [Live Demo](https://keiwv.dev/)
 - **GitHub**: [@keiwv](https://github.com/keiwv)
 - **LinkedIn**: [brayanperez56](https://linkedin.com/in/brayanperez56)
-- **Email**: [Contact Me](mailto:contact@keiwv.dev)
+- **Email**: [Contact me](mailto:contact@keiwv.dev)
 
 ---
 

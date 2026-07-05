@@ -25,7 +25,7 @@ export default function About() {
             className="min-h-screen-safe flex items-center justify-center px-4 sm:px-6 md:px-8 lg:px-12 xl:px-24 py-12 sm:py-16"
         >
             <div
-                className={`text-y2k-text text-left max-w-6xl w-full ${
+                className={`text-manga-text text-left max-w-6xl w-full ${
                     isMobile ? "pt-20" : ""
                 }`}
             >
@@ -54,14 +54,16 @@ export default function About() {
                             stiffness: 100,
                         }}
                     >
-                        <TiltedCard
-                            imageSrc="/user.png"
-                            altText="Me"
-                            rotateAmplitude={12}
-                            scaleOnHover={1.1}
-                            showMobileWarning={false}
-                            showTooltip={false}
-                        />
+                        <div className="manga-panel screentone-corner p-2 -rotate-2">
+                            <TiltedCard
+                                imageSrc="/me.png"
+                                altText="Me"
+                                rotateAmplitude={12}
+                                scaleOnHover={1.1}
+                                showMobileWarning={false}
+                                showTooltip={false}
+                            />
+                        </div>
                     </motion.div>
 
                     <div className="flex-1 space-y-6">
@@ -75,7 +77,7 @@ export default function About() {
                             transition={{ duration: 0.7, delay: 0.3 }}
                         >
                             <motion.h2
-                                className="text-2xl md:text-3xl lg:text-4xl font-bold font-pixel text-3d"
+                                className="text-2xl md:text-3xl lg:text-4xl font-bold font-comic text-manga"
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={
                                     inView
@@ -98,7 +100,7 @@ export default function About() {
                                 aboutMe.map((paragraph, index) => (
                                     <motion.p
                                         key={index}
-                                        className="text-sm md:text-base font-light leading-relaxed text-y2k-text-secondary"
+                                        className="text-sm md:text-base font-light leading-relaxed text-manga-text-secondary"
                                         initial={{ opacity: 0, x: -20 }}
                                         animate={
                                             inView
@@ -155,7 +157,7 @@ export default function About() {
                                 stiffness: 150,
                             }}
                         >
-                            <div className="flex items-center gap-2 pl-4 py-2.5 pr-12 sm:pl-5 sm:py-3 sm:pr-16">
+                            <div className="speech-bubble inline-flex items-center gap-2 px-4 py-2.5 sm:px-5 sm:py-3">
                                 <motion.div
                                     animate={
                                         inView
@@ -174,7 +176,7 @@ export default function About() {
                                     <MapPin className="w-4 h-4 sm:w-5 sm:h-5 shrink-0" />
                                 </motion.div>
                                 <p className="text-xs md:text-sm whitespace-nowrap">
-                                    Ensenada, Baja California, México.
+                                    {t("location")}
                                 </p>
                             </div>
                         </motion.div>

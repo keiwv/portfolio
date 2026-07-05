@@ -102,7 +102,11 @@ export default function Navbar() {
                 </div>
             </nav>
 
-            <div className="fixed top-6 right-6 z-50 hidden md:block cursor-pointer">
+            {/* Below the navbar on medium screens (e.g. 820px iPad portrait,
+                where the 800px-wide navbar would overlap it); back up top
+                on xl where there's room to the right — matching the glass
+                bar's 70px height so the button centers on its midline. */}
+            <div className="fixed top-24 xl:top-6 right-6 z-50 hidden md:flex xl:h-[70px] xl:items-center cursor-pointer">
                 <LanguageSwitcher />
             </div>
 

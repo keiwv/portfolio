@@ -22,7 +22,8 @@
       "Fuera de la programación, paso tiempo en el gimnasio, buscando nuevas librerías o jugando Overwatch (main Genji) con amigos. Disfruto crear, aprender, experimentar con nuevas tecnologías y resolver problemas de forma constante."
     ],
     "technology": "Tecnologías y Herramientas",
-    "libraries": "Librerías y Frameworks"
+    "libraries": "Librerías y Frameworks",
+    "location": "Baja California, México"
   },
   "projects": {
     "title": "Proyectos",
@@ -97,7 +98,7 @@
   "contact": {
     "title": "Ponte en Contacto",
     "email": "brayan.ivan@example.com",
-    "location": "Ensenada, Baja California, México",
+    "location": "Baja California, México",
     "description": "No dudes en contactarme si deseas colaborar o simplemente saludar."
   },
   "skills": {
@@ -118,12 +119,38 @@
   },
   "experience": {
     "title": "Experiencia",
+    "current": "ACTUAL",
     "items": [
+      {
+        "id": 3,
+        "role": "Practicante de Ingeniería de Software (Tiempo completo)",
+        "company": "Skill Up Leader Holding AG",
+        "location": "Remoto",
+        "duration": "Junio 2026 - Presente",
+        "contributions": [
+          "Promoción a tiempo completo tras cuatro meses; conversión de requerimientos de stakeholders en diseño de producto, con más de 50 pantallas entregadas para un nuevo producto con retroalimentación directa.",
+          "Transformación de ideas en diseños de baja fidelidad para que los stakeholders visualicen y validen el nuevo producto antes del desarrollo.",
+          "Ejecución de ciclos de QA por lanzamiento web, detectando defectos antes de producción — incluyendo vulnerabilidades de seguridad cross-tenant.",
+          "Elaboración y mantenimiento de documentación ISO 27001 y SOC 2 junto al equipo de cumplimiento."
+        ]
+      },
+      {
+        "id": 4,
+        "role": "Practicante de Ingeniería de Software (Medio tiempo)",
+        "company": "Skill Up Leader Holding AG",
+        "location": "Remoto",
+        "duration": "Febrero 2026 - Mayo 2026",
+        "contributions": [
+          "Creación de 3 políticas de ISO 27001 y SOC 2, sentando las bases del programa de cumplimiento de la empresa.",
+          "Actualización y reestructuración de la documentación técnica, reduciendo la fricción en el onboarding del equipo.",
+          "Apoyo en el diseño del producto y pruebas de QA durante las primeras etapas del desarrollo."
+        ]
+      },
       {
         "id": 1,
         "role": "Practicante de Machine Learning",
         "company": "Tech4Good Lab",
-        "location": "Ensenada, Baja California, México",
+        "location": "Baja California, México",
         "duration": "Enero 2025 - Noviembre 2025",
         "contributions": [
           "Análisis y preprocesamiento de datos en múltiples conjuntos de datos de reconocimiento de expresiones faciales y emociones.",
@@ -142,7 +169,7 @@
           "Documentación del código del sistema robótico con diagramas detallados para mejorar la mantenibilidad y escalabilidad.",
           "Diseño y mejora de bloques personalizados en Blockly para extender la funcionalidad del robot y mejorar la interacción del usuario.",
           "Refactorización del código existente para mejorar el rendimiento aproximadamente en un 25%, así como la legibilidad y modularidad.",
-          "Implementación de efectos de sonido en CARMEN y PODER como pasos fundamentales."
+          "Implementación de efectos de sonido en los robots sociales CARMEN y PODER."
         ]
       }
     ]
