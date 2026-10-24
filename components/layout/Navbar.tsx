@@ -1,136 +1,162 @@
 "use client";
 
-import dynamic from "next/dynamic";
-import { useState, useEffect } from "react";
-import GooeyNav from "../ui/GooeyNav";
-import HamburgerMenu from "../ui/Mobile/HamburgerMenu";
-import MobileSidebar from "../ui/Mobile/MobileSidebar";
+import { useEffect, useRef, useState } from "react";
+import { useTranslations } from "next-intl";
+import { Menu, X } from "lucide-react";
 import LanguageSwitcher from "../ui/LanguageSwitcher";
 import useActiveSection from "../hook/useActiveSection";
-import { useTranslations } from "next-intl";
-
-const GlassSurface = dynamic(() => import("../ui/GlassSurface"), {
-    ssr: false,
-});
+import { socials } from "@/lib/data";
+import { cn } from "@/lib/utils";
 
 export default function Navbar() {
-    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-    const [isMobile, setIsMobile] = useState(false);
-    
-    // Get navigation data from translations
     const t = useTranslations();
     const navItems = t.raw("nav") as Array<{ label: string; href: string }>;
-    const sectionIds = navItems.map((item) => item.href);
-    
-    const { activeSection, isScrolling, startNavbarNavigation } = useActiveSection(sectionIds, {
-        threshold: isMobile ? 0.05 : 0.1, 
-        rootMargin: isMobile ? "-15% 0px -50% 0px" : "-20% 0px -50% 0px", 
-    });
-    const activeIndex = sectionIds.findIndex((id) => id === activeSection);
-    const validActiveIndex = activeIndex >= 0 ? activeIndex : 0;
+    const contact = navItems[navItems.length - 1];
+    const activeSection = useActiveSection(navItems.map((item) => item.href));
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [isScrolled, setIsScrolled] = useState(false);
+    const [menuTop, setMenuTop] = useState(0);
+    const headerRef = useRef<HTMLElement>(null);
 
-    const handleNavClick = (index: number) => {
-        const sectionId = sectionIds[index];
-        startNavbarNavigation(sectionId); 
-        const element = document.getElementById(sectionId);
-        if (element) {
-            element.scrollIntoView({ behavior: 'smooth' });
-        }
+    const closeMenu = () => setIsMenuOpen(false);
+
+    const toggleMenu = () => {
+        setMenuTop(headerRef.current?.getBoundingClientRect().bottom ?? 0);
+        setIsMenuOpen((open) => !open);
     };
-
-    const toggleMobileMenu = () => {
-        setIsMobileMenuOpen(!isMobileMenuOpen);
-    };
-
-    const closeMobileMenu = () => {
-        setIsMobileMenuOpen(false);
-    };
-
-    /**
-     * Handle responsiveness for mobile view
-     */
 
     useEffect(() => {
-        const checkMobile = () => {
-            setIsMobile(window.innerWidth < 768);
-        };
-
-        checkMobile();
-        window.addEventListener("resize", checkMobile);
-
-        return () => window.removeEventListener("resize", checkMobile);
+        const onScroll = () => setIsScrolled(window.scrollY > 8);
+        onScroll();
+        window.addEventListener("scroll", onScroll, { passive: true });
+        return () => window.removeEventListener("scroll", onScroll);
     }, []);
 
     useEffect(() => {
-        if (isMobileMenuOpen && isMobile) {
-            document.body.style.overflow = "hidden";
-        } else {
-            document.body.style.overflow = "auto";
-        }
+        if (!isMenuOpen) return;
+
+        document.body.style.overflow = "hidden";
+        const onKeyDown = (event: KeyboardEvent) => {
+            if (event.key === "Escape") setIsMenuOpen(false);
+        };
+        const onResize = () => {
+            if (window.innerWidth >= 768) setIsMenuOpen(false);
+        };
+        document.addEventListener("keydown", onKeyDown);
+        window.addEventListener("resize", onResize);
 
         return () => {
-            document.body.style.overflow = "auto";
+            document.body.style.overflow = "";
+            document.removeEventListener("keydown", onKeyDown);
+            window.removeEventListener("resize", onResize);
         };
-    }, [isMobileMenuOpen, isMobile]);
+    }, [isMenuOpen]);
 
     return (
-        <>
-            {/* Desktop Navigation */}
-            <nav className="fixed top-6 left-1/2 transform -translate-x-1/2 z-50 hidden md:block">
-                <div className="relative">
-                    <GlassSurface
-                        width={800}
-                        height={70}
-                        redOffset={25}
-                        greenOffset={15}
-                        blueOffset={5}
-                        distortionScale={-100}
-                        blur={20}
-                        className="flex justify-center items-center"
-                    ></GlassSurface>
-                    <div className="absolute inset-0 flex justify-center items-center pointer-events-auto z-100">
-                        <GooeyNav
-                            items={navItems}
-                            particleCount={15}
-                            colors={[
-                                10, 150, 22, 33, 55, 255, 222, 100, 200, 250,
-                            ]}
-                            activeIndex={validActiveIndex}
-                            onActiveIndexChange={handleNavClick}
-                        />
-                    </div>
+        <header
+            ref={headerRef}
+            className={cn(
+                "sticky top-0 z-50 border-b bg-ink transition-colors",
+                isScrolled || isMenuOpen ? "border-line" : "border-transparent"
+            )}
+        >
+            <nav
+                aria-label="Primary"
+                className="wrap flex h-[72px] items-center justify-between gap-6"
+            >
+                <LanguageSwitcher />
+
+                <ul className="hidden items-center gap-1 font-mono text-[13px] md:flex">
+                    {navItems.map((item) => {
+                        const isContact = item.href === contact.href;
+                        const isActive = activeSection === item.href;
+                        return (
+                            <li key={item.href}>
+                                <a
+                                    href={`#${item.href}`}
+                                    aria-current={isActive ? "location" : undefined}
+                                    className={cn(
+                                        "block rounded-[8px] px-3.5 py-2 transition-colors",
+                                        isContact
+                                            ? "ml-2 bg-accent font-semibold text-on-accent"
+                                            : isActive
+                                              ? "text-fg"
+                                              : "text-fg-muted hover:text-fg"
+                                    )}
+                                >
+                                    {item.label}
+                                </a>
+                            </li>
+                        );
+                    })}
+                </ul>
+
+                <div className="flex items-center gap-2 md:hidden">
+                    <a
+                        href={`#${contact.href}`}
+                        onClick={closeMenu}
+                        className="btn btn-primary btn-sm"
+                    >
+                        {contact.label}
+                    </a>
+                    <button
+                        type="button"
+                        onClick={toggleMenu}
+                        aria-expanded={isMenuOpen}
+                        aria-controls="mobile-menu"
+                        aria-label={isMenuOpen ? t("header.closeMenu") : t("header.openMenu")}
+                        className="grid size-10 cursor-pointer place-items-center rounded-[10px] border border-line text-fg"
+                    >
+                        {isMenuOpen ? (
+                            <X className="size-5" strokeWidth={1.5} />
+                        ) : (
+                            <Menu className="size-5" strokeWidth={1.5} />
+                        )}
+                    </button>
                 </div>
             </nav>
 
-            <div className="fixed top-6 right-6 z-50 hidden md:block cursor-pointer">
-                <LanguageSwitcher />
-            </div>
-
-            <nav className="fixed top-4 right-4 z-50 md:hidden">
-                <GlassSurface
-                    width={60}
-                    height={60}
-                    redOffset={15}
-                    greenOffset={10}
-                    blueOffset={5}
-                    distortionScale={10}
-                    className="flex justify-center items-center"
+            {isMenuOpen && (
+                // Pinned to the header's real bottom edge so it always fits the viewport.
+                <div
+                    id="mobile-menu"
+                    style={{ top: menuTop }}
+                    className="fixed inset-x-0 bottom-0 flex flex-col overflow-y-auto bg-ink md:hidden"
                 >
-                    <div className="absolute inset-0 flex justify-center items-center pointer-events-auto">
-                        <HamburgerMenu
-                            isOpen={isMobileMenuOpen}
-                            onClick={toggleMobileMenu}
-                        />
-                    </div>
-                </GlassSurface>
-            </nav>
+                    <ul className="wrap w-full">
+                        {navItems.map((item, index) => (
+                            <li key={item.href} className="border-b border-line">
+                                <a
+                                    href={`#${item.href}`}
+                                    onClick={closeMenu}
+                                    className="type-display flex items-baseline justify-between py-5 text-[clamp(2.75rem,12vw,4.5rem)]"
+                                >
+                                    {item.label}
+                                    <span className="font-mono text-[13px] font-medium tracking-normal text-fg-muted">
+                                        {String(index + 1).padStart(2, "0")}
+                                    </span>
+                                </a>
+                            </li>
+                        ))}
+                    </ul>
 
-            <MobileSidebar
-                isOpen={isMobileMenuOpen}
-                onClose={closeMobileMenu}
-                navItems={navItems}
-                activeSection={activeSection}
-            />
-        </>
+                    <ul className="wrap mt-auto flex w-full gap-5 pb-10 pt-12">
+                        {socials.map((social) => (
+                            <li key={social.label}>
+                                <a
+                                    href={social.url}
+                                    target={social.label === "Email" ? undefined : "_blank"}
+                                    rel="noopener noreferrer"
+                                    aria-label={social.label}
+                                    className="text-fg-muted transition-colors hover:text-fg"
+                                >
+                                    <social.icon className="size-6" strokeWidth={1.5} />
+                                </a>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            )}
+        </header>
     );
 }

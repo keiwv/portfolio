@@ -1,205 +1,62 @@
 "use client";
 
-import { MapPin } from "lucide-react";
-import TiltedCard from "@/components/ui/TiltedCard";
 import { useTranslations } from "next-intl";
-import Skills from "../layout/HorizontalLoop";
-import { useIsMobile } from "../hook/useIsMobile";
-import { motion } from "motion/react";
-import { useInView } from "react-intersection-observer";
-import ScrollFloat from "../ui/ScrollFloat";
+import Reveal from "../ui/Reveal";
+import SectionLabel from "../ui/SectionLabel";
+import { CV_URL, LINKEDIN_URL } from "@/lib/data";
 
 export default function About() {
     const t = useTranslations("about");
-    const aboutMe = t.raw("paragraphs") as string[];
-    const isMobile = useIsMobile();
-
-    const { ref, inView } = useInView({
-        threshold: isMobile ? 0.2 : 0.3,
-        triggerOnce: false,
-    });
+    const [lead, ...paragraphs] = t.raw("paragraphs") as string[];
+    const heading = t.raw("heading") as string[];
 
     return (
-        <div
-            ref={ref}
-            className="min-h-screen-safe flex items-center justify-center px-4 sm:px-6 md:px-8 lg:px-12 xl:px-24 py-12 sm:py-16"
-        >
-            <div
-                className={`text-white text-left max-w-6xl w-full ${
-                    isMobile ? "pt-20" : ""
-                }`}
-            >
-                <div className="flex flex-col sm:flex-row gap-6 sm:gap-8 lg:gap-12 sm:items-center">
-                    {/* Profile Image with enhanced animation */}
-                    <motion.div
-                        className="w-40 mx-auto sm:mx-0 sm:w-48 md:w-56 lg:w-64 shrink-0 relative"
-                        initial={{ opacity: 0, scale: 0.8, rotateY: -25 }}
-                        animate={
-                            inView
-                                ? {
-                                      opacity: 1,
-                                      scale: 1,
-                                      rotateY: 0,
-                                  }
-                                : {
-                                      opacity: 0,
-                                      scale: 0.8,
-                                      rotateY: -25,
-                                  }
-                        }
-                        transition={{
-                            duration: 0.8,
-                            delay: 0.2,
-                            type: "spring",
-                            stiffness: 100,
-                        }}
-                    >
-                        <TiltedCard
-                            imageSrc="/user.png"
-                            altText="Me"
-                            rotateAmplitude={12}
-                            scaleOnHover={1.1}
-                            showMobileWarning={false}
-                            showTooltip={false}
-                        />
-                    </motion.div>
+        <section id="about" className="bg-paper py-[72px] text-ink md:py-[120px]">
+            <div className="wrap grid gap-12 lg:grid-cols-12">
+                <Reveal className="lg:col-span-4">
+                    <SectionLabel id="about" tone="light" />
+                    <h2 className="type-display mt-5 text-[clamp(2.75rem,4.5vw,4.75rem)]">
+                        {heading.map((line) => (
+                            <span key={line} className="block">
+                                {line}
+                            </span>
+                        ))}
+                    </h2>
+                </Reveal>
 
-                    <div className="flex-1 space-y-6">
-                        <motion.div
-                            initial={{ opacity: 0, y: 30 }}
-                            animate={
-                                inView
-                                    ? { opacity: 1, y: 0 }
-                                    : { opacity: 0, y: 30 }
-                            }
-                            transition={{ duration: 0.7, delay: 0.3 }}
-                        >
-                            <motion.h2
-                                className="text-2xl md:text-3xl lg:text-4xl font-bold"
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={
-                                    inView
-                                        ? { opacity: 1, y: 0 }
-                                        : { opacity: 0, y: 20 }
-                                }
-                                transition={{ duration: 0.6, delay: 0.4 }}
-                            >
-                                {t("title")}
-                            </motion.h2>
-                        </motion.div>
-
-                        <motion.div
-                            className="space-y-4"
-                            initial={{ opacity: 0 }}
-                            animate={inView ? { opacity: 1 } : { opacity: 0 }}
-                            transition={{ duration: 0.6, delay: 0.6 }}
-                        >
-                            {Array.isArray(aboutMe) ? (
-                                aboutMe.map((paragraph, index) => (
-                                    <motion.p
-                                        key={index}
-                                        className="text-sm md:text-base font-light leading-relaxed text-gray-300"
-                                        initial={{ opacity: 0, x: -20 }}
-                                        animate={
-                                            inView
-                                                ? {
-                                                      opacity: 1,
-                                                      x: 0,
-                                                  }
-                                                : {
-                                                      opacity: 0,
-                                                      x: -20,
-                                                  }
-                                        }
-                                        transition={{
-                                            duration: 0.6,
-                                            delay: 0.7 + index * 0.1,
-                                            type: "spring",
-                                            stiffness: 100,
-                                        }}
-                                    >
-                                        {paragraph}
-                                    </motion.p>
-                                ))
-                            ) : (
-                                <ScrollFloat
-                                    animationDuration={3}
-                                    ease="back.inOut(2)"
-                                    stagger={0.01}
-                                    textClassName="text-sm md:text-base font-light leading-relaxed"
-                                >
-                                    {aboutMe}
-                                </ScrollFloat>
-                            )}
-                        </motion.div>
-
-                        <motion.div
-                            initial={{ opacity: 0, y: 20, scale: 0.95 }}
-                            animate={
-                                inView
-                                    ? {
-                                          opacity: 1,
-                                          y: 0,
-                                          scale: 1,
-                                      }
-                                    : {
-                                          opacity: 0,
-                                          y: 20,
-                                          scale: 0.95,
-                                      }
-                            }
-                            transition={{
-                                duration: 0.6,
-                                delay: 0.9,
-                                type: "spring",
-                                stiffness: 150,
-                            }}
-                        >
-                            <div className="flex items-center gap-2 pl-4 py-2.5 pr-12 sm:pl-5 sm:py-3 sm:pr-16">
-                                <motion.div
-                                    animate={
-                                        inView
-                                            ? {
-                                                  y: [0, -3, 0],
-                                                  rotate: [0, 10, -10, 0],
-                                              }
-                                            : {}
-                                    }
-                                    transition={{
-                                        duration: 2,
-                                        repeat: Infinity,
-                                        ease: "easeInOut",
-                                    }}
-                                >
-                                    <MapPin className="w-4 h-4 sm:w-5 sm:h-5 shrink-0" />
-                                </motion.div>
-                                <p className="text-xs md:text-sm whitespace-nowrap">
-                                    Ensenada, Baja California, México.
-                                </p>
-                            </div>
-                        </motion.div>
+                <Reveal delay={100} className="lg:col-span-7 lg:col-start-6">
+                    <p className="text-[clamp(1.375rem,2.2vw,1.875rem)] leading-snug tracking-[-0.01em]">
+                        {lead}
+                    </p>
+                    <div className="mt-10 grid gap-6 border-t border-line-ink pt-8 text-[16px] leading-relaxed text-ink-muted md:grid-cols-2 md:gap-10">
+                        {paragraphs.map((paragraph) => (
+                            <p key={paragraph}>{paragraph}</p>
+                        ))}
                     </div>
-                </div>
-
-                <motion.div
-                    className="mt-10"
-                    initial={{ opacity: 0, y: 40 }}
-                    animate={
-                        inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }
-                    }
-                    transition={{
-                        duration: 0.8,
-                        delay: 1.1,
-                        type: "spring",
-                        stiffness: 80,
-                    }}
-                >
-                    <Skills
-                        technologies={t("technology")}
-                        libraries={t("libraries")}
-                    />
-                </motion.div>
+                    <div className="mt-12 flex flex-col gap-3 sm:flex-row">
+                        <a
+                            href={CV_URL}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="btn btn-primary"
+                        >
+                            {t("downloadCv")}
+                            <span className="arr" aria-hidden>
+                                ↓
+                            </span>
+                        </a>
+                        <a
+                            href={LINKEDIN_URL}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="btn btn-outline-ink"
+                        >
+                            LinkedIn
+                            <span aria-hidden>↗</span>
+                        </a>
+                    </div>
+                </Reveal>
             </div>
-        </div>
+        </section>
     );
 }

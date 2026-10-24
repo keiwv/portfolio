@@ -1,16 +1,21 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter, Inter_Tight, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import DynamicIntlProvider from "@/components/providers/DynamicIntlProvider";
-import { BackgroundProvider } from "@/components/providers/BackgroundProvider";
 
-const geistSans = Geist({
-    variable: "--font-geist-sans",
+const interTight = Inter_Tight({
+    variable: "--font-inter-tight",
+    subsets: ["latin"],
+    weight: ["700", "800", "900"],
+});
+
+const inter = Inter({
+    variable: "--font-inter",
     subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-    variable: "--font-geist-mono",
+const jetbrainsMono = JetBrains_Mono({
+    variable: "--font-jetbrains-mono",
     subsets: ["latin"],
 });
 
@@ -28,8 +33,8 @@ export const viewport: Viewport = {
     initialScale: 1,
     viewportFit: "cover",
     themeColor: [
-        { media: "(prefers-color-scheme: light)", color: "#000000" },
-        { media: "(prefers-color-scheme: dark)", color: "#000000" },
+        { media: "(prefers-color-scheme: light)", color: "#0a0a0b" },
+        { media: "(prefers-color-scheme: dark)", color: "#0a0a0b" },
     ],
 };
 
@@ -39,15 +44,12 @@ export default function RootLayout({
     children: React.ReactNode;
 }) {
     return (
-        <html lang="en">
-            <body
-                className={`${geistSans.variable} ${geistMono.variable} antialiased pb-[env(safe-area-inset-bottom)]`}
-            >
-                <BackgroundProvider>
-                    <DynamicIntlProvider>
-                        {children}
-                    </DynamicIntlProvider>
-                </BackgroundProvider>
+        <html
+            lang="en"
+            className={`${interTight.variable} ${inter.variable} ${jetbrainsMono.variable}`}
+        >
+            <body className="antialiased pb-[env(safe-area-inset-bottom)]">
+                <DynamicIntlProvider>{children}</DynamicIntlProvider>
             </body>
         </html>
     );

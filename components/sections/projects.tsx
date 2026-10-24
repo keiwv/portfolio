@@ -1,173 +1,179 @@
 "use client";
 
-import ProjectCard from "@/components/ui/Cards/ProjectCard";
+import Image from "next/image";
+import { useState } from "react";
 import { useTranslations } from "next-intl";
-import { Project } from "@/types/project";
-import useEmblaCarousel from "embla-carousel-react";
-import { useCallback, useEffect, useState } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
-import { useIsMobile } from "../hook/useIsMobile";
-import { motion } from "motion/react";
-import { useInView } from "react-intersection-observer";
+import { ArrowLeft, ArrowRight, Minus, Plus, Trophy } from "lucide-react";
+import Reveal from "../ui/Reveal";
+import SectionLabel from "../ui/SectionLabel";
+import { GITHUB_URL } from "@/lib/data";
+import type { Project } from "@/types/project";
+import { cn } from "@/lib/utils";
+
+const pad = (value: number) => String(value).padStart(2, "0");
+
+const controlClass =
+    "grid size-8 cursor-pointer place-items-center rounded-[8px] border border-line-ink transition-colors hover:border-ink";
+
+interface ProjectRowProps {
+    project: Project;
+    index: number;
+    total: number;
+}
+
+// Rows alternate text/image sides, echoing the split header.
+function ProjectRow({ project, index, total }: ProjectRowProps) {
+    const t = useTranslations();
+    const [imageIndex, setImageIndex] = useState(0);
+    const imgs = project.imgs ?? [];
+    const isFlipped = index % 2 === 1;
+
+    const step = (delta: number) =>
+        setImageIndex((current) => (current + delta + imgs.length) % imgs.length);
+
+    return (
+        <Reveal>
+            <article
+                className={cn(
+                    "grid gap-8 py-10 md:py-14 lg:grid-cols-12 lg:gap-12",
+                    index === 0 ? "border-t-2 border-ink" : "border-t border-line-ink"
+                )}
+            >
+                <div className={cn("flex flex-col lg:col-span-5", isFlipped && "lg:order-2")}>
+                    <p className="font-mono text-[13px] text-ink-muted">
+                        {pad(index + 1)} / {pad(total)}
+                    </p>
+                    {project.awards && (
+                        <p className="mt-5 flex items-center gap-2 font-mono text-[13px] font-medium">
+                            <Trophy className="size-4 text-accent" strokeWidth={1.75} aria-hidden />
+                            {project.awards}
+                        </p>
+                    )}
+                    <h3 className="type-display mt-4 text-[clamp(2.25rem,4vw,3.75rem)]">
+                        {project.name}
+                    </h3>
+                    <p className="mt-5 text-[16px] leading-relaxed text-ink-muted">
+                        {project.description}
+                    </p>
+
+                    <ul className="mt-6 flex flex-wrap gap-2" aria-label={t("common.skills")}>
+                        {project.skills.map((skill) => (
+                            <li
+                                key={skill}
+                                className="rounded-[8px] border border-line-ink px-2.5 py-1 font-mono text-[12px]"
+                            >
+                                {skill}
+                            </li>
+                        ))}
+                    </ul>
+
+                    {project.contributions?.length ? (
+                        <details className="group mt-8 border-t border-line-ink pt-5 lg:mt-auto">
+                            <summary className="flex cursor-pointer list-none items-center justify-between font-mono text-[13px] font-semibold [&::-webkit-details-marker]:hidden">
+                                {t("common.contributions")} ({project.contributions.length})
+                                <Plus className="size-4 group-open:hidden" strokeWidth={1.5} aria-hidden />
+                                <Minus className="hidden size-4 group-open:block" strokeWidth={1.5} aria-hidden />
+                            </summary>
+                            <ul className="mt-4 space-y-2.5 text-[15px] leading-relaxed text-ink-muted">
+                                {project.contributions.map((contribution) => (
+                                    <li key={contribution} className="flex gap-3">
+                                        <span aria-hidden className="font-mono">
+                                            —
+                                        </span>
+                                        <span>{contribution}</span>
+                                    </li>
+                                ))}
+                            </ul>
+                        </details>
+                    ) : null}
+                </div>
+
+                {imgs.length > 0 && (
+                    <figure className={cn("lg:col-span-7", isFlipped && "lg:order-1")}>
+                        <div className="relative aspect-video overflow-hidden rounded-[12px] border border-line-ink bg-ink">
+                            <Image
+                                src={imgs[imageIndex]}
+                                alt={`${project.name} — ${t("projects.image")} ${imageIndex + 1}`}
+                                fill
+                                sizes="(min-width: 1024px) 58vw, 100vw"
+                                className="object-cover"
+                            />
+                        </div>
+                        {imgs.length > 1 && (
+                            <figcaption className="mt-3 flex items-center justify-between font-mono text-[12px] text-ink-muted">
+                                <span>
+                                    {pad(imageIndex + 1)} / {pad(imgs.length)}
+                                </span>
+                                <span className="flex gap-2 text-ink">
+                                    <button
+                                        type="button"
+                                        onClick={() => step(-1)}
+                                        aria-label={`${t("projects.prevImage")} — ${project.name}`}
+                                        className={controlClass}
+                                    >
+                                        <ArrowLeft className="size-4" strokeWidth={1.5} />
+                                    </button>
+                                    <button
+                                        type="button"
+                                        onClick={() => step(1)}
+                                        aria-label={`${t("projects.nextImage")} — ${project.name}`}
+                                        className={controlClass}
+                                    >
+                                        <ArrowRight className="size-4" strokeWidth={1.5} />
+                                    </button>
+                                </span>
+                            </figcaption>
+                        )}
+                    </figure>
+                )}
+            </article>
+        </Reveal>
+    );
+}
 
 export default function Projects() {
     const t = useTranslations("projects");
     const projects = t.raw("items") as Project[];
-
-    const isMobile = useIsMobile();
-
-    const { ref, inView } = useInView({
-        threshold: 0.1,
-        triggerOnce: false
-    });
-
-    const [emblaRef, emblaApi] = useEmblaCarousel({
-        align: "start",
-        dragFree: false,
-        loop: true,
-        skipSnaps: false,
-        containScroll: false,
-        slidesToScroll: 1,
-    });
-
-    const [canScrollPrev, setCanScrollPrev] = useState(false);
-    const [canScrollNext, setCanScrollNext] = useState(false);
-    const [selectedIndex, setSelectedIndex] = useState(0);
-
-    const scrollPrev = useCallback(() => {
-        if (emblaApi) emblaApi.scrollPrev();
-    }, [emblaApi]);
-
-    const scrollNext = useCallback(() => {
-        if (emblaApi) emblaApi.scrollNext();
-    }, [emblaApi]);
-
-    const onSelect = useCallback(() => {
-        if (!emblaApi) return;
-        setSelectedIndex(emblaApi.selectedScrollSnap());
-        setCanScrollPrev(emblaApi.canScrollPrev());
-        setCanScrollNext(emblaApi.canScrollNext());
-    }, [emblaApi]);
-
-    useEffect(() => {
-        if (!emblaApi) return;
-        onSelect();
-        emblaApi.on("select", onSelect);
-        emblaApi.on("reInit", onSelect);
-    }, [emblaApi, onSelect]);
+    const heading = t.raw("heading") as string[];
 
     return (
-        <div ref={ref} className={` pt-20 pb-32 md:py-12 md:pb-40 px-2 sm:px-4 md:px-10 ${isMobile ? '' : 'flex items-center justify-center'}`}>
-            <div className={`max-w-7xl mx-auto ${isMobile ? 'pt-5' : 'pt-20'}`}>
-
-                <motion.div 
-                    className="mb-8 md:mb-12"
-                    initial={{ opacity: 0, y: -30 }}
-                    animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: -30 }}
-                    transition={{ duration: 0.8, type: "spring", stiffness: 100 }}
-                >
-                    <motion.h2 
-                        className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-6 tracking-tight text-center"
-                        initial={{ opacity: 0, scale: 0.9 }}
-                        animate={inView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
-                        transition={{ duration: 0.6, delay: 0.2 }}
-                    >
-                        {t("title")}
-                    </motion.h2>
-
-                </motion.div>
-
-                <motion.div 
-                    className="relative"
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-                    transition={{ duration: 0.8, delay: 0.5 }}
-                >
-                    {!isMobile && (
-                        <>
-                            <motion.button
-                                className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-16 z-10 bg-white/10 hover:bg-white/20 backdrop-blur-xl rounded-full p-3 border border-white/20 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
-                                onClick={scrollPrev}
-                                disabled={!canScrollPrev}
-                                initial={{ opacity: 0, x: 20 }}
-                                animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: 20 }}
-                                transition={{ duration: 0.6, delay: 0.7 }}
-                                whileHover={{ scale: 1.1 }}
-                                whileTap={{ scale: 0.95 }}
-                            >
-                                <ChevronLeft className="w-6 h-6 text-white" />
-                            </motion.button>
-                            
-                            <motion.button
-                                className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-16 z-10 bg-white/10 hover:bg-white/20 backdrop-blur-xl rounded-full p-3 border border-white/20 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
-                                onClick={scrollNext}
-                                disabled={!canScrollNext}
-                                initial={{ opacity: 0, x: -20 }}
-                                animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
-                                transition={{ duration: 0.6, delay: 0.7 }}
-                                whileHover={{ scale: 1.1 }}
-                                whileTap={{ scale: 0.95 }}
-                            >
-                                <ChevronRight className="w-6 h-6 text-white" />
-                            </motion.button>
-                        </>
-                    )}
-
-                    <div ref={emblaRef} className={`overflow-hidden ${isMobile ? 'max-w-[calc(100vw-2rem)]' : 'max-w-[1250px]'} mx-auto pt-6 pb-0.5`}>
-                        <div className="flex">
-                            {projects.map((project, index) => (
-                                <div
-                                    key={index}
-                                    className={`
-                                        ${isMobile ? 'flex-[0_0_min(340px,calc(100vw-2rem))]' : 'flex-[0_0_401px]'}
-                                        h-[600px]
-                                        mr-6
-                                    `}
-                                >
-                                    <ProjectCard
-                                        name={project.name}
-                                        description={project.description}
-                                        skills={project.skills}
-                                        contributions={project.contributions}
-                                        awards={project.awards}
-                                        imgs={project.imgs}
-                                        index={index}
-                                        inView={inView}
-                                    />
-                                </div>
+        <section id="projects" className="bg-paper py-[72px] text-ink md:py-[120px]">
+            <div className="wrap">
+                <Reveal className="flex flex-col gap-8 pb-12 md:pb-16 lg:flex-row lg:items-end lg:justify-between">
+                    <div>
+                        <SectionLabel id="projects" tone="light" />
+                        <h2 className="type-display type-section mt-5">
+                            {heading.map((line) => (
+                                <span key={line} className="block">
+                                    {line}
+                                </span>
                             ))}
-                        </div>
+                        </h2>
                     </div>
-
-                    <motion.div 
-                        className="flex justify-center gap-2 mt-6"
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                        transition={{ duration: 0.6, delay: 0.9 }}
+                    <a
+                        href={GITHUB_URL}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="btn btn-outline-ink self-start lg:self-auto"
                     >
-                        {projects.map((_, index) => (
-                            <motion.button
-                                key={index}
-                                className={`w-2 h-2 rounded-full transition-all duration-200 cursor-pointer ${
-                                    index === selectedIndex
-                                        ? 'bg-white'
-                                        : 'bg-white/40 hover:bg-white/60'
-                                }`}
-                                onClick={() => emblaApi?.scrollTo(index)}
-                                initial={{ scale: 0 }}
-                                animate={inView ? { scale: 1 } : { scale: 0 }}
-                                transition={{ 
-                                    duration: 0.3, 
-                                    delay: 0.9 + (index * 0.05),
-                                    type: "spring"
-                                }}
-                                whileHover={{ scale: 1.5 }}
-                                whileTap={{ scale: 0.9 }}
-                            />
-                        ))}
-                    </motion.div>
-                </motion.div>
+                        {t("more")}
+                        <span className="arr" aria-hidden>
+                            ↗
+                        </span>
+                    </a>
+                </Reveal>
+
+                <div className="border-b border-line-ink">
+                    {projects.map((project, index) => (
+                        <ProjectRow
+                            key={project.name}
+                            project={project}
+                            index={index}
+                            total={projects.length}
+                        />
+                    ))}
+                </div>
             </div>
-        </div>
+        </section>
     );
 }

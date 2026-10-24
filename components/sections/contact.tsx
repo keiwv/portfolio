@@ -1,165 +1,63 @@
 "use client";
+
 import { useTranslations } from "next-intl";
-import { socials } from "@/lib/data";
-import { motion } from "motion/react";
-import { useInView } from "react-intersection-observer";
+import { ArrowUpRight } from "lucide-react";
+import Reveal from "../ui/Reveal";
+import SectionLabel from "../ui/SectionLabel";
+import { EMAIL, socials } from "@/lib/data";
 
 export default function Contact() {
     const t = useTranslations("contact");
-
-    const { ref, inView } = useInView({
-        threshold: 0.2,
-        triggerOnce: false
-    });
+    const links = socials.filter((social) => social.label !== "Email");
 
     return (
-        <>
-            <div 
-                ref={ref}
-                className="min-h-[75vh] md:min-h-[85vh] flex flex-col justify-center px-6 py-12 md:py-20"
-            >
-                <div className="max-w-4xl mx-auto text-center text-white flex-1 flex items-center justify-center">
-                    <div className="p-8 md:p-12 w-full">
-                        <motion.div
-                            initial={{ opacity: 0, y: 30 }}
-                            animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-                            transition={{ duration: 0.7, type: "spring", stiffness: 100 }}
-                        >
-                            <motion.h1 
-                                className="text-2xl md:text-3xl lg:text-4xl font-bold mb-6"
-                                initial={{ opacity: 0, scale: 0.9 }}
-                                animate={inView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
-                                transition={{ duration: 0.6, delay: 0.2 }}
-                            >
-                                {t("title")}
-                            </motion.h1>
-                            
-                        </motion.div>
-
-                        <motion.p 
-                            className="text-lg text-white/80 mb-8 max-w-2xl mx-auto"
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                            transition={{ duration: 0.6, delay: 0.5 }}
-                        >
-                            {t("description")}
-                        </motion.p>
-
-                        <motion.div 
-                            className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8"
-                            initial={{ opacity: 0 }}
-                            animate={inView ? { opacity: 1 } : { opacity: 0 }}
-                            transition={{ duration: 0.6, delay: 0.6 }}
-                        >
-                            {socials.map((link, index) => (
-                                <motion.a
-                                    key={link.label}
-                                    href={link.url}
-                                    target={
-                                        link.label !== "Email"
-                                            ? "_blank"
-                                            : undefined
-                                    }
-                                    rel={
-                                        link.label !== "Email"
-                                            ? "noopener noreferrer"
-                                            : undefined
-                                    }
-                                    className="group relative flex flex-col items-center p-6 rounded-xl bg-linear-to-br from-white/5 to-white/2  border border-white/10 overflow-hidden"
-                                    initial={{ 
-                                        opacity: 0, 
-                                        y: 30,
-                                        scale: 0.9
-                                    }}
-                                    animate={inView ? { 
-                                        opacity: 1, 
-                                        y: 0,
-                                        scale: 1
-                                    } : { 
-                                        opacity: 0, 
-                                        y: 30,
-                                        scale: 0.9
-                                    }}
-                                    transition={{ 
-                                        duration: 0.5, 
-                                        delay: 0.7 + (index * 0.1),
-                                        type: "spring",
-                                        stiffness: 120
-                                    }}
-                                    whileHover={{ 
-                                        scale: 1.08,
-                                        y: -8,
-                                        borderColor: "rgba(168, 85, 247, 0.5)",
-                                        transition: { duration: 0.3 }
-                                    }}
-                                    whileTap={{ scale: 0.95 }}
-                                >
-                                    <motion.div
-                                        className="absolute inset-0 bg-linear-to-br from-purple-500/0 via-purple-500/10 to-pink-500/0"
-                                        initial={{ opacity: 0 }}
-                                        whileHover={{ opacity: 1 }}
-                                        transition={{ duration: 0.3 }}
-                                    />
-
-                                    <motion.div
-                                        className="absolute inset-0 bg-purple-500/20 rounded-xl"
-                                        initial={{ opacity: 0, scale: 0.8 }}
-                                        whileHover={{ opacity: 1, scale: 1 }}
-                                        transition={{ duration: 0.3 }}
-                                    />
-
-                                   
-
-                                    <motion.div 
-                                        className="text-white/70 group-hover:text-white transition-colors duration-300 mb-3 relative z-10"
-                                        whileHover={{ 
-                                            scale: 1.2,
-                                            rotate: [0, -10, 10, 0],
-                                            transition: { duration: 0.5 }
-                                        }}
-                                        animate={{
-                                            filter: [
-                                                "brightness(1) drop-shadow(0 0 0px rgba(255,255,255,0))",
-                                                "brightness(1.3) drop-shadow(0 0 8px rgba(255,255,255,0.6))",
-                                                "brightness(1) drop-shadow(0 0 0px rgba(255,255,255,0))"
-                                            ]
-                                        }}
-                                        transition={{
-                                            duration: 2,
-                                            repeat: Infinity,
-                                            ease: "easeInOut",
-                                            delay: index * 0.2
-                                        }}
-                                    >
-                                        <link.icon />
-                                    </motion.div>
-
-                                    <span className="text-sm font-medium text-white/80 group-hover:text-white transition-colors duration-300 relative z-10">
-                                        {link.label}
-                                    </span>
-                                </motion.a>
-                            ))}
-                        </motion.div>
-
-                        <motion.div 
-                            className="text-center"
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                            transition={{ duration: 0.6, delay: 1.1 }}
-                        >
-                            <motion.p 
-                                className="text-white/60 text-sm inline-block"
-                                whileHover={{ 
-                                    scale: 1.05,
-                                    color: "rgba(255, 255, 255, 0.8)"
-                                }}
-                            >
-                                {t("location")}
-                            </motion.p>
-                        </motion.div>
+        <section id="contact" className="on-accent bg-accent py-[72px] text-ink md:py-[120px]">
+            <div className="wrap">
+                <Reveal className="grid gap-8 lg:grid-cols-12 lg:items-end">
+                    <div className="lg:col-span-7">
+                        <SectionLabel id="contact" tone="light" />
+                        <h2 className="type-display type-section mt-5">{t("title")}</h2>
                     </div>
+                    <p className="text-xl leading-relaxed lg:col-span-4 lg:col-start-9">
+                        {t("description")}
+                    </p>
+                </Reveal>
+
+                <Reveal delay={100} className="mt-14 md:mt-20">
+                    {/* The address is the headline: one big, obvious target. */}
+                    <a
+                        href={`mailto:${EMAIL}`}
+                        className="group flex items-center justify-between gap-6 border-y-2 border-ink py-6 md:py-9"
+                    >
+                        <span className="font-display text-[clamp(2rem,7.5vw,8rem)] font-extrabold leading-[0.9] tracking-[-0.045em]">
+                            {EMAIL}
+                        </span>
+                        <ArrowUpRight
+                            aria-hidden
+                            strokeWidth={2.25}
+                            className="size-10 shrink-0 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1 md:size-20"
+                        />
+                    </a>
+                </Reveal>
+
+                <div className="mt-8 flex flex-wrap items-center justify-between gap-x-8 gap-y-4 font-mono text-[13px]">
+                    <ul className="flex flex-wrap gap-x-6 gap-y-2">
+                        {links.map((social) => (
+                            <li key={social.label}>
+                                <a
+                                    href={social.url}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="underline decoration-1 underline-offset-4 hover:decoration-2"
+                                >
+                                    {social.label} ↗
+                                </a>
+                            </li>
+                        ))}
+                    </ul>
+                    <p>{t("location")}</p>
                 </div>
             </div>
-        </>
+        </section>
     );
 }

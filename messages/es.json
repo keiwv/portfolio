@@ -1,31 +1,51 @@
 {
   "nav": [
-    { "label": "Inicio", "href": "home" },
-    { "label": "Experiencia", "href": "experience" },
     { "label": "Proyectos", "href": "projects" },
+    { "label": "Experiencia", "href": "experience" },
     { "label": "Sobre mí", "href": "about" },
     { "label": "Contacto", "href": "contact" }
   ],
+  "header": {
+    "now": "Ahora",
+    "openMenu": "Abrir menú",
+    "closeMenu": "Cerrar menú",
+    "language": "Idioma"
+  },
   "hero": {
     "title": {
       "name": "Brayan Ivan",
       "lastname": "Perez Ventura"
     },
     "subtitle": "Estudiante Ingeniero en Software y Tecnologías Emergentes",
-    "description": "Apasionado por crear aplicaciones web eficientes y escalables, con un fuerte enfoque en la experiencia del usuario."
+    "description": "Apasionado por crear aplicaciones web eficientes y escalables, con un fuerte enfoque en la experiencia del usuario.",
+    "role": "Ingeniero de Software",
+    "focus": ["Backend", "Machine Learning", "QA y Cumplimiento"],
+    "viewProjects": "Ver proyectos",
+    "photoAlt": "Retrato de Brayan Ivan"
+  },
+  "stack": {
+    "label": "Stack tecnológico"
   },
   "about": {
     "title": "Sobre mí",
+    "heading": ["Hola, soy", "Brayan"],
     "paragraphs": [
       "Hola, soy un estudiante de Ingeniería de Software apasionado por resolver problemas complejos, generalmente usando TypeScript, Python y algunos snacks. Me enfoco principalmente en el desarrollo backend, buscando que las soluciones funcionen correctamente desde el primer intento (no prometo nada).",
       "NestJS y FastAPI forman parte de mi conjunto de herramientas diario, y actualmente estoy explorando el desarrollo frontend para fortalecer mi perfil full-stack.",
       "Fuera de la programación, paso tiempo en el gimnasio, buscando nuevas librerías o jugando Overwatch (main Genji) con amigos. Disfruto crear, aprender, experimentar con nuevas tecnologías y resolver problemas de forma constante."
     ],
     "technology": "Tecnologías y Herramientas",
-    "libraries": "Librerías y Frameworks"
+    "libraries": "Librerías y Frameworks",
+    "downloadCv": "Descargar CV",
+    "location": "Baja California, México"
   },
   "projects": {
     "title": "Proyectos",
+    "heading": ["Lo que he", "construido"],
+    "more": "Más en GitHub",
+    "image": "Captura",
+    "prevImage": "Captura anterior",
+    "nextImage": "Siguiente captura",
     "items": [
       {
         "name": "Sippy",
@@ -96,8 +116,8 @@
   },
   "contact": {
     "title": "Ponte en Contacto",
-    "email": "brayan.ivan@example.com",
-    "location": "Ensenada, Baja California, México",
+    "email": "contact@keiwv.dev",
+    "location": "Baja California, México",
     "description": "No dudes en contactarme si deseas colaborar o simplemente saludar."
   },
   "skills": {
@@ -118,13 +138,48 @@
   },
   "experience": {
     "title": "Experiencia",
+    "heading": ["Dónde he", "trabajado"],
+    "intro": "Desde investigación en machine learning y robótica para la salud hasta ingeniería de producto a tiempo completo.",
+    "current": "Actual",
+    "timeline": "Línea de tiempo",
+    "now": "Hoy",
     "items": [
+      {
+        "id": 3,
+        "role": "Practicante de Ingeniería de Software (Tiempo completo)",
+        "company": "Skill Up Leader Holding AG",
+        "location": "Remoto",
+        "duration": "Junio 2026 - Presente",
+        "start": "2026-06",
+        "contributions": [
+          "Promoción a tiempo completo tras cuatro meses; conversión de requerimientos de stakeholders en diseño de producto, con más de 50 pantallas entregadas para un nuevo producto con retroalimentación directa.",
+          "Transformación de ideas en diseños de baja fidelidad para que los stakeholders visualicen y validen el nuevo producto antes del desarrollo.",
+          "Ejecución de ciclos de QA por lanzamiento web, detectando defectos antes de producción — incluyendo vulnerabilidades de seguridad cross-tenant.",
+          "Elaboración y mantenimiento de documentación ISO 27001 y SOC 2 junto al equipo de cumplimiento."
+        ]
+      },
+      {
+        "id": 4,
+        "role": "Practicante de Ingeniería de Software (Medio tiempo)",
+        "company": "Skill Up Leader Holding AG",
+        "location": "Remoto",
+        "duration": "Febrero 2026 - Mayo 2026",
+        "start": "2026-02",
+        "end": "2026-05",
+        "contributions": [
+          "Creación de 3 políticas de ISO 27001 y SOC 2, sentando las bases del programa de cumplimiento de la empresa.",
+          "Actualización y reestructuración de la documentación técnica, reduciendo la fricción en el onboarding del equipo.",
+          "Apoyo en el diseño del producto y pruebas de QA durante las primeras etapas del desarrollo."
+        ]
+      },
       {
         "id": 1,
         "role": "Practicante de Machine Learning",
         "company": "Tech4Good Lab",
-        "location": "Ensenada, Baja California, México",
+        "location": "Baja California, México",
         "duration": "Enero 2025 - Noviembre 2025",
+        "start": "2025-01",
+        "end": "2025-11",
         "contributions": [
           "Análisis y preprocesamiento de datos en múltiples conjuntos de datos de reconocimiento de expresiones faciales y emociones.",
           "Diseño e implementación de modelos de deep learning para reconocimiento de expresiones faciales y emociones.",
@@ -138,14 +193,19 @@
         "company": "Healthcare Robotics Lab",
         "location": "San Diego, California, Estados Unidos",
         "duration": "Julio 2025 – Agosto 2025",
+        "start": "2025-07",
+        "end": "2025-08",
         "contributions": [
           "Documentación del código del sistema robótico con diagramas detallados para mejorar la mantenibilidad y escalabilidad.",
           "Diseño y mejora de bloques personalizados en Blockly para extender la funcionalidad del robot y mejorar la interacción del usuario.",
           "Refactorización del código existente para mejorar el rendimiento aproximadamente en un 25%, así como la legibilidad y modularidad.",
-          "Implementación de efectos de sonido en CARMEN y PODER como pasos fundamentales."
+          "Implementación de efectos de sonido en los robots sociales CARMEN y PODER."
         ]
       }
     ]
+  },
+  "footer": {
+    "backToTop": "Volver arriba"
   },
   "common": {
     "viewProject": "Ver Proyecto",

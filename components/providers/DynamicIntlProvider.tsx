@@ -49,6 +49,10 @@ export default function DynamicIntlProvider({ children }: DynamicIntlProviderPro
         initializeLanguage();
     }, []);
 
+    useEffect(() => {
+        document.documentElement.lang = locale;
+    }, [locale]);
+
     const changeLanguage = async (newLocale: string) => {
         if (newLocale === locale) return;
         
@@ -68,8 +72,8 @@ export default function DynamicIntlProvider({ children }: DynamicIntlProviderPro
     // Only show loading screen on initial load, not during language changes
     if (isInitialLoading) {
         return (
-            <div className="flex items-center justify-center h-screen bg-black">
-                <div className="text-white">Loading...</div>
+            <div className="flex h-screen items-center justify-center bg-ink">
+                <p className="font-mono text-[13px] text-fg-muted">Loading…</p>
             </div>
         );
     }

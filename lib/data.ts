@@ -1,32 +1,34 @@
-import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
-import { FaRegFileLines } from "react-icons/fa6";
+import { FileText, Github, Linkedin, Mail, type LucideIcon } from "lucide-react";
 
-export const BLUR_AMOUNT = 0.1;
-export const DISPLACEMENT_SCALE = 100;
+export const EMAIL = "contact@keiwv.dev";
+export const CV_URL = "/Brayan Ivan - contact@keiwv.dev.pdf";
+export const GITHUB_URL = "https://github.com/keiwv";
+export const LINKEDIN_URL = "https://linkedin.com/in/brayanperez56";
 
-export const socials = [
-    {
-        icon: FaGithub,
-        url: "https://github.com/keiwv",
-        label: "GitHub",
-        delay: 0.8,
-    },
-    {
-        icon: FaLinkedin,
-        url: "https://linkedin.com/in/brayanperez56",
-        label: "LinkedIn",
-        delay: 1.0,
-    },
-    {
-        icon: FaEnvelope,
-        url: `mailto:contact@keiwv.dev`,
-        label: "Email",
-        delay: 1.2,
-    },
-    {
-        icon: FaRegFileLines,
-        url: `/cv_v1.pdf`,
-        label: "CV",
-        delay: 1.4,
-    }
+export const socials: { icon: LucideIcon; url: string; label: string }[] = [
+    { icon: Github, url: GITHUB_URL, label: "GitHub" },
+    { icon: Linkedin, url: LINKEDIN_URL, label: "LinkedIn" },
+    { icon: Mail, url: `mailto:${EMAIL}`, label: "Email" },
+    { icon: FileText, url: CV_URL, label: "CV" },
+];
+
+export const stack = [
+    "TypeScript",
+    "JavaScript",
+    "Python",
+    "C++",
+    "NestJS",
+    "FastAPI",
+    "GraphQL",
+    "PostgreSQL",
+    "Prisma",
+    "Next.js",
+    "React",
+    "Tailwind CSS",
+    "PyTorch",
+    "TensorFlow",
+    "Docker",
+    "Azure",
+    "Google Cloud",
+    "Linux",
 ];

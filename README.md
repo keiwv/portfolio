@@ -6,11 +6,13 @@
 
 ## Features
 
-### **Dynamic Visual Experience**
-- **Switchable Shader Backgrounds** - Toggle between stunning Warp and Grain visual effects
-- **Smooth Animations** - Powered by Framer Motion for fluid interactions
-- **Glassmorphism UI** - Modern glass-like components with backdrop blur effects
-- **Responsive Design** - Optimized for all device sizes
+### **Neo-Brutalist Design**
+- **Type-led layout** - Giant uppercase Inter Tight headlines, JetBrains Mono for UI chrome
+- **One hot accent** - Near-black and warm-paper sections with a single accent (`--accent` in `app/globals.css`)
+- **Architectural split header** - Role title top-left, photo bottom-left, full name anchored bottom-right
+- **Hairlines, no shadows** - Numbered section labels, split layouts, no gradients or glass effects
+- **Restrained motion** - One stack ticker and fade-ups only; both disabled under `prefers-reduced-motion`
+- **Responsive Design** - Checked at 375px, 820px and 1440px
 
 ### **Internationalization**
 - **Multi-language Support** (English/Spanish) using next-intl
@@ -18,17 +20,17 @@
 - **Localized Content** for global accessibility
 
 ### **Advanced Navigation**
-- **Intersection Observer** - Smart section detection and active state management
-- **Smooth Scrolling** - Seamless transitions between sections
-- **Keyboard Navigation** - Arrow keys and page navigation support
-- **Mobile-Optimized** - Touch-friendly hamburger menu and sidebar
+- **Sticky Navbar** - Active section tracking via Intersection Observer
+- **Smooth Scrolling** - Anchor links offset below the sticky header
+- **Mobile-Optimized** - Full-screen menu with language and social links
 
 ### **Content Sections**
-- **Hero Section** - Dynamic text animations and social links
-- **Experience Timeline** - Interactive career journey showcase
-- **Projects Gallery** - Carousel with detailed project cards
-- **About Me** - Personal story and technical skills
-- **Contact Form** - Direct communication interface
+- **Header** - Role, focus areas, photo with current position, intro and full name
+- **Tech Stack Ticker** - Scrolling list of languages and tools
+- **Projects** - Alternating rows with screenshot galleries, skills and expandable contributions
+- **Experience** - Accordion of roles plus a month-by-month timeline
+- **About Me** - Personal story, CV and LinkedIn
+- **Contact** - Accent band where the email address is the headline
 
 ### **Developer Experience**
 - **TypeScript** - Full type safety and IntelliSense
@@ -89,29 +91,26 @@ portfolio/
 │   ├── layout.tsx               # Root layout with providers
 │   └── page.tsx                 # Main portfolio page
 ├── components/
-│   ├── background.tsx           # Shader background component
 │   ├── hook/                    # Custom React hooks
 │   │   ├── useActiveSection.tsx # Section intersection logic
-│   │   ├── useIsMobile.tsx     # Mobile device detection
 │   │   └── useLanguage.tsx     # Internationalization
 │   ├── layout/                  # Layout components
 │   │   ├── Footer.tsx
-│   │   ├── HorizontalLoop.tsx
 │   │   └── Navbar.tsx
 │   ├── providers/               # React context providers
-│   │   ├── BackgroundProvider.tsx
 │   │   └── DynamicIntlProvider.tsx
 │   ├── sections/                # Main content sections
-│   │   ├── about.tsx
-│   │   ├── contact.tsx
-│   │   ├── experience.tsx
 │   │   ├── home.tsx
-│   │   └── projects.tsx
+│   │   ├── stack.tsx
+│   │   ├── projects.tsx
+│   │   ├── experience.tsx
+│   │   ├── about.tsx
+│   │   └── contact.tsx
 │   └── ui/                      # Reusable UI components
-│       ├── BackgroundToggle.tsx
-│       ├── Button.tsx
-│       ├── GlassSurface.tsx
-│       └── Cards/
+│       ├── LanguageSwitcher.tsx
+│       ├── Marquee.tsx
+│       ├── Reveal.tsx
+│       └── SectionLabel.tsx
 ├── i18n/                        # Internationalization config
 ├── lib/                         # Utility functions and data
 ├── messages/                    # Translation files
@@ -128,16 +127,13 @@ portfolio/
 - **React 19** - Latest React features and concurrent rendering
 - **TypeScript 5** - Type-safe development experience
 
-### **Styling & Animation**
-- **TailwindCSS 4** - Utility-first CSS framework
-- **Framer Motion 12** - Production-ready motion library
-- **@paper-design/shaders-react** - GPU-accelerated shader effects
+### **Styling**
+- **TailwindCSS 4** - Utility-first CSS framework, design tokens in `app/globals.css`
+- **next/font** - Inter Tight, Inter and JetBrains Mono
 
 ### **UI/UX Libraries**
-- **Lucide React** - Beautiful, customizable icons
-- **React Icons** - Popular icon libraries
-- **Embla Carousel** - Smooth, performant carousels
-- **React Intersection Observer** - Efficient scroll detection
+- **Lucide React** - Line icons
+- **React Intersection Observer** - Scroll-triggered reveals
 
 ### **Development Tools**
 - **ESLint** - Code linting and formatting
@@ -145,11 +141,6 @@ portfolio/
 - **class-variance-authority** - Type-safe component variants
 
 ## Unique Features
-
-### **Shader Background System**
-Toggle between two stunning visual experiences:
-- **Warp Effect** - Dynamic, flowing geometric patterns
-- **Grain Effect** - Smooth gradient transitions with noise texture
 
 ### **Smart Section Navigation**
 - Automatic active section detection
