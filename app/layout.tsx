@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Inter, Inter_Tight, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import DynamicIntlProvider from "@/components/providers/DynamicIntlProvider";
+import StringTuneProvider from "@/components/providers/StringTuneProvider";
 
 const interTight = Inter_Tight({
     variable: "--font-inter-tight",
@@ -49,7 +50,10 @@ export default function RootLayout({
             className={`${interTight.variable} ${inter.variable} ${jetbrainsMono.variable}`}
         >
             <body className="antialiased pb-[env(safe-area-inset-bottom)]">
-                <DynamicIntlProvider>{children}</DynamicIntlProvider>
+                <DynamicIntlProvider>
+                    {/* Inside the intl provider so it starts once the page (not the loader) is mounted */}
+                    <StringTuneProvider>{children}</StringTuneProvider>
+                </DynamicIntlProvider>
             </body>
         </html>
     );
