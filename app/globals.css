@@ -211,6 +211,120 @@
     transform: none;
   }
 
+  /* Projects showcase, one pinned screen (lg+ and tall enough; JS adds .is-pinned).
+     --seam 0->1: a seam sweeps down the big centred title; a thin slice under it is
+     smeared downward by --warp (0 at both ends, strongest mid-way), the rest shifts.
+     --settle 0->1: the title glides to its resting top-left spot. Then the cards swap
+     in place (JS sets their transforms). Elsewhere the rows just stack. */
+  .warp-title h2 {
+    position: relative;
+  }
+  .warp-top,
+  .warp-band,
+  .warp-bottom {
+    display: block;
+  }
+  .projects:not(.is-pinned) .warp-band,
+  .projects:not(.is-pinned) .warp-bottom {
+    display: none;
+  }
+  .projects.is-pinned {
+    padding-block: 0;
+  }
+  .projects.is-pinned .projects-stage {
+    position: sticky;
+    top: var(--nav-h);
+    height: calc(100svh - var(--nav-h));
+    overflow: hidden;
+  }
+  .projects.is-pinned .projects-stage-inner {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding-top: 40px;
+  }
+  .projects.is-pinned .projects-header {
+    position: relative;
+    z-index: 1;
+    padding-bottom: 28px;
+  }
+  .projects.is-pinned .projects-fade {
+    opacity: clamp(0, calc((var(--settle) - 0.6) / 0.4), 1);
+  }
+  .projects.is-pinned .warp-title {
+    --k: calc(1 - var(--settle) * var(--settle) * (3 - 2 * var(--settle)));
+    transform-origin: 0 0;
+    transform: translate(calc(var(--dx) * var(--k)), calc(var(--dy) * var(--k)))
+      scale(calc(1 + (var(--s) - 1) * var(--k)));
+  }
+  /* Three copies split at the seam. Negative insets keep glyph overhang visible
+     (line-height < 1); at seam 0 or 1 (warp 0) the copies line up exactly. Each copy
+     runs 1px under the next one so anti-aliased edges never leave a light hairline. */
+  .projects.is-pinned .warp-top {
+    clip-path: inset(-30% -5% calc(100% - var(--seam) * 100% - 1px) -5%);
+  }
+  .projects.is-pinned .warp-band,
+  .projects.is-pinned .warp-bottom {
+    position: absolute;
+    inset: 0;
+  }
+  /* A thin slice just under the seam, smeared downward into streaks. */
+  .projects.is-pinned .warp-band {
+    clip-path: inset(calc(var(--seam) * 100%) -5% calc(100% - var(--seam) * 100% - 0.015em - 1px) -5%);
+    transform-origin: 50% calc(var(--seam) * 100%);
+    transform: scaleY(calc(1 + var(--warp) * 3.5));
+  }
+  /* Everything below the slice, pushed down by however much the smear grew. */
+  .projects.is-pinned .warp-bottom {
+    clip-path: inset(calc(var(--seam) * 100% + 0.015em) -5% -30% -5%);
+    transform: translateY(calc(var(--warp) * 0.0525em));
+  }
+  .projects.is-pinned .projects-cards {
+    position: relative;
+    flex: 1;
+    min-height: 0;
+    border-bottom: 0;
+  }
+  .projects.is-pinned .project-slide {
+    position: absolute;
+    inset: 0;
+    will-change: transform, opacity;
+  }
+  .projects.is-pinned .project-slide article {
+    height: 100%;
+    grid-template-rows: minmax(0, 1fr);
+    padding-block: 28px;
+  }
+  .projects.is-pinned .project-text {
+    min-height: 0;
+    overflow: hidden;
+  }
+  .projects.is-pinned .project-contrib {
+    max-height: 9rem;
+    overflow-y: auto;
+  }
+  .projects.is-pinned .project-figure {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+  }
+  .projects.is-pinned .project-media {
+    aspect-ratio: auto;
+    flex: 1;
+    min-height: 0;
+  }
+
+  /* Project rows (StringTune --progress: 0 entering at the bottom -> 1 gone at the top):
+     slide in from the left over the first 30%, out to the right over the last 25%. */
+  .project-slide {
+    --in: clamp(0, calc(var(--progress, 0.5) / 0.3), 1);
+    --out: clamp(0, calc((var(--progress, 0.5) - 0.75) / 0.25), 1);
+    --in-s: calc(var(--in) * var(--in) * (3 - 2 * var(--in)));
+    --out-s: calc(var(--out) * var(--out) * (3 - 2 * var(--out)));
+    transform: translateX(calc((1 - var(--in-s)) * -40vw + var(--out-s) * 40vw));
+    opacity: calc(var(--in-s) * (1 - var(--out-s)));
+  }
+
   @media (max-width: 639px) {
     .btn:not(.btn-sm) {
       width: 100%;
@@ -228,6 +342,10 @@
       opacity: 1;
       transform: none;
       transition: none;
+    }
+    .project-slide {
+      transform: none;
+      opacity: 1;
     }
   }
 }
